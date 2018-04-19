@@ -224,4 +224,123 @@ getNestedChildren(data, 0);
 
 -----
 
-## 19
+## 19 check obj is `Array`
+
+```JavaScript
+// 1
+obj.instanceof Array
+
+// 2
+obj.constructor === Array
+
+// 3 ES5
+if (Array.isArray) {
+    return Array.isArray(v);
+}
+
+// 4 the fatest way and all browsers supported
+function isArray(value){
+    return value && typeof value === 'object' && value.constructor === Array;
+}
+
+```
+
+-----
+
+## 20. check is `string`
+
+```JavaScript
+function isString(value) {
+    return typeof value === 'string' || value instanceof String;
+}
+
+```
+
+-----
+
+## 21. check is `function`
+
+```JavaScirpt
+function isFunction (value) {
+    return typeof value === 'function';
+}
+```
+
+-----
+
+## 22. check is `Null & undefined`
+
+```JavaScirpt
+function isNull (value) {
+    return value === null;
+}
+
+function isUndefined (value) {
+    return typeof value === 'undefined';
+}
+
+```
+
+-----
+
+## 23. check is `Boolean`
+
+```JavaScirpt
+function isBoolean (value) {
+    return typeof value === 'boolean';
+}
+
+```
+
+-----
+
+## 24. check is `RegExp`
+
+```JavaScirpt
+function isRegExp (value) {
+    return value && value === 'object' && value.constructor === RegExp;
+}
+
+```
+
+-----
+
+## 25. check is `Error`
+
+```JavaScirpt
+function isError (value) {
+    return value instanceof Error && typeof value.message !== 'undefined';
+}
+```
+
+-----
+
+## 26. check is `Date`
+
+```JavaScirpt
+function isDate (value) {
+    return value instanceof Date;
+}
+```
+
+-----
+
+## 27. check is `Symbol`
+
+```JavaScirpt
+function isSymbol (value) {
+    return typeof value !== 'symbol';
+}
+```
+
+-----
+
+## 28. check is `Error`
+
+```JavaScirpt
+function isError (value) {
+    return value instanceof Error && typeof value.message !== 'undefined';
+}
+```
+
+-----
