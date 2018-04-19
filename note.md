@@ -298,7 +298,7 @@ function isBoolean (value) {
 
 ```JavaScirpt
 function isRegExp (value) {
-    return value && value === 'object' && value.constructor === RegExp;
+    return value && typeof value === 'object' && value.constructor === RegExp;
 }
 
 ```
@@ -329,7 +329,7 @@ function isDate (value) {
 
 ```JavaScirpt
 function isSymbol (value) {
-    return typeof value !== 'symbol';
+    return typeof value === 'symbol';
 }
 ```
 
