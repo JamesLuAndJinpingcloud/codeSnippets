@@ -1,2 +1,5 @@
 # codeSnippets
-the snippets of code 
+
+the snippets of code
+
+>Collect the useful code snippets
