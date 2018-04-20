@@ -344,3 +344,48 @@ function isError (value) {
 ```
 
 -----
+
+## 29. Axios Cancel Request
+
+> for example, in Vuejs
+
+```JavaScript
+
+// declare the cancel function
+let cancel
+
+export default {
+    ...
+    methods: {
+        query() {
+            axios.get(`${url}`, {
+                params: {},
+                cancelToken: new axios.CancelToken(function (c) {
+                    cancel = c
+                })
+            })
+            .then(response => {
+                ...
+            })
+            .catch(error => {
+                // catch the `cancel` message
+                if (axios.isCancel(error)) {
+                    console.log(error)
+                    alert('xxx')
+                } else {
+                   console.log(error)
+                }
+            })
+        },
+
+        someFunc () {
+            // call the `cancel` function
+            cancel('you have cancel the request')
+        }
+    }
+}
+
+
+```
+
+-----
