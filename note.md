@@ -401,7 +401,7 @@ export default {
 
 ## 30. Array deduplication
 
-```
+```js
 //without indexof...
 let uniqueWithoutArrayMethod = (arr) => {
   let res = [arr[0]];
@@ -468,5 +468,7 @@ let uniqueOnSelf = (arr) => {
 }
 console.log(uniqueOnSelf([1,1,2,3,5,3,1,5,6,7,4,3]));
 
-
 ```
+
+-----
+
