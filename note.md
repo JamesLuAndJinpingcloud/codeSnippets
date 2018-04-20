@@ -227,18 +227,27 @@ getNestedChildren(data, 0);
 ## 19 check obj is `Array`
 
 ```JavaScript
-// 1
+// 1 fail with iframe
 obj.instanceof Array
 
-// 2
+// 2 fail with iframe
 obj.constructor === Array
+ 
+// 3 rely on Object.prototype.toString and call method
+Object.prototype.toString.call(obj) === '[object Array]'
 
-// 3 ES5
+// 4 ES5  the best
 if (Array.isArray) {
     return Array.isArray(v);
 }
+//Polyfill
+if(!Array.isArray) {
+    Array.isArray = function(arg) {
+        return Object.prototype.toString.call(arg) === '[object Array]';
+    }
+}
 
-// 4 the fatest way and all browsers supported
+// 5 the fatest way and all browsers supported
 function isArray(value){
     return value && typeof value === 'object' && value.constructor === Array;
 }
@@ -389,3 +398,75 @@ export default {
 ```
 
 -----
+
+## 30. Array deduplication
+
+```
+//without indexof...
+let uniqueWithoutArrayMethod = (arr) => {
+  let res = [arr[0]];
+  for(let i=1; i<arr.length; i++){
+   let repeat = false;
+   for(let j=0; j<res.length; j++){
+    if(arr[i] === res[j]){
+     repeat = true;
+     break;
+    }
+   }
+   if(!repeat){
+    res.push(arr[i]);
+   }
+  }
+  return res;
+ }
+ console.log(uniqueWithoutArrayMethod([1,1,2,3,5,3,1,5,6,7,4,3]));
+ 
+// with another array
+let uniqueWithAnotherArray = (arr) => {
+  let result=[];
+  let len = arr.length;
+  for (let i = 0; i < len; i++) {
+    // if (result.indexOf(arr[i]) < 0) {
+      if(!result.includes(arr[i])) {
+      result.push(arr[i]);
+    }
+  }
+  return result;
+}
+console.log(uniqueWithAnotherArray([1,1,2,3,5,3,1,5,6,7,4,3]));
+
+//with Object
+let uniqueWithOject = (arr) => {
+  let obj = {};
+  arr.map(a => obj[a] = a);
+  let result = Object.values(obj);
+  return result;
+}
+console.log(uniqueWithOject([1,1,2,3,5,3,1,5,6,7,4,3]));
+
+//with set
+let uniqueWithSet = (arr) => {
+  let arr3 = [...new Set(arr)];
+  let arr5 = Array.from(new Set(arr));
+  return arr3;
+}
+console.log(uniqueWithSet([1,1,2,3,5,3,1,5,6,7,4,3]));
+
+//deduplication on self，change origin array
+let uniqueOnSelf = (arr) => {
+  let len = arr.length;
+  for (let i = 0; i < len; i++) {
+    for (let j = i + 1; j < len; j++) {
+      if (arr[j] === arr[i]) {
+        arr.splice(j, 1);
+        j--;
+        len--;
+      }
+    }
+  }
+  return arr;
+}
+console.log(uniqueOnSelf([1,1,2,3,5,3,1,5,6,7,4,3]));
+
+
+```
