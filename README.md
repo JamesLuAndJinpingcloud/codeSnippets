@@ -1,5 +1,14 @@
-# codeSnippets
+---
+description: test page
+---
 
-the snippets of code
+# Initial page
 
->Collect the useful code snippets
+```text
+alert()
+```
+
+> Test commit
+
+
+
