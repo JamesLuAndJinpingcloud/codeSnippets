@@ -490,4 +490,25 @@ console.log(uniqueOnSelf([1,1,2,3,5,3,1,5,6,7,4,3]));
 
 -----
 
-## 32
+## 32 lodash 合并对象
+
+```js
+function customizer(objValue, srcValue) {
+  if (_.isArray(objValue)) {
+    if (objValue[0]!== srcValue[0]) {
+        return objValue.concat(srcValue);
+    } else {
+        return objValue
+    }
+  }
+}
+
+var object = { 'a': [1], 'b': [2] };
+var other = { 'a': [1], 'b': [4] };
+
+// output: {a: [1], b: [2, 4]}
+_.mergeWith(object, other, customizer);
+
+```
+
+-----
