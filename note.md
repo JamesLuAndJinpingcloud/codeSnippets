@@ -232,7 +232,7 @@ obj.instanceof Array
 
 // 2 fail with iframe
 obj.constructor === Array
- 
+
 // 3 rely on Object.prototype.toString and call method
 Object.prototype.toString.call(obj) === '[object Array]'
 
@@ -240,6 +240,7 @@ Object.prototype.toString.call(obj) === '[object Array]'
 if (Array.isArray) {
     return Array.isArray(v);
 }
+
 //Polyfill
 if(!Array.isArray) {
     Array.isArray = function(arg) {
@@ -399,7 +400,7 @@ export default {
 
 -----
 
-## 30. Array deduplication
+## 30. Array Deduplication
 
 ```js
 //without indexof...
@@ -420,7 +421,7 @@ let uniqueWithoutArrayMethod = (arr) => {
   return res;
  }
  console.log(uniqueWithoutArrayMethod([1,1,2,3,5,3,1,5,6,7,4,3]));
- 
+
 // with another array
 let uniqueWithAnotherArray = (arr) => {
   let result=[];
@@ -472,3 +473,21 @@ console.log(uniqueOnSelf([1,1,2,3,5,3,1,5,6,7,4,3]));
 
 -----
 
+## 31. 金额格式化
+
+``` JavaScript
+  Number.prototype.toCurrencyString = function(prefix, suffix) {
+    if (typeof prefix === 'undefined') { prefix = '$'; }
+    if (typeof suffix === 'undefined') { suffix = ''; }
+    var _localeBug = new RegExp((1).toLocaleString().replace(/^1/, '').replace(/\./, '\\.') + "$");
+    return prefix + (~~this).toLocaleString().replace(_localeBug, '') + (this % 1).toFixed(2).toLocaleString().replace(/^[+-]?0+/,'') + suffix;
+  }
+
+  var MyNumber = 123456789.125;
+  console.log(MyNumber.toCurrencyString());
+
+```
+
+-----
+
+## 32
