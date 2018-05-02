@@ -489,3 +489,46 @@ _.mergeWith(object, other, customizer);
 ```
 
 ---
+
+## 33. Abort `fetch` request. [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
+
+```html
+
+<div>
+    <button class="download">fetch</button>
+    <button class="abort">cancel fetch</button>
+</div>
+
+```
+
+```js
+
+//ex
+var controller = new AbortController();
+var signal = controller.signal;
+
+var downloadBtn = document.querySelector('.download');
+var abortBtn = document.querySelector('.abort');
+
+downloadBtn.addEventListener('click', fetchData);
+
+abortBtn.addEventListener('click', function() {
+    controller.abort();
+    console.log('fetch data cancel or aborted...');
+});
+
+function fetchData() {
+    fetch('https://api.github.com/users/dddd', { signal }).then(function(response) {
+        console.log(response);
+    }).catch(function(e) {
+        console.log('get data error: ' + e.message);
+    })
+}
+
+```
+
+> Note: When `abort()` is called, the `fetch()` promise rejects with an `AbortError`
+
+---
+
+## 34.
