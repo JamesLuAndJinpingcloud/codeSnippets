@@ -551,7 +551,7 @@ function* iterArray(arr) {
 }
 
 // for-of
-var arr = ['a', ['b','c'],['d','e','f']];
+var arr = ['a', ['b','c'], ['d','e','f']];
 
 for(var x of iterArray(arr)) {
     console.log(x);
