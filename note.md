@@ -531,4 +531,36 @@ function fetchData() {
 
 ---
 
-## 34
+## 34. 生成器函数可以用 `GeneratorFunction` 或 `function* expression` 定义。[Link](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/function*)
+
+> 生成器在执行时能暂停，后面又可以从暂停出继续执行。调用一个生成器函数不会立刻执行里面的语句，而是返回一个这个生成器的迭代器(iterator)对象。当这个迭代器的`next()`被首次调用时，其内语句会执行到`yield`的位置为止，`yield`后紧跟迭代器要返回的值。或者如果用的是`yield*`，则表示讲执行权移交给另外一个生成器函数，当前的生成器暂停执行。
+`next()`方法返回一个对象`{value: '', done: ''}`，`value`为本次`yield`表达式的返回值，`done`属性为布尔类型，表示生成器后续是否还有`yield`语句，即生成器函数是否已经执行完毕并返回。
+调用`next()`方法时，如果传入了参数，name这个参数会作为上一条执行的`yield`语句的返回值。
+
+```js
+/* Generator */
+
+function* iterArray(arr) {
+    if (Array.isArray(arr)) {
+        for (let i = 0; i < arr.length; i ++) {
+            yield* iterArray(arr[i]);
+        }
+    } else {
+        yield arr;
+    }
+}
+
+// for-of
+var arr = ['a', ['b','c'],['d','e','f']];
+
+for(var x of iterArray(arr)) {
+    console.log(x);
+}
+
+// 迭代器展开
+var gen = iterArray(arr);
+arr = [...gen]
+console.log(arr);
+```
+
+---
