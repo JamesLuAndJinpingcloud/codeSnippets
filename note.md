@@ -564,3 +564,39 @@ console.log(arr);
 ```
 
 ---
+
+## 35. 怪异模式[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Quirks_Mode_and_Standards_Mode)
+
+---
+
+## 36. 可视化库 [Blog](https://thenextweb.com/dd/2015/06/12/20-best-javascript-chart-libraries/)
+
+---
+
+## 37. 导出csv [参考链接](https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side)
+
+```js
+// Assuming you are using an array of arrays for your data
+const rows = [["name1", "city1", "some other info"], ["name2", "city2", "more info"]];
+
+const dataToCsvURI = (data) => encodeURI(
+`data:text/csv;charset=utf-8,${data.map((row, index) =>  row.join(',')).join(`\n`)}`
+);
+
+const link = document.createElement("a");
+
+link.setAttribute("href", dataToCsvURI(rows));
+
+link.setAttribute("download", "my_data.csv");
+
+link.innerHTML= "Click Here to download";
+
+document.body.appendChild(link);
+
+link.click();
+
+```
+
+---
+
+## 38
