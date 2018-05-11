@@ -1,5 +1,9 @@
 # work notes
 
+```js
+// TODO replace this code with something better
+```
+
 ## 1. 工作账号 s
 
 公司代码库：GitLab A: `sai.lu@itdev.xiangguang.com` , P：`12345678`
@@ -630,15 +634,23 @@ performance.getEntriesByType('resource')
 
 ---
 
-## 41. chrome devTools new func, [u2 link](https://www.youtube.com/watch?v=mfuE53x4b3k&t=0s&index=33&list=PLOU2XLYxmsIInFRc3M44HUTQc3b_YJ4-Y)
+## 41. chrome devTools new func, [u2 link](https://www.youtube.com/watch?v=mfuE53x4b3k&t=0s&index=33&list=PLOU2XLYxmsIInFRc3M44HUTQc3b_YJ4-Y), more about: [Reference](https://developers.google.com/web/tools/chrome-devtools/console/command-line-reference)
 
 >`copy()`
 
 ```js
 copy()
 
-copy($_)
+copy($_) // $_ 返回最近表达式的值
 
+```
+
+> `$_` , [Reference](https://developers.google.com/web/tools/chrome-devtools/console/command-line-reference)
+
+```js
+2+2
+$_
+$0 -- $4
 ```
 
 ---
