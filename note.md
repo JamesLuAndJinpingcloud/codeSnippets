@@ -650,7 +650,11 @@ copy($_) // $_ 返回最近表达式的值
 ```js
 2+2
 $_
-$0 -- $4
+$0
+$1
+$2
+$3
+$4
 ```
 
 ---
@@ -658,6 +662,17 @@ $0 -- $4
 >`debug()`
 
 ```js
+const url = 'https://api.github.com/search/repositories';
+
+const a = async () => {
+    const res = await fetch(`${url}?q=workbox`);
+    const data = await res.json();
+    const names = data.items.map(item => item.name);
+    console.log(names);
+}
+debug(a)
+
+a();
 
 ```
 
