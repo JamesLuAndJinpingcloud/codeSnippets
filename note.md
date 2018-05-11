@@ -493,38 +493,36 @@ _.mergeWith(object, other, customizer);
 ## 33. Abort `fetch` request. [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
 
 ```html
-
 <div>
     <button class="download">fetch</button>
     <button class="abort">cancel fetch</button>
 </div>
-
 ```
 
 ```js
-
 //ex
 var controller = new AbortController();
 var signal = controller.signal;
 
-var downloadBtn = document.querySelector('.download');
-var abortBtn = document.querySelector('.abort');
+var downloadBtn = document.querySelector(".download");
+var abortBtn = document.querySelector(".abort");
 
-downloadBtn.addEventListener('click', fetchData);
+downloadBtn.addEventListener("click", fetchData);
 
-abortBtn.addEventListener('click', function() {
-    controller.abort();
-    console.log('fetch data cancel or aborted...');
+abortBtn.addEventListener("click", function() {
+  controller.abort();
+  console.log("fetch data cancel or aborted...");
 });
 
 function fetchData() {
-    fetch('https://api.github.com/users/dddd', { signal }).then(function(response) {
-        console.log(response);
-    }).catch(function(e) {
-        console.log('get data error: ' + e.message);
+  fetch("https://api.github.com/users/dddd", { signal })
+    .then(function(response) {
+      console.log(response);
     })
+    .catch(function(e) {
+      console.log("get data error: " + e.message);
+    });
 }
-
 ```
 
 > Note: When `abort()` is called, the `fetch()` promise rejects with an `AbortError`
@@ -534,32 +532,31 @@ function fetchData() {
 ## 34. 生成器函数可以用 `GeneratorFunction` 或 `function* expression` 定义。[Link](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/function*)
 
 > 生成器在执行时能暂停，后面又可以从暂停出继续执行。调用一个生成器函数不会立刻执行里面的语句，而是返回一个这个生成器的迭代器(iterator)对象。当这个迭代器的`next()`被首次调用时，其内语句会执行到`yield`的位置为止，`yield`后紧跟迭代器要返回的值。或者如果用的是`yield*`，则表示讲执行权移交给另外一个生成器函数，当前的生成器暂停执行。
-`next()`方法返回一个对象`{value: '', done: ''}`，`value`为本次`yield`表达式的返回值，`done`属性为布尔类型，表示生成器后续是否还有`yield`语句，即生成器函数是否已经执行完毕并返回。
-调用`next()`方法时，如果传入了参数，name这个参数会作为上一条执行的`yield`语句的返回值。
+> `next()`方法返回一个对象`{value: '', done: ''}`，`value`为本次`yield`表达式的返回值，`done`属性为布尔类型，表示生成器后续是否还有`yield`语句，即生成器函数是否已经执行完毕并返回。调用`next()`方法时，如果传入了参数，name 这个参数会作为上一条执行的`yield`语句的返回值。
 
 ```js
 /* Generator */
 
 function* iterArray(arr) {
-    if (Array.isArray(arr)) {
-        for (let i = 0; i < arr.length; i ++) {
-            yield* iterArray(arr[i]);
-        }
-    } else {
-        yield arr;
+  if (Array.isArray(arr)) {
+    for (let i = 0; i < arr.length; i++) {
+      yield* iterArray(arr[i]);
     }
+  } else {
+    yield arr;
+  }
 }
 
 // for-of
-var arr = ['a', ['b','c'], ['d','e','f']];
+var arr = ["a", ["b", "c"], ["d", "e", "f"]];
 
-for(var x of iterArray(arr)) {
-    console.log(x);
+for (var x of iterArray(arr)) {
+  console.log(x);
 }
 
 // 迭代器展开
 var gen = iterArray(arr);
-arr = [...gen]
+arr = [...gen];
 console.log(arr);
 ```
 
@@ -573,15 +570,21 @@ console.log(arr);
 
 ---
 
-## 37. 导出csv [参考链接](https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side)
+## 37. 导出 csv [参考链接](https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side)
 
 ```js
 // Assuming you are using an array of arrays for your data
-const rows = [["name1", "city1", "some other info"], ["name2", "city2", "more info"]];
+const rows = [
+  ["name1", "city1", "some other info"],
+  ["name2", "city2", "more info"]
+];
 
-const dataToCsvURI = (data) => encodeURI(
-`data:text/csv;charset=utf-8,${data.map((row, index) =>  row.join(',')).join(`\n`)}`
-);
+const dataToCsvURI = data =>
+  encodeURI(
+    `data:text/csv;charset=utf-8,${data
+      .map((row, index) => row.join(","))
+      .join(`\n`)}`
+  );
 
 const link = document.createElement("a");
 
@@ -589,12 +592,11 @@ link.setAttribute("href", dataToCsvURI(rows));
 
 link.setAttribute("download", "my_data.csv");
 
-link.innerHTML= "Click Here to download";
+link.innerHTML = "Click Here to download";
 
 document.body.appendChild(link);
 
 link.click();
-
 ```
 
 ---
@@ -602,3 +604,17 @@ link.click();
 ## 38 `Reactive programming` [Good Post](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
 
 > Reactive programming is programming with asynchronous data streams.
+
+## 39. Download file from server when response is `blob` data
+
+```js
+downloadFile (fileName, blob) {
+    let url = URL.createObjectURL(blob)
+    let a = document.createElement('a')
+    a.download = fileName
+    a.href = url
+    a.click()
+}
+```
+
+---
