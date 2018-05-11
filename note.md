@@ -618,3 +618,82 @@ downloadFile (fileName, blob) {
 ```
 
 ---
+
+## 40. performance
+
+```js
+performance.getEntriesByType('resource')
+    .map(t => t.name)
+    .filter(url => url.includes('woff'))
+    .join('\n')
+```
+
+---
+
+## 41. chrome devTools new func, [u2 link](https://www.youtube.com/watch?v=mfuE53x4b3k&t=0s&index=33&list=PLOU2XLYxmsIInFRc3M44HUTQc3b_YJ4-Y)
+
+>`copy()`
+
+```js
+copy()
+
+copy($_)
+
+```
+
+---
+
+>`debug()`
+
+```js
+
+```
+
+---
+
+>`monitor()`
+
+```js
+
+monitor(setTimeout);
+
+setTimeout(_ => console.log('pause'), 500);
+
+console.log('first');
+
+unmonitor(setTimeout);
+```
+
+---
+
+>`queryObjects()`
+
+```js
+class Foo { }
+const a = new Foo();
+const b = new Foo();
+b.prop = 1;
+
+queryObjects(Foo)
+```
+
+---
+
+>`Eager Evaluation`
+
+```js
+// in the console
+/[0-9]{3}-[0-9]{3}-[0-9]{4}/.exec('Call us 555-867-5309! Thanks')
+```
+
+---
+
+> Cmd + Shift + P, input  `undo`/ `right`/ `undoc`
+
+---
+
+```js
+[...document.querySelectorAll('a')].map(e => e.innerText.trim()).sort().filter(Boolean)
+```
+
+---
