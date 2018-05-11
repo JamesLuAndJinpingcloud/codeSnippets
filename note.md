@@ -715,7 +715,7 @@ queryObjects(Foo)
 
 ---
 
-> Cmd + Shift + P, input  `undo`/ `right`/ `undoc`
+> `Cmd + Shift + P`, input  `undo`/ `right`/ `undoc`
 
 ---
 
