@@ -734,7 +734,7 @@ window.crypto.getRandomValues(arr)
 
 ---
 
-## 43. 内容多单元格显示问题css
+## 43. 内容多单元格显示问题css, [reference](http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/)
 
 ```css
 /* styles for '...' */
