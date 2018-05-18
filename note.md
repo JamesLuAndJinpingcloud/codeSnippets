@@ -737,18 +737,18 @@ window.crypto.getRandomValues(arr)
 ## 43. 内容多单元格显示问题css
 
 ```css
-/* styles for '...' */ 
+/* styles for '...' */
 .block-with-text {
   /* hide text if it more than N lines  */
   overflow: hidden;
   /* for set '...' in absolute position */
-  position: relative; 
+  position: relative;
   /* use this value to count block height */
   line-height: 1.2em;
   /* max-height = line-height (1.2) * lines max number (3) */
-  max-height: 3.6em; 
+  max-height: 3.6em;
   /* fix problem when last visible word doesn't adjoin right side  */
-  text-align: justify;  
+  text-align: justify;
   /* place for '...' */
   margin-right: -1em;
   padding-right: 1em;
