@@ -191,7 +191,7 @@ function getNestedChildren(arr, parent) {
     return out
 }
 
-const dataa = [
+const data = [
     {id: 1, title: 'hello', parent: 0},
     {id: 2, title: 'hello', parent: 0},
     {id: 3, title: 'hello', parent: 1},
@@ -623,104 +623,105 @@ downloadFile (fileName, blob) {
 
 ---
 
-## 40. performance
+## 40. `performance` API
 
 ```js
-performance.getEntriesByType('resource')
-    .map(t => t.name)
-    .filter(url => url.includes('woff'))
-    .join('\n')
+performance
+  .getEntriesByType("resource")
+  .map(t => t.name)
+  .filter(url => url.includes("woff"))
+  .join("\n");
 ```
 
 ---
 
 ## 41. chrome devTools new func, [u2 link](https://www.youtube.com/watch?v=mfuE53x4b3k&t=0s&index=33&list=PLOU2XLYxmsIInFRc3M44HUTQc3b_YJ4-Y), more about: [Reference](https://developers.google.com/web/tools/chrome-devtools/console/command-line-reference)
 
->`copy()`
+> `copy()`
 
 ```js
-copy()
+copy();
 
-copy($_) // $_ 返回最近表达式的值
-
+copy($_); // $_ 返回最近表达式的值
 ```
 
 > `$_` , [Reference](https://developers.google.com/web/tools/chrome-devtools/console/command-line-reference)
 
 ```js
-2+2
-$_
-$0
-$1
-$2
-$3
-$4
+2 + 2;
+$_;
+$0;
+$1;
+$2;
+$3;
+$4;
 ```
 
 ---
 
->`debug()`
+> `debug()`
 
 ```js
-const url = 'https://api.github.com/search/repositories';
+const url = "https://api.github.com/search/repositories";
 
 const a = async () => {
-    const res = await fetch(`${url}?q=workbox`);
-    const data = await res.json();
-    const names = data.items.map(item => item.name);
-    console.log(names);
-}
-debug(a)
+  const res = await fetch(`${url}?q=workbox`);
+  const data = await res.json();
+  const names = data.items.map(item => item.name);
+  console.log(names);
+};
+debug(a);
 
 a();
-
 ```
 
 ---
 
->`monitor()`
+> `monitor()`
 
 ```js
-
 monitor(setTimeout);
 
-setTimeout(_ => console.log('pause'), 500);
+setTimeout(_ => console.log("pause"), 500);
 
-console.log('first');
+console.log("first");
 
 unmonitor(setTimeout);
 ```
 
 ---
 
->`queryObjects()`
+> `queryObjects()`
 
 ```js
-class Foo { }
+class Foo {}
 const a = new Foo();
 const b = new Foo();
 b.prop = 1;
 
-queryObjects(Foo)
+queryObjects(Foo);
 ```
 
 ---
 
->`Eager Evaluation`
+> `Eager Evaluation`
 
 ```js
 // in the console
-/[0-9]{3}-[0-9]{3}-[0-9]{4}/.exec('Call us 555-867-5309! Thanks')
+/[0-9]{3}-[0-9]{3}-[0-9]{4}/.exec("Call us 555-867-5309! Thanks");
 ```
 
 ---
 
-> `Cmd + Shift + P`, input  `undo`/ `right`/ `undoc`
+> `Cmd + Shift + P`, input `undo`/ `right`/ `undoc`
 
 ---
 
 ```js
-[...document.querySelectorAll('a')].map(e => e.innerText.trim()).sort().filter(Boolean)
+[...document.querySelectorAll("a")]
+  .map(e => e.innerText.trim())
+  .sort()
+  .filter(Boolean);
 ```
 
 ---
@@ -728,13 +729,13 @@ queryObjects(Foo)
 ## 42. Use `window.crypto` to generate random numbers
 
 ```js
-let arr = new Uint32Array(10)
-window.crypto.getRandomValues(arr)
+let arr = new Uint32Array(10);
+window.crypto.getRandomValues(arr);
 ```
 
 ---
 
-## 43. 内容多单元格显示问题css, [reference](http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/)
+## 43. 内容多单元格显示问题 css, [reference](http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/)
 
 ```css
 /* styles for '...' */
@@ -756,7 +757,7 @@ window.crypto.getRandomValues(arr)
 /* create the ... */
 .block-with-text:before {
   /* points in the end */
-  content: '...';
+  content: "...";
   /* absolute position */
   position: absolute;
   /* set position to right bottom corner of block */
@@ -766,7 +767,7 @@ window.crypto.getRandomValues(arr)
 /* hide ... if we have text, which is less than or equal to max lines */
 .block-with-text:after {
   /* points in the end */
-  content: '';
+  content: "";
   /* absolute position */
   position: absolute;
   /* set position to right bottom corner of text */
@@ -779,3 +780,43 @@ window.crypto.getRandomValues(arr)
   background: white;
 }
 ```
+
+## 44. `Object clone` Shallow or Deep[reference](https://medium.com/@tkssharma/objects-in-javascript-object-assign-deep-copy-64106c9aefab)
+
+```js
+let obj = {
+  a: 1,
+  b: {
+    c: 2
+  }
+};
+let newObj = Object.assign({}, obj);
+console.log(newObj); // { a: 1, b: { c: 2} }
+obj.a = 10;
+console.log(obj); // { a: 10, b: { c: 2} }
+console.log(newObj); // { a: 1, b: { c: 2} }
+newObj.a = 20;
+console.log(obj); // { a: 10, b: { c: 2} }
+console.log(newObj); // { a: 20, b: { c: 2} }
+newObj.b.c = 30;
+console.log(obj); // { a: 10, b: { c: 30} }
+console.log(newObj); // { a: 20, b: { c: 30} }
+// Note: newObj.b.c = 30; Read why.???.
+
+let someObj = {
+  a: 2
+};
+let obj = Object.create(someObj, {
+  b: {
+    value: 2
+  },
+  c: {
+    value: 3,
+    enumerable: true
+  }
+});
+let objCopy = Object.assign({}, obj);
+console.log(objCopy); // { c: 3 }
+```
+
+---
