@@ -828,7 +828,7 @@ console.log(objCopy); // { c: 3 }
 ## 46. chromedriver fail solution:
 
 ```bash
-npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver
+npm install --save chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver
 ```
 
 ---
