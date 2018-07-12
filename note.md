@@ -825,10 +825,31 @@ console.log(objCopy); // { c: 3 }
 
 > 布局是浏览器计算各元素几何信息的过程：元素的大小以及在页面中的位置。 根据所用的 CSS、元素的内容或父级元素，每个元素都将有显式或隐含的大小信息。此过程在 Chrome、Opera、Safari 和 Internet Explorer 中称为布局 (Layout)。 在 Firefox 中称为自动重排 (Reflow)，但实际上其过程是一样的。与样式计算相似，布局开销的直接考虑因素如下：1. 需要布局的元素数量。2.这些布局的复杂性。
 
-## 46. chromedriver fail solution:
+## 46. chromedriver fail solution
 
 ```bash
 npm install --save chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver
+```
+
+---
+
+## 47
+
+```flow
+st=>start:开始
+e=>end:结束
+op=>operation:操作
+cond=>condition:确认
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
+
+```sequence
+Alice->Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob-->Alice: I am good thanks!
 ```
 
 ---
