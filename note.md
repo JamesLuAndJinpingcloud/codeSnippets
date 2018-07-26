@@ -855,3 +855,21 @@ Bob-->Alice: I am good thanks!
 ---
 
 ## 48 element all width and height (https://msdn.microsoft.com/en-us/library/hh781509(VS.85).aspx)
+
+## 49 check linux version
+
+```bash
+uname -a
+
+uname -mrs
+
+lsb_release -a
+
+cat /proc/version
+
+cat /etc/issue
+
+tail /etc/redhat-release
+```
+
+---
