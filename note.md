@@ -899,3 +899,43 @@ tail /etc/redhat-release
 ```
 
 ---
+
+## 50. Using `fileReader` to preview multipe image
+
+```html
+    <input type="file" id="browse" onchange="previewFiles()" multiple>
+    <div id="preview"></div>
+```
+
+```js
+function previewFiles() {
+  var preivew = document.querySelector("#preview");
+  var files = document.querySelector("input[type=file]").files;
+
+  function readAndPreview(file) {
+    if (/\.(jpg?g|png|gif)$/i.test(file.name)) {
+      var reader = new FileReader();
+
+      reader.addEventListener(
+        "load",
+        function() {
+          var image = new Image();
+          image.height = 100;
+          image.title = file.name;
+          image.src = this.result;
+          preivew.appendChild(image);
+        },
+        false
+      );
+
+      reader.readAsDataURL(file);
+    }
+  }
+
+  if (files) {
+    [].forEach.call(files, readAndPreview);
+  }
+}
+```
+
+---
