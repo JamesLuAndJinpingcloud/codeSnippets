@@ -576,6 +576,8 @@ console.log(arr);
 
 ## 37. 导出 csv [参考链接](https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side)
 
+[参考 2](https://stackoverflow.com/questions/18848860/javascript-array-to-csv/18849208#18849208)
+
 ```js
 // Assuming you are using an array of arrays for your data
 const rows = [
