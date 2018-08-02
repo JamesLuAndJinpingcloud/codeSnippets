@@ -603,6 +603,30 @@ document.body.appendChild(link);
 link.click();
 ```
 
+```js
+function downloadableCSV(rows) {
+  var content = "data:text/csv;charset=utf-8,";
+
+  rows.forEach(function(row, index) {
+    content += row.join(",") + "\n";
+  });
+
+  return encodeURI(content);
+}
+
+var rows = [
+  ["name1", 2, 3],
+  ["name2", 4, 5],
+  ["name3", 6, 7],
+  ["name4", 8, 9],
+  ["name5", 10, 11]
+];
+
+$("#download").click(function() {
+  window.open(downloadableCSV(rows));
+});
+```
+
 ---
 
 ## 38 `Reactive programming` [Good Post](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
