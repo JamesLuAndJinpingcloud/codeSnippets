@@ -939,3 +939,60 @@ function previewFiles() {
 ```
 
 ---
+
+## 51. Vuejs 2 行多了省略号显示 fix autoprefix 7.1 bug.
+
+```css
+.note-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /*! autoprefixer: on */
+}
+```
+
+---
+
+## 52. 前端分页(Vuejs)
+
+```js
+export default {
+  data() {
+    return {
+      list: [],
+      query: {
+        currentPage: 1,
+        pageSize: 10
+      }
+    };
+  },
+  methods: {
+    handleSizeChange(val) {
+      this.query.pageSize = val;
+      this.excelDataPagination();
+    },
+
+    handleCurrentChange(val) {
+      this.query.currentPage = val;
+      this.excelDataPagination();
+    },
+
+    excelDataPagination() {
+      let currentPage = this.query.currentPage;
+      let pageSize = this.query.pageSize;
+      --currentPage;
+      this.list = this.all.slice(
+        currentPage * pageSize,
+        (currentPage + 1) * pageSize
+      );
+    }
+  }
+};
+```
+
+---
