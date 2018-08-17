@@ -996,3 +996,16 @@ export default {
 ```
 
 ---
+
+## 53. curl 下载文件
+
+> `curl URL -o filename --progress`
+
+Example:
+
+```bash
+curl https://unpkg.com/ag-grid-enterprise@18.1.1/dist/ag-grid-enterprise.min.js -o my-ag-grid
+.min.js --progress
+```
+
+---
