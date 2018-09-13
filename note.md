@@ -1017,3 +1017,14 @@ Ex: chrome google it
 -1 selected the "chrome.exe" etc.
 
 -2 add arguments and insert Macro Param: --new-tab "https://google.com/search?q=$SelectedText$" (--new-window, --incognito, arguments of chrome app)
+
+## 55. Rider Error Solutions Collection, work with `VSStudio`
+
+```text
+1 .netStandard, Version=2.0.0.0, Culture=neutral, 的引用问题解决
+  在csproj文件里面，添加      <Reference Include="netstandard" />
+
+2. 提示如上(12)错误时，打开Rider设置 -> Toolset and Build -> Use MSBUILD version: Latest installed. [Done]
+```
+
+---
