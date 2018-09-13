@@ -1009,3 +1009,11 @@ curl https://unpkg.com/ag-grid-enterprise@18.1.1/dist/ag-grid-enterprise.min.js 
 ```
 
 ---
+
+## 54. JetBrains External Tools
+
+Ex: chrome google it
+
+-1 selected the "chrome.exe" etc.
+
+-2 add arguments and insert Macro Param: --new-tab "https://google.com/search?q=$SelectedText$" (--new-window, --incognito, arguments of chrome app)
