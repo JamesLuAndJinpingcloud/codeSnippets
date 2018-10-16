@@ -1064,4 +1064,16 @@ export default {
 <span>{{value | currency}}</span>
 ```
 
+> other example
+
+```js
+console.log(
+  new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "RMB",
+    minimumFractionDigits: 6
+  }).format(12345789.23654)
+);
+```
+
 ---
