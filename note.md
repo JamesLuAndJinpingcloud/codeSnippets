@@ -1040,3 +1040,28 @@ window.console &&
 ```
 
 ---
+
+## 57. Intl format `currency`, `locale` etc. [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl)
+
+> Ex: `Vue` currency filter
+
+```js
+export default {
+  filters: {
+    currency(value) {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+      }).format(123456.78);
+    }
+  }
+};
+```
+
+> Use
+
+```html
+<span>{{value | currency}}</span>
+```
+
+---
