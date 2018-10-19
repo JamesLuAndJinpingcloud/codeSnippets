@@ -1052,7 +1052,7 @@ export default {
       return new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD"
-      }).format(123456.78);
+      }).format(value);
     }
   }
 };
@@ -1074,6 +1074,23 @@ console.log(
     minimumFractionDigits: 6
   }).format(12345789.23654)
 );
+```
+
+> format digit
+
+```js
+...
+filters: {
+  currency(value, places) {
+    return new Intl.NumberFormat("en-US",
+    {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: places || 2,
+      maximumFractionDigits: places || 2
+    }).format(value)
+  }
+}
 ```
 
 ---
