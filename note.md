@@ -880,7 +880,7 @@ Bob-->Alice: I am good thanks!
 
 ---
 
-## 48 element all width and height (https://msdn.microsoft.com/en-us/library/hh781509(VS.85).aspx)
+## 48 element all width and height (<https://msdn.microsoft.com/en-us/library/hh781509(VS.85).aspx)>
 
 ## 49 check linux version
 
@@ -940,7 +940,7 @@ function previewFiles() {
 
 ---
 
-## 51. Vuejs 2 行多了省略号显示 fix autoprefix 7.1 bug.
+## 51. Vuejs 2 行多了省略号显示 fix autoprefix 7.1 bug
 
 ```css
 .note-content {
@@ -1110,7 +1110,7 @@ const bio = document.querySelector("img");
 bio.innerHTML = html;
 ```
 
-> Solution: `Sanitizing` your HTML. Using `DOMPurify` (https://github.com/cure53/DOMPurify) library.
+> Solution: `Sanitizing` your HTML. Using `DOMPurify` (<https://github.com/cure53/DOMPurify)> library.
 
 ```js
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify.0.8.2/purify.min.js"></script>
@@ -1134,4 +1134,4 @@ bio.innerHTML = html;
 
 ---
 
-## 59. InteliJ plugins: `Nyan Progress Bar`, pretty progress bars for IJ based IDEs.
+## 59. InteliJ plugins: `Nyan Progress Bar`, pretty progress bars for IJ based IDEs
