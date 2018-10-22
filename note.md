@@ -1094,3 +1094,42 @@ filters: {
 ```
 
 ---
+
+## 58. XSS `cross site scripting`, where we let someone else run JavaScript on our page.[web bos](https://wesbos.com/sanitize-html-es6-template-strings/)
+
+```js
+const first = "Wes";
+const aboutMe = `I love to do evil <img src="http://unsplash.it/100/100?random" onload="alert('you got hacked');" />`;
+
+const html = `
+    <h3>${first}</h3>
+    <p>${aboutMe}</p>
+`;
+
+const bio = document.querySelector("img");
+bio.innerHTML = html;
+```
+
+> Solution: `Sanitizing` your HTML. Using `DOMPurify` (https://github.com/cure53/DOMPurify) library.
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify.0.8.2/purify.min.js"></script>
+<script>
+function sanitize(strings, ...values) {
+    const dirty = strings.reduce((prev, next, i) => `${prev}${next}${values[i]} || ''}`, '');
+    return DomPurify.sanitize(dirty);
+}
+const first = 'Wes';
+const aboutMe = sanitize`I love to do evil <img src="http://unsplash.it/100/100?random" onload="alert('you got hacked');" />`;
+
+const html = `
+    <h3>${first}</h3>
+    <p>${aboutMe}</p>
+`;
+
+const bio = document.querySelector('.bio');
+bio.innerHTML = html;
+</script>
+```
+
+---
