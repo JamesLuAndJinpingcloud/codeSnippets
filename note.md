@@ -1135,3 +1135,5 @@ bio.innerHTML = html;
 ---
 
 ## 59. InteliJ plugins: `Nyan Progress Bar`, pretty progress bars for IJ based IDEs
+
+---
