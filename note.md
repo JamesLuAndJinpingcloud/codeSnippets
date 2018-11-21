@@ -498,8 +498,8 @@ _.mergeWith(object, other, customizer);
 
 ```html
 <div>
-    <button class="download">fetch</button>
-    <button class="abort">cancel fetch</button>
+  <button class="download">fetch</button>
+  <button class="abort">cancel fetch</button>
 </div>
 ```
 
@@ -903,8 +903,8 @@ tail /etc/redhat-release
 ## 50. Using `fileReader` to preview multipe image
 
 ```html
-    <input type="file" id="browse" onchange="previewFiles()" multiple>
-    <div id="preview"></div>
+<input type="file" id="browse" onchange="previewFiles()" multiple />
+<div id="preview"></div>
 ```
 
 ```js
@@ -1137,3 +1137,51 @@ bio.innerHTML = html;
 ## 59. InteliJ plugins: `Nyan Progress Bar`, pretty progress bars for IJ based IDEs
 
 ---
+
+## 60.Object Array GroupBy some property.
+
+```js
+function group(list, props) {
+  return list.reduce((a, b) => {
+    (a[b[props]] = a[b[props]] || []).push(b);
+    return a;
+  }, {});
+}
+```
+
+> How to
+
+```js
+var arr = [
+  {
+    routerName: "approval",
+    name: "moduleA",
+    path: "/approval",
+    module: "workbench",
+    systemName: "System1",
+    systemCode: 2
+  },
+  {
+    routerName: "approval",
+    name: "moduleB",
+    path: "/approval",
+    module: "workbench",
+    systemName: "System2",
+    systemCode: 2
+  },
+  {
+    routerName: "approval",
+    name: 'moduleC',
+    path: "/approval",
+    module: "workbench",
+    systemName: "System1',
+    systemCode: 2
+  }
+];
+
+console.log(groupBy(arr, 'systemName');
+```
+
+---
+
+## 61
