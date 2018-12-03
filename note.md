@@ -1138,7 +1138,7 @@ bio.innerHTML = html;
 
 ---
 
-## 60.Object Array GroupBy some property.
+## 60.Object Array GroupBy some property
 
 ```js
 function group(list, props) {
