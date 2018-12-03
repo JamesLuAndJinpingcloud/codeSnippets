@@ -1184,4 +1184,37 @@ console.log(groupBy(arr, 'systemName');
 
 ---
 
-## 61
+## 61 How to use JsPlumnb toolkit
+
+> download jsplumbtoolkit.js, find `window.eval(decodeURIComponent("..."))` code.
+
+```js
+// 1. exec this code
+window._j=~[];window._j={___:++window._j,$$$$:(![]+"")[window._j],__$:++window._j,$_$_:(![]+"")[window._j],_$_:++window._j,$_$$:({}+"")[window._j],$$_$:(window._j[window._j]+"")[window._j],_$$:++window._j,$$$_:(!""+"")[window._j],$__:++window._j,$_$:++window._j,$$__:({}+"")[window._j],$$_:++window._j,$$$:++window._j,$___:++window._j,$__$:++window._j};window._j.$_=(window._j.$_=window._j+"")[window._j.$_$]+(window._j._$=window._j.$_[window._j.__$])+(window._j.$$=(window._j.$+"")[window._j.__$])+((!window._j)+"")[window._j._$$]+(window._j.__=window._j.$_[window._j.$$_])+(window._j.$=(!""+"")[window._j.__$])+(window._j._=(!""+"")[window._j._$_])+window._j.$_[window._j.$_$]+window._j.__+window._j._$+window._j.$;window._j.$$=window._j.$+(!""+"")[window._j._$$]+window._j.__+window._j._+window._j.$+window._j.$$;window._j.$=(window._j.___)[window._j.$_][window._j.$_];window._j.$(window._j.$(window._j.$$+"\""+"\\"+window._j.__$+window._j.$_$+window._j.__$+window._j.$$$$+"("+window._j.$$_$+window._j._$+window._j.$$__+window._j._+"\\"+window._j.__$+window._j.$_$+window._j.$_$+window._j.$$$_+"\\"+window._j.__$+window._j.$_$+window._j.$$_+window._j.__+"."+(![]+"")[window._j._$_]+window._j._$+window._j.$$__+window._j.$_$_+window._j.__+"\\"+window._j.__$+window._j.$_$+window._j.__$+window._j._$+"\\"+window._j.__$+window._j.$_$+window._j.$$_+".\\"+window._j.__$+window._j.$_$+window._j.___+window._j._$+"\\"+window._j.__$+window._j.$$_+window._j._$$+window._j.__+"\\"+window._j.__$+window._j.$_$+window._j.$$_+window._j.$_$_+"\\"+window._j.__$+window._j.$_$+window._j.$_$+window._j.$$$_+"!=='\\"+window._j.__$+window._j.$_$+window._j._$_+"\\"+window._j.__$+window._j.$$_+window._j._$$+"\\"+window._j.__$+window._j.$$_+window._j.___+(![]+"")[window._j._$_]+window._j._+"\\"+window._j.__$+window._j.$_$+window._j.$_$+window._j.$_$$+window._j.__+window._j._$+window._j._$+(![]+"")[window._j._$_]+"\\"+window._j.__$+window._j.$_$+window._j._$$+"\\"+window._j.__$+window._j.$_$+window._j.__$+window._j.__+"."+window._j.$$__+window._j._$+"\\"+window._j.__$+window._j.$_$+window._j.$_$+"')"+window._j.__+"\\"+window._j.__$+window._j.$_$+window._j.___+"\\"+window._j.__$+window._j.$$_+window._j._$_+window._j._$+"\\"+window._j.__$+window._j.$$_+window._j.$$$+"\\"+window._j.$__+window._j.___+"\\"+window._j.__$+window._j.$_$+window._j.$$_+window._j.$$$_+"\\"+window._j.__$+window._j.$$_+window._j.$$$+"\\"+window._j.$__+window._j.___+"\\"+window._j.__$+window._j.___+window._j.$_$+"\\"+window._j.__$+window._j.$$_+window._j._$_+"\\"+window._j.__$+window._j.$$_+window._j._$_+window._j._$+"\\"+window._j.__$+window._j.$$_+window._j._$_+"();"+"\"")())();
+
+// 2. exec this
+_j.$$ + '"\\' + _j.__$ + _j.$_$ + _j.__$ + _j.$$$$ + "\\" + _j.$__ + _j.___ + "(\\" + _j.__$ + _j.$_$ + _j.$$_ + _j.$$$_ + "\\" + _j.__$ + _j.$$_ + _j.$$$ + "\\" + _j.$__ + _j.___ + "\\" + _j.__$ + _j.___ + _j.$__ + _j.$_$_ + _j.__ + _j.$$$_ + "().\\" + _j.__$ + _j.$__ + _j.$$$ + _j.$$$_ + _j.__ + "\\" + _j.__$ + _j._$_ + _j.$__ + "\\" + _j.__$ + _j.$_$ + _j.__$ + "\\" + _j.__$ + _j.$_$ + _j.$_$ + _j.$$$_ + "()\\" + _j.$__ + _j.___ + ">\\" + _j.$__ + _j.___ + _j.__$ + _j.$__ + _j.$$$ + _j.$___ + _j.$$_ + _j.$$_ + _j.$__ + _j._$$ + _j.$$$ + _j.$_$ + _j.___ + _j.$$$ + _j.__$ + "){" + _j.$_$_ + (!1 + "")[_j._$_] + _j.$$$_ + "\\" + _j.__$ + _j.$$_ + _j._$_ + _j.__ + "('\\" + _j.__$ + _j.$_$ + _j._$_ + "\\" + _j.__$ + _j.$$_ + _j._$$ + "\\" + _j.__$ + _j._$_ + _j.___ + (!1 + "")[_j._$_] + _j._ + "\\" + _j.__$ + _j.$_$ + _j.$_$ + _j.$_$$ + "\\" + _j.$__ + _j.___ + "\\" + _j.__$ + _j._$_ + _j.$__ + _j._$ + _j._$ + (!1 + "")[_j._$_] + "\\" + _j.__$ + _j.$_$ + _j._$$ + "\\" + _j.__$ + _j.$_$ + _j.__$ + _j.__ + "\\" + _j.$__ + _j.___ + _j.$$$_ + "\\" + _j.__$ + _j.$$_ + _j.$$_ + _j.$_$_ + (!1 + "")[_j._$_] + _j._ + _j.$_$_ + _j.__ + "\\" + _j.__$ + _j.$_$ + _j.__$ + _j._$ + "\\" + _j.__$ + _j.$_$ + _j.$$_ + "\\" + _j.$__ + _j.___ + "\\" + _j.__$ + _j.$$_ + _j.___ + _j.$$$_ + "\\" + _j.__$ + _j.$$_ + _j._$_ + "\\" + _j.__$ + _j.$_$ + _j.__$ + _j._$ + _j.$$_$ + "\\" + _j.$__ + _j.___ + _j.$$$_ + "\\" + _j.__$ + _j.$$$ + _j.___ + "\\" + _j.__$ + _j.$$_ + _j.___ + "\\" + _j.__$ + _j.$_$ + _j.__$ + "\\" + _j.__$ + _j.$$_ + _j._$_ + _j.$$$_ + _j.$$_$ + ".');" + _j.__ + "\\" + _j.__$ + _j.$_$ + _j.___ + "\\" + _j.__$ + _j.$$_ + _j._$_ + _j._$ + "\\" + _j.__$ + _j.$$_ + _j.$$$ + "\\" + _j.$__ + _j.___ + "\\" + _j.__$ + _j.$_$ + _j.$$_ + _j.$$$_ + "\\" + _j.__$ + _j.$$_ + _j.$$$ + "\\" + _j.$__ + _j.___ + "\\" + _j.__$ + _j.___ + _j.$_$ + "\\" + _j.__$ + _j.$$_ + _j._$_ + "\\" + _j.__$ + _j.$$_ + _j._$_ + _j._$ + "\\" + _j.__$ + _j.$$_ + _j._$_ + '();}"'
+
+```
+
+> then we will get the following code in DevTools console panel.
+
+```js
+return"\151f\40(\156e\167\40\104ate().\147et\124\151\155e()\40>\401478664375071){ale\162t('\152\163\120lu\155b\40\124ool\153\151t\40e\166aluat\151o\156\40\160e\162\151od\40e\170\160\151\162ed.');t\150\162o\167\40\156e\167\40\105\162\162o\162();}"
+```
+
+> finally, `unescape` it.
+
+```js
+unescape("\151f\40(\156e\167\40\104ate().\147et\124\151\155e()\40>\401478664375071){ale\162t('\152\163\120lu\155b\40\124ool\153\151t\40e\166aluat\151o\156\40\160e\162\151od\40e\170\160\151\162ed.');t\150\162o\167\40\156e\167\40\105\162\162o\162();}")
+```
+
+> here we get the following code
+
+```js
+if (new Date().getTime() > 1478664375071){alert('jsPlumb Toolkit evaluation period expired.');throw new Error();}
+```
+
+> Enjoy it
+
+---
