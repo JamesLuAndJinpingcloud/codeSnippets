@@ -1218,3 +1218,11 @@ if (new Date().getTime() > 1478664375071){alert('jsPlumb Toolkit evaluation peri
 > Enjoy it
 
 ---
+
+## 62 查看shell 使用历史
+
+```bash
+history | awk '{print $2}' | sort | uniq -c | sort -rn | head -10
+```
+
+---
