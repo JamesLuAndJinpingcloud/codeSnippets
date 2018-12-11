@@ -1226,3 +1226,55 @@ history | awk '{print $2}' | sort | uniq -c | sort -rn | head -10
 ```
 
 ---
+
+## 63. CSS hack of IE 😭😭😰😰😰😰😰, [hack gist](https://gist.github.com/Ellipse120/8ea6adc4feb308afe8e6334672a92b90)
+
+> for example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <style>
+      .color {
+        color: red;
+      }
+
+      /* IE 8,9 */
+      @media screen\0 {
+        .color {
+          color: aqua;
+        }
+      }
+
+      /* ie 10, 11 hack */
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .color {
+          color: rebeccapurple;
+        }
+      }
+
+      _:-ms-fullscreen,
+      :root .ie11up {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="color">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium
+      neque suscipit ex voluptatem tempora ullam in maiores nesciunt natus,
+      laboriosam, explicabo dolor commodi eius unde sequi fugiat quis iure
+      itaque!
+    </div>
+  </body>
+</html>
+
+```
+
+---
