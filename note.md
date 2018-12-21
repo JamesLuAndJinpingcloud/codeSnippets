@@ -1278,3 +1278,65 @@ history | awk '{print $2}' | sort | uniq -c | sort -rn | head -10
 ```
 
 ---
+
+## 64 `delay-Promise` creation function
+
+```js
+function delay(time) {
+  return new Promise( function(resolve,reject){
+    setTimeout( resolve, time );
+  });
+}
+
+delay( 100 ) // step 1
+ .then( function STEP2(){
+    console.log( "step 2 (after 100ms)" );
+    return delay( 200 );
+  })
+  .then( function STEP3(){
+    console.log( "step 3 (after another 200ms)" );
+  })
+  .then( function STEP4(){
+    console.log( "step 4 (next Job)" );
+    return delay( 50 );
+  })
+  .then( function STEP5(){
+    console.log( "step 5 (after another 50ms)" );
+  })
+
+```
+
+---
+
+## 65 `request` utility function
+
+```js
+function request(url) {
+  return new Promise(function(resolve, reject) {
+    ajax(url, resolve)
+  });
+}
+```
+
+---
+
+## 66 `promise` resolve is the appropriate name for the first callback parameter of `Promise(...)`
+
+```js
+var rejectedPr = new Promise( function(resolve,reject){
+  // resolve this promise with a rejected promise
+  resolve( Promise.reject( "Oops" ) );
+});
+
+rejectedPr.then(
+  function fulfilled(){
+  // never gets here
+},
+  function rejected(err){
+    console.log( err ); // "Oops"
+  }
+);
+
+```
+
+---
