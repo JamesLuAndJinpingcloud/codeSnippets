@@ -1340,3 +1340,93 @@ rejectedPr.then(
 ```
 
 ---
+
+## 67 Interview questions
+
+```js
+function printing() {
+   console.log(1);
+   setTimeout(function() { console.log(2); }, 1000);
+   setTimeout(function() { console.log(3); }, 0);
+   console.log(4);
+}
+// 1 4 3 2
+
+////////////////////
+function* g1() {
+    yield 2;
+    yield 3;
+    yield 4;
+}
+
+function* g2() {
+    yield 1;
+    yield* g1();
+    yield 5;
+}
+
+var iterator = g2();
+console.log(iterator);
+
+////////////////////
+
+// FP
+function sum() {
+    var s = Array.prototype.reduce.call(arguments, function (x, y) { return x + y; }, 0);
+    var f = function () {
+        var a = Array.prototype.slice.call(arguments);
+        a.push(s);
+        return sum.apply(null, a);
+    };
+    f.valueOf = function () { return s; };
+    return f;
+}
+
+sum(1,2,3,4);
+sum(1)(2)(3);
+sum(1,2)(3);
+
+//////////////////
+
+// Cloure && EventLoop
+for(var i = 0; i< 10; i++){
+  setTimeout(function() {
+    console.log(i)
+  }, 100*i)
+}
+
+//for(var i = 0; i< 10; i++){
+// setTimeout((function() {
+// console.log(i)
+// })(i), 100*i)
+//}
+
+// for(let i = 0; i< 10; i++){
+// setTimeout(function() {
+// console.log(i)
+//}, 100*i)
+//}
+
+```
+
+---
+
+## 68 delete obj property
+
+```js
+const obj = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+
+let { a, ...newObj } = obj;
+
+console.log(newObj)
+
+obj.b = 44;
+
+console.log(newObj)
+```
+
+---
