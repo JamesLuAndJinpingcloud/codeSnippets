@@ -13,6 +13,17 @@ console.log(a); // [1, 2, 3, 4, 5, 1, 4, 9, 16, 25]
 
 ```
 
+> 以下输出结果是:
+
+```js
+for(var i = 0; i< 10; i++){
+    setTimeout(function() {
+        console.log(i)
+    }, 100 * i)
+}
+
+```
+
 ---
 
 ### Following code returns `false` in JavaScript. Justify why it happens
