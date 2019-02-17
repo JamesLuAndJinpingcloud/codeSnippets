@@ -1430,3 +1430,11 @@ console.log(newObj)
 ```
 
 ---
+
+## 69 ECMAScript specification
+
+> Stage 0: Strawman, Stage 1: Proposal, Stage 2: Draft, Stage 3: Candidate, Stage 4: Finished
+
+`Stage 4`: Ready for the specification of the current year.
+
+---

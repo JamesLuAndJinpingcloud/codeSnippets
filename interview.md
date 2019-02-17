@@ -21,6 +21,21 @@ for(var i = 0; i< 10; i++){
         console.log(i)
     }, 100 * i)
 }
+```
+
+> array deduplicate
+
+```js
+const array = [1, 2, 3, 41, 1, 3, 55]
+
+// 1 using Set
+[...new Set(array)]
+
+// 2 using filter
+array.filter((item, index) => array.indexOf(item) === index)
+
+// 3 using reduce
+array.reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], [])
 
 ```
 
