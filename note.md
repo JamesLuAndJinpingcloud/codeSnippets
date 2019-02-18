@@ -1438,3 +1438,14 @@ console.log(newObj)
 `Stage 4`: Ready for the specification of the current year.
 
 ---
+
+## 70 user select text color
+
+```css
+::selection {
+    background: #b408d2;
+    color: #fff;
+}
+```
+
+---
