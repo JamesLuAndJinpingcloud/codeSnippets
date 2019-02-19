@@ -100,6 +100,7 @@ console.log(JSON.stringify(a));
 ## HTML & CSS
 
 ### What is the use of Doctype in HTML
+
 Specifically what will happen in each of the following scenarios:
 
 - Doctype is absent.
@@ -124,7 +125,7 @@ Hint: A pixel is not a pixel is not a pixel — ppk.
 
 > Vue js comes with following features
 
-- Virtual DOM 深入些问下 tree-diff 算法
+- Virtual DOM 深入些问下 dom-diff 算法
 - Templates
 - Reactivity
 - Components 深入 Web-Component
