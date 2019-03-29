@@ -155,6 +155,44 @@ Hint: A pixel is not a pixel is not a pixel — ppk.
 
 ---
 
+### vue cli 原理
+
+---
+
+### vue-router
+
+> router order: what's the difference of below code snippet?
+
+```js
+const routeA = new VueRouter({
+    routes: [
+        {
+            path: '/user/:userId',
+            component: PageUser
+        },
+        {
+            path: '/user/me',
+            component: PageMe
+        }
+    ]
+});
+
+const routeB = new VueRouter({
+    routes: [
+        {
+            path: '/user/me',
+            component: PageMe
+        },
+        {
+            path: '/user/:userId',
+            component: PageUser
+        }
+    ]
+})
+```
+
+---
+
 ### v-if v-show 区别
 
 ---
