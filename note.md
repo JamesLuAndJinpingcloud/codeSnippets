@@ -1476,3 +1476,22 @@ function download_csv() {
 ```
 
 ---
+
+## 72 git ignore office temp files
+
+```.gitignore
+**/.~*.xls
+**/.~*.doc
+**/.~*.ppt
+**/.~*.xlsx
+**/.~*.docx
+**/.~*.pptx
+**/~*.xls
+**/~*.doc
+**/~*.ppt
+**/~*.xlsx
+**/~*.docx
+**/~*.pptx
+```
+
+---
