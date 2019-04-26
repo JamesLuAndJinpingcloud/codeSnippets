@@ -1495,3 +1495,13 @@ function download_csv() {
 ```
 
 ---
+
+## 73 file upload useful links
+
+   `with form data`
+
+> https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+
+   `without form data`
+
+> https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Submitting_forms_and_uploading_files
