@@ -645,6 +645,37 @@ downloadFile (fileName, blob) {
     a.href = url
     a.click()
 }
+
+downloadFTPFile (params) {
+        const { fileName, filePath } = { ...params.row }
+        if (fileName && filePath) {
+          axios.post(`ftp/download`, null, {
+            params: {
+              fileName,
+              filePath
+            },
+            responseType: 'blob' // important!!!
+          })
+            .then(res => {
+              // const disposition = res.request.getResponseHeader(
+              //   "Content-disposition"
+              // )
+              // const fileName = decodeURI(disposition.split("filename=")[1])
+              let resBlob = res.data
+              // different type, has two methods.
+              // 1.
+              let url = window.URL.createObjectURL(new Blob([resBlob], {
+                'type': 'application/octet-stream'
+              }))
+              // 2.
+              // let url = window.URL.createObjectURL(resBlob)
+              let a = document.createElement("a")
+              a.download = fileName
+              a.href = url
+              a.click()
+              this.$Message.success('下载成功')
+            })
+       
 ```
 
 ---
