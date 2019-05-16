@@ -1535,3 +1535,35 @@ function download_csv() {
    `without form data`
 
 > https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Submitting_forms_and_uploading_files
+
+## 74 open new blank tab, and send http request (get, post)
+
+```js
+doRedirectNSTC () {
+    const winName = 'MyWindow'
+    const winURL = 'http://localhost:8085/Account/Redirect'
+    const windowOption = 'resizable=yes,height=600,width=800,location=0,menubar=0,scrollbars=1'
+    const params = { 'iv_user': '00095' }
+    const form = document.createElement('form')
+    form.setAttribute('method', 'post')
+    form.setAttribute('action', winURL)
+    form.setAttribute('target', winName)
+    for (let i in params) {
+      if (params.hasOwnProperty(i)) {
+        let input = document.createElement('input')
+        input.type = 'hidden'
+        input.name = i
+        input.value = params[i]
+        form.appendChild(input)
+      }
+    }
+    document.body.appendChild(form)
+    window.open('', winName, windowOption)
+    form.target = winName
+    form.submit()
+    document.body.removeChild(form)
+}
+
+```
+
+---
