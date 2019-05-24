@@ -1677,3 +1677,31 @@ let urls = [
 ```
 
 ---
+
+## 77 `axios` param type support `Array`
+
+```js
+const transformRequestOptions = params => {
+  let options = ''
+  for (const key in params) {
+    if (typeof params[key] !== 'object' && params[key]) {
+      options += `${key}=${params[key]}&`
+    } else if (typeof params[key] === 'object' && params[key] && params[key].length) {
+      params[key].forEach(el => {
+        options += `${key}=${el}&`
+      })
+    }
+  }
+  return options ? options.slice(0, -1) : options;
+}
+
+// how to use, Ex:
+ axios({
+      method: "get",
+      url: path,
+      params: params,
+      paramsSerializer: params => transformRequestOptions(params)
+    })
+    ...
+
+```
