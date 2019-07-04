@@ -1827,7 +1827,36 @@ for(i=0; i<2000; i++) {
 ## 80 check object array has same property
 
 ```js
+var myArray = [
+  {id: 1, name: 'Foo Bar', email: 'foo@bar.com'},
+  {id: 2, name: 'Bar Foo', email: 'bar@foo.com'},
+  {id: 3, name: 'Joe Ocean', email: 'joe@ocean.com'},
+  {id: 3, name: 'Jenny Block', email: 'foo@bar.com'},
+];
 
+function checkDuplicatePropertyValueInObject(propertyName, inputArray) {
+  var seenDuplicate = false,
+      testObject = {};
+  
+  inputArray.map(function(item) {
+    var itemPropertyName = item[propertyName]; 
+    if (itemPropertyName in testObject) {
+      testObject[itemPropertyName].duplicate = true;
+      item.duplicate = true;
+      seenDuplicate = true;
+    }
+    else {
+      testObject[itemPropertyName] = item;
+      delete item.duplicate;
+    }
+  });
+  
+  return seenDuplicate;
+}
+
+console.log('Duplicate IDs: ' + checkDuplicatePropertyValueInObject('id', myArray));
+console.log('Duplicate names: ' + checkDuplicatePropertyValueInObject('name', myArray));
+console.log('Duplicate emails: ' + checkDuplicatePropertyValueInObject('email', myArray));
 ```
 
 ---
