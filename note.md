@@ -1798,7 +1798,7 @@ function gaussian(mean, stdev) {
             do {
                  x1 = 2.0 * Math.random() - 1.0;
                  x2 = 2.0 * Math.random() - 1.0;
-                 w  = x1 * x1 + x2 * x2;               
+                 w  = x1 * x1 + x2 * x2;
             } while( w >= 1.0);
             w = Math.sqrt((-2.0 * Math.log(w))/w);
             y1 = x1 * w;
@@ -1807,19 +1807,27 @@ function gaussian(mean, stdev) {
        }
 
        var retval = mean + stdev * y1;
-       if(retval > 0) 
+       if(retval > 0)
            return retval;
        return -retval;
    }
 }
 
-// make a standard gaussian variable.     
+// make a standard gaussian variable
 var standard = gaussian(10000, 15);
 
 // make a bunch of standard variates
 for(i=0; i<2000; i++) {
     console.log(Math.floor(standard()));
 }
+```
+
+---
+
+## 80 check object array has same property
+
+```js
+
 ```
 
 ---
