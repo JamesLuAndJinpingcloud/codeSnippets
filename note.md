@@ -1839,7 +1839,7 @@ function checkDuplicatePropertyValueInObject(propertyName, inputArray) {
       testObject = {};
   
   inputArray.map(function(item) {
-    var itemPropertyName = item[propertyName]; 
+    var itemPropertyName = item[propertyName];
     if (itemPropertyName in testObject) {
       testObject[itemPropertyName].duplicate = true;
       item.duplicate = true;
