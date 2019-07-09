@@ -128,7 +128,7 @@ Hint: A pixel is not a pixel is not a pixel — ppk.
 - Virtual DOM 深入些问下 dom-diff 算法
 - Templates
 - Reactivity
-- Components 深入 Web-Component
+- Components 深入 Web-Components
 - Transitions
 - Routing
 - Light weight  VueJS is light weight library compared to other frameworks
