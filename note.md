@@ -1875,3 +1875,11 @@ console.log('%cSee http://www.iqichengtech.com for more information.', warningDe
 ```
 
 ---
+
+## 81 脑筋急转弯：猜猜输出什么
+
+```js
+('b' + 'a' + +'a' + 'a').toLowerCase()
+```
+
+---
