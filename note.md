@@ -1883,3 +1883,17 @@ console.log('%cSee http://www.iqichengtech.com for more information.', warningDe
 ```
 
 ---
+
+## 83 Generate month
+
+```js
+Array.from({length:12}, (x, index) => new Date(0, index+1, 0).toLocaleDateString('cn', {month: 'long'}))
+```
+
+> other code
+
+```js
+Array.from({length:3}, (_, i) => `day-${i}`)
+```
+
+---
