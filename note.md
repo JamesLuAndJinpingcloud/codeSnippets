@@ -1894,6 +1894,10 @@ Array.from({length:12}, (x, index) => new Date(0, index+1, 0).toLocaleDateString
 
 ```js
 Array.from({length:3}, (_, i) => `day-${i}`)
+
+Array.from({length:12}, (x, index) => {
+  return index < 9 ? '0' + (index + 1) : (index + 1) + ''
+})
 ```
 
 ---
