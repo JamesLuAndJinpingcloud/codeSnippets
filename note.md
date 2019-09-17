@@ -1901,3 +1901,20 @@ Array.from({length:12}, (x, index) => {
 ```
 
 ---
+
+## 84 `devTools` using `XPATH`
+
+> in `element` tab panel, `Ctrl+F`, then input `.//*[@id='id']`, ex: `.//*[@id='ax-8']` or in `Console` panel:
+
+ex: in `Ctrl+F`:
+
+```XPATH
+.//*[@id='ax-8']
+.//img
+```
+
+>
+- type in XPATH like `$x(".//*[@id='id']")`
+- type in CSS selectors like `$$('#id')`
+
+---
