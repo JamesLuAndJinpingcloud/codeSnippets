@@ -1918,3 +1918,19 @@ ex: in `Ctrl+F`:
 - type in CSS selectors like `$$('#id')`
 
 ---
+
+## 85 404page
+
+```js
+var C, I, A;
+C = I = A = 0; // Get it?
+for (; I < 4; I++) {
+  for (; A < 101; A++) {
+    C++; // Get it???
+  }
+  A = 0;
+}
+console.log(C); // output: 404
+```
+
+---
