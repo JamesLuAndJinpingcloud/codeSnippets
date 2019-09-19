@@ -1934,3 +1934,24 @@ console.log(C); // output: 404
 ```
 
 ---
+
+## 86 Shortest ways to create some useful arrays
+
+```js
+arr = [...Array[10]]
+
+arr = [...Array(10).keys()]
+
+arr = [...Array(10).fill(true)]
+
+arr = [...Array(10)].map(Math.random)
+
+arr.sort(() => 0.5 - Math.random())
+
+const arr = [ x=>x*1, x=>x*2, x=>x*3, x=>x*4 ]
+arr.reduce((agg, el) => agg + el(agg), 1) // 120
+
+
+```
+
+---
