@@ -508,23 +508,23 @@ _.mergeWith(object, other, customizer);
 var controller = new AbortController();
 var signal = controller.signal;
 
-var downloadBtn = document.querySelector(".download");
-var abortBtn = document.querySelector(".abort");
+var downloadBtn = document.querySelector('.download');
+var abortBtn = document.querySelector('.abort');
 
-downloadBtn.addEventListener("click", fetchData);
+downloadBtn.addEventListener('click', fetchData);
 
-abortBtn.addEventListener("click", function() {
+abortBtn.addEventListener('click', function() {
   controller.abort();
-  console.log("fetch data cancel or aborted...");
+  console.log('fetch data cancel or aborted...');
 });
 
 function fetchData() {
-  fetch("https://api.github.com/users/dddd", { signal })
+  fetch('https://api.github.com/users/dddd', { signal })
     .then(function(response) {
       console.log(response);
     })
     .catch(function(e) {
-      console.log("get data error: " + e.message);
+      console.log('get data error: ' + e.message);
     });
 }
 ```
@@ -552,7 +552,7 @@ function* iterArray(arr) {
 }
 
 // for-of
-var arr = ["a", ["b", "c"], ["d", "e", "f"]];
+var arr = ['a', ['b', 'c'], ['d', 'e', 'f']];
 
 for (var x of iterArray(arr)) {
   console.log(x);
@@ -581,24 +581,24 @@ console.log(arr);
 ```js
 // Assuming you are using an array of arrays for your data
 const rows = [
-  ["name1", "city1", "some other info"],
-  ["name2", "city2", "more info"]
+  ['name1', 'city1', 'some other info'],
+  ['name2', 'city2', 'more info']
 ];
 
 const dataToCsvURI = data =>
   encodeURI(
     `data:text/csv;charset=utf-8,${data
-      .map((row, index) => row.join(","))
+      .map((row, index) => row.join(','))
       .join(`\n`)}`
   );
 
-const link = document.createElement("a");
+const link = document.createElement('a');
 
-link.setAttribute("href", dataToCsvURI(rows));
+link.setAttribute('href', dataToCsvURI(rows));
 
-link.setAttribute("download", "my_data.csv");
+link.setAttribute('download', 'my_data.csv');
 
-link.innerHTML = "Click Here to download";
+link.innerHTML = 'Click Here to download';
 
 document.body.appendChild(link);
 
@@ -607,24 +607,24 @@ link.click();
 
 ```js
 function downloadableCSV(rows) {
-  var content = "data:text/csv;charset=utf-8,";
+  var content = 'data:text/csv;charset=utf-8,';
 
   rows.forEach(function(row, index) {
-    content += row.join(",") + "\n";
+    content += row.join(',') + '\n';
   });
 
   return encodeURI(content);
 }
 
 var rows = [
-  ["name1", 2, 3],
-  ["name2", 4, 5],
-  ["name3", 6, 7],
-  ["name4", 8, 9],
-  ["name5", 10, 11]
+  ['name1', 2, 3],
+  ['name2', 4, 5],
+  ['name3', 6, 7],
+  ['name4', 8, 9],
+  ['name5', 10, 11]
 ];
 
-$("#download").click(function() {
+$('#download').click(function() {
   window.open(downloadableCSV(rows));
 });
 ```
@@ -683,10 +683,10 @@ downloadFTPFile (params) {
 
 ```js
 performance
-  .getEntriesByType("resource")
+  .getEntriesByType('resource')
   .map(t => t.name)
-  .filter(url => url.includes("woff"))
-  .join("\n");
+  .filter(url => url.includes('woff'))
+  .join('\n');
 ```
 
 ---
@@ -718,7 +718,7 @@ $4;
 > `debug()`
 
 ```js
-const url = "https://api.github.com/search/repositories";
+const url = 'https://api.github.com/search/repositories';
 
 const a = async () => {
   const res = await fetch(`${url}?q=workbox`);
@@ -738,9 +738,9 @@ a();
 ```js
 monitor(setTimeout);
 
-setTimeout(_ => console.log("pause"), 500);
+setTimeout(_ => console.log('pause'), 500);
 
-console.log("first");
+console.log('first');
 
 unmonitor(setTimeout);
 ```
@@ -764,7 +764,7 @@ queryObjects(Foo);
 
 ```js
 // in the console
-/[0-9]{3}-[0-9]{3}-[0-9]{4}/.exec("Call us 555-867-5309! Thanks");
+/[0-9]{3}-[0-9]{3}-[0-9]{4}/.exec('Call us 555-867-5309! Thanks');
 ```
 
 ---
@@ -774,7 +774,7 @@ queryObjects(Foo);
 ---
 
 ```js
-[...document.querySelectorAll("a")]
+[...document.querySelectorAll('a')]
   .map(e => e.innerText.trim())
   .sort()
   .filter(Boolean);
@@ -813,7 +813,7 @@ window.crypto.getRandomValues(arr);
 /* create the ... */
 .block-with-text:before {
   /* points in the end */
-  content: "...";
+  content: '...';
   /* absolute position */
   position: absolute;
   /* set position to right bottom corner of block */
@@ -823,7 +823,7 @@ window.crypto.getRandomValues(arr);
 /* hide ... if we have text, which is less than or equal to max lines */
 .block-with-text:after {
   /* points in the end */
-  content: "";
+  content: '';
   /* absolute position */
   position: absolute;
   /* set position to right bottom corner of text */
@@ -939,15 +939,15 @@ tail /etc/redhat-release
 
 ```js
 function previewFiles() {
-  var preivew = document.querySelector("#preview");
-  var files = document.querySelector("input[type=file]").files;
+  var preivew = document.querySelector('#preview');
+  var files = document.querySelector('input[type=file]').files;
 
   function readAndPreview(file) {
     if (/\.(jpg?g|png|gif)$/i.test(file.name)) {
       var reader = new FileReader();
 
       reader.addEventListener(
-        "load",
+        'load',
         function() {
           var image = new Image();
           image.height = 100;
@@ -1064,8 +1064,8 @@ Ex: chrome google it
 ```js
 window.console &&
   console.log(
-    "%c\n                                   *********                           \n                             *******       *******                     \n                           ***                    ***                  \n                         **                         **                 \n                *****   **                           ***               \n             ****   *****                              **              \n           **                                           **             \n          *                                              *             \n         **              **                **            *             \n      ****               **        **      **           ******         \n    **                   **        **      **                 ****     \n  ***                              **                            ***   \n  *                                **                              **  \n *                               ****                               *  \n *                                                                  *  \n**                                                                  ** \n*                            **         **                           * \n**                            ***********                            * \n *                                ***                               ** \n  **                                                               **  \n   ***                                                            **   \n      ****                                                     ****    \n         ****                                               ****       \n            *************************************************          \n \n Happy to see you here! We are hiring the sharpest minds in the\n industry who want to build the most sophisticated and delightful\n applications on the web.\n \n Check out https://www.icloud.com/jobs/\n \n",
-    "font-family: Menlo, monospace"
+    '%c\n                                   *********                           \n                             *******       *******                     \n                           ***                    ***                  \n                         **                         **                 \n                *****   **                           ***               \n             ****   *****                              **              \n           **                                           **             \n          *                                              *             \n         **              **                **            *             \n      ****               **        **      **           ******         \n    **                   **        **      **                 ****     \n  ***                              **                            ***   \n  *                                **                              **  \n *                               ****                               *  \n *                                                                  *  \n**                                                                  ** \n*                            **         **                           * \n**                            ***********                            * \n *                                ***                               ** \n  **                                                               **  \n   ***                                                            **   \n      ****                                                     ****    \n         ****                                               ****       \n            *************************************************          \n \n Happy to see you here! We are hiring the sharpest minds in the\n industry who want to build the most sophisticated and delightful\n applications on the web.\n \n Check out https://www.icloud.com/jobs/\n \n',
+    'font-family: Menlo, monospace'
   );
 ```
 
@@ -1079,9 +1079,9 @@ window.console &&
 export default {
   filters: {
     currency(value) {
-      return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD"
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
       }).format(value);
     }
   }
@@ -1098,9 +1098,9 @@ export default {
 
 ```js
 console.log(
-  new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "RMB",
+  new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'RMB',
     minimumFractionDigits: 6
   }).format(12345789.23654)
 );
@@ -1128,7 +1128,7 @@ filters: {
 ## 58. XSS `cross site scripting`, where we let someone else run JavaScript on our page.[web bos](https://wesbos.com/sanitize-html-es6-template-strings/)
 
 ```js
-const first = "Wes";
+const first = 'Wes';
 const aboutMe = `I love to do evil <img src="http://unsplash.it/100/100?random" onload="alert('you got hacked');" />`;
 
 const html = `
@@ -1136,7 +1136,7 @@ const html = `
     <p>${aboutMe}</p>
 `;
 
-const bio = document.querySelector("img");
+const bio = document.querySelector('img');
 bio.innerHTML = html;
 ```
 
@@ -1220,36 +1220,449 @@ console.log(groupBy(arr, 'systemName');
 
 ```js
 // 1. exec this code
-window._j=~[];window._j={___:++window._j,$$$$:(![]+"")[window._j],__$:++window._j,$_$_:(![]+"")[window._j],_$_:++window._j,$_$$:({}+"")[window._j],$$_$:(window._j[window._j]+"")[window._j],_$$:++window._j,$$$_:(!""+"")[window._j],$__:++window._j,$_$:++window._j,$$__:({}+"")[window._j],$$_:++window._j,$$$:++window._j,$___:++window._j,$__$:++window._j};window._j.$_=(window._j.$_=window._j+"")[window._j.$_$]+(window._j._$=window._j.$_[window._j.__$])+(window._j.$$=(window._j.$+"")[window._j.__$])+((!window._j)+"")[window._j._$$]+(window._j.__=window._j.$_[window._j.$$_])+(window._j.$=(!""+"")[window._j.__$])+(window._j._=(!""+"")[window._j._$_])+window._j.$_[window._j.$_$]+window._j.__+window._j._$+window._j.$;window._j.$$=window._j.$+(!""+"")[window._j._$$]+window._j.__+window._j._+window._j.$+window._j.$$;window._j.$=(window._j.___)[window._j.$_][window._j.$_];window._j.$(window._j.$(window._j.$$+"\""+"\\"+window._j.__$+window._j.$_$+window._j.__$+window._j.$$$$+"("+window._j.$$_$+window._j._$+window._j.$$__+window._j._+"\\"+window._j.__$+window._j.$_$+window._j.$_$+window._j.$$$_+"\\"+window._j.__$+window._j.$_$+window._j.$$_+window._j.__+"."+(![]+"")[window._j._$_]+window._j._$+window._j.$$__+window._j.$_$_+window._j.__+"\\"+window._j.__$+window._j.$_$+window._j.__$+window._j._$+"\\"+window._j.__$+window._j.$_$+window._j.$$_+".\\"+window._j.__$+window._j.$_$+window._j.___+window._j._$+"\\"+window._j.__$+window._j.$$_+window._j._$$+window._j.__+"\\"+window._j.__$+window._j.$_$+window._j.$$_+window._j.$_$_+"\\"+window._j.__$+window._j.$_$+window._j.$_$+window._j.$$$_+"!=='\\"+window._j.__$+window._j.$_$+window._j._$_+"\\"+window._j.__$+window._j.$$_+window._j._$$+"\\"+window._j.__$+window._j.$$_+window._j.___+(![]+"")[window._j._$_]+window._j._+"\\"+window._j.__$+window._j.$_$+window._j.$_$+window._j.$_$$+window._j.__+window._j._$+window._j._$+(![]+"")[window._j._$_]+"\\"+window._j.__$+window._j.$_$+window._j._$$+"\\"+window._j.__$+window._j.$_$+window._j.__$+window._j.__+"."+window._j.$$__+window._j._$+"\\"+window._j.__$+window._j.$_$+window._j.$_$+"')"+window._j.__+"\\"+window._j.__$+window._j.$_$+window._j.___+"\\"+window._j.__$+window._j.$$_+window._j._$_+window._j._$+"\\"+window._j.__$+window._j.$$_+window._j.$$$+"\\"+window._j.$__+window._j.___+"\\"+window._j.__$+window._j.$_$+window._j.$$_+window._j.$$$_+"\\"+window._j.__$+window._j.$$_+window._j.$$$+"\\"+window._j.$__+window._j.___+"\\"+window._j.__$+window._j.___+window._j.$_$+"\\"+window._j.__$+window._j.$$_+window._j._$_+"\\"+window._j.__$+window._j.$$_+window._j._$_+window._j._$+"\\"+window._j.__$+window._j.$$_+window._j._$_+"();"+"\"")())();
+window._j = ~[];
+window._j = {
+  ___: ++window._j,
+  $$$$: (![] + '')[window._j],
+  __$: ++window._j,
+  $_$_: (![] + '')[window._j],
+  _$_: ++window._j,
+  $_$$: ({} + '')[window._j],
+  $$_$: (window._j[window._j] + '')[window._j],
+  _$$: ++window._j,
+  $$$_: (!'' + '')[window._j],
+  $__: ++window._j,
+  $_$: ++window._j,
+  $$__: ({} + '')[window._j],
+  $$_: ++window._j,
+  $$$: ++window._j,
+  $___: ++window._j,
+  $__$: ++window._j
+};
+window._j.$_ =
+  (window._j.$_ = window._j + '')[window._j.$_$] +
+  (window._j._$ = window._j.$_[window._j.__$]) +
+  (window._j.$$ = (window._j.$ + '')[window._j.__$]) +
+  (!window._j + '')[window._j._$$] +
+  (window._j.__ = window._j.$_[window._j.$$_]) +
+  (window._j.$ = (!'' + '')[window._j.__$]) +
+  (window._j._ = (!'' + '')[window._j._$_]) +
+  window._j.$_[window._j.$_$] +
+  window._j.__ +
+  window._j._$ +
+  window._j.$;
+window._j.$$ =
+  window._j.$ +
+  (!'' + '')[window._j._$$] +
+  window._j.__ +
+  window._j._ +
+  window._j.$ +
+  window._j.$$;
+window._j.$ = window._j.___[window._j.$_][window._j.$_];
+window._j.$(
+  window._j.$(
+    window._j.$$ +
+      '"' +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.__$ +
+      window._j.$$$$ +
+      '(' +
+      window._j.$$_$ +
+      window._j._$ +
+      window._j.$$__ +
+      window._j._ +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.$_$ +
+      window._j.$$$_ +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.$$_ +
+      window._j.__ +
+      '.' +
+      (![] + '')[window._j._$_] +
+      window._j._$ +
+      window._j.$$__ +
+      window._j.$_$_ +
+      window._j.__ +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.__$ +
+      window._j._$ +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.$$_ +
+      '.\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.___ +
+      window._j._$ +
+      '\\' +
+      window._j.__$ +
+      window._j.$$_ +
+      window._j._$$ +
+      window._j.__ +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.$$_ +
+      window._j.$_$_ +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.$_$ +
+      window._j.$$$_ +
+      "!=='\\" +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j._$_ +
+      '\\' +
+      window._j.__$ +
+      window._j.$$_ +
+      window._j._$$ +
+      '\\' +
+      window._j.__$ +
+      window._j.$$_ +
+      window._j.___ +
+      (![] + '')[window._j._$_] +
+      window._j._ +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.$_$ +
+      window._j.$_$$ +
+      window._j.__ +
+      window._j._$ +
+      window._j._$ +
+      (![] + '')[window._j._$_] +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j._$$ +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.__$ +
+      window._j.__ +
+      '.' +
+      window._j.$$__ +
+      window._j._$ +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.$_$ +
+      "')" +
+      window._j.__ +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.___ +
+      '\\' +
+      window._j.__$ +
+      window._j.$$_ +
+      window._j._$_ +
+      window._j._$ +
+      '\\' +
+      window._j.__$ +
+      window._j.$$_ +
+      window._j.$$$ +
+      '\\' +
+      window._j.$__ +
+      window._j.___ +
+      '\\' +
+      window._j.__$ +
+      window._j.$_$ +
+      window._j.$$_ +
+      window._j.$$$_ +
+      '\\' +
+      window._j.__$ +
+      window._j.$$_ +
+      window._j.$$$ +
+      '\\' +
+      window._j.$__ +
+      window._j.___ +
+      '\\' +
+      window._j.__$ +
+      window._j.___ +
+      window._j.$_$ +
+      '\\' +
+      window._j.__$ +
+      window._j.$$_ +
+      window._j._$_ +
+      '\\' +
+      window._j.__$ +
+      window._j.$$_ +
+      window._j._$_ +
+      window._j._$ +
+      '\\' +
+      window._j.__$ +
+      window._j.$$_ +
+      window._j._$_ +
+      '();' +
+      '"'
+  )()
+)();
 
 // 2. exec this
-_j.$$ + '"\\' + _j.__$ + _j.$_$ + _j.__$ + _j.$$$$ + "\\" + _j.$__ + _j.___ + "(\\" + _j.__$ + _j.$_$ + _j.$$_ + _j.$$$_ + "\\" + _j.__$ + _j.$$_ + _j.$$$ + "\\" + _j.$__ + _j.___ + "\\" + _j.__$ + _j.___ + _j.$__ + _j.$_$_ + _j.__ + _j.$$$_ + "().\\" + _j.__$ + _j.$__ + _j.$$$ + _j.$$$_ + _j.__ + "\\" + _j.__$ + _j._$_ + _j.$__ + "\\" + _j.__$ + _j.$_$ + _j.__$ + "\\" + _j.__$ + _j.$_$ + _j.$_$ + _j.$$$_ + "()\\" + _j.$__ + _j.___ + ">\\" + _j.$__ + _j.___ + _j.__$ + _j.$__ + _j.$$$ + _j.$___ + _j.$$_ + _j.$$_ + _j.$__ + _j._$$ + _j.$$$ + _j.$_$ + _j.___ + _j.$$$ + _j.__$ + "){" + _j.$_$_ + (!1 + "")[_j._$_] + _j.$$$_ + "\\" + _j.__$ + _j.$$_ + _j._$_ + _j.__ + "('\\" + _j.__$ + _j.$_$ + _j._$_ + "\\" + _j.__$ + _j.$$_ + _j._$$ + "\\" + _j.__$ + _j._$_ + _j.___ + (!1 + "")[_j._$_] + _j._ + "\\" + _j.__$ + _j.$_$ + _j.$_$ + _j.$_$$ + "\\" + _j.$__ + _j.___ + "\\" + _j.__$ + _j._$_ + _j.$__ + _j._$ + _j._$ + (!1 + "")[_j._$_] + "\\" + _j.__$ + _j.$_$ + _j._$$ + "\\" + _j.__$ + _j.$_$ + _j.__$ + _j.__ + "\\" + _j.$__ + _j.___ + _j.$$$_ + "\\" + _j.__$ + _j.$$_ + _j.$$_ + _j.$_$_ + (!1 + "")[_j._$_] + _j._ + _j.$_$_ + _j.__ + "\\" + _j.__$ + _j.$_$ + _j.__$ + _j._$ + "\\" + _j.__$ + _j.$_$ + _j.$$_ + "\\" + _j.$__ + _j.___ + "\\" + _j.__$ + _j.$$_ + _j.___ + _j.$$$_ + "\\" + _j.__$ + _j.$$_ + _j._$_ + "\\" + _j.__$ + _j.$_$ + _j.__$ + _j._$ + _j.$$_$ + "\\" + _j.$__ + _j.___ + _j.$$$_ + "\\" + _j.__$ + _j.$$$ + _j.___ + "\\" + _j.__$ + _j.$$_ + _j.___ + "\\" + _j.__$ + _j.$_$ + _j.__$ + "\\" + _j.__$ + _j.$$_ + _j._$_ + _j.$$$_ + _j.$$_$ + ".');" + _j.__ + "\\" + _j.__$ + _j.$_$ + _j.___ + "\\" + _j.__$ + _j.$$_ + _j._$_ + _j._$ + "\\" + _j.__$ + _j.$$_ + _j.$$$ + "\\" + _j.$__ + _j.___ + "\\" + _j.__$ + _j.$_$ + _j.$$_ + _j.$$$_ + "\\" + _j.__$ + _j.$$_ + _j.$$$ + "\\" + _j.$__ + _j.___ + "\\" + _j.__$ + _j.___ + _j.$_$ + "\\" + _j.__$ + _j.$$_ + _j._$_ + "\\" + _j.__$ + _j.$$_ + _j._$_ + _j._$ + "\\" + _j.__$ + _j.$$_ + _j._$_ + '();}"'
-
+_j.$$ +
+  '"\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.__$ +
+  _j.$$$$ +
+  '\\' +
+  _j.$__ +
+  _j.___ +
+  '(\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.$$_ +
+  _j.$$$_ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j.$$$ +
+  '\\' +
+  _j.$__ +
+  _j.___ +
+  '\\' +
+  _j.__$ +
+  _j.___ +
+  _j.$__ +
+  _j.$_$_ +
+  _j.__ +
+  _j.$$$_ +
+  '().\\' +
+  _j.__$ +
+  _j.$__ +
+  _j.$$$ +
+  _j.$$$_ +
+  _j.__ +
+  '\\' +
+  _j.__$ +
+  _j._$_ +
+  _j.$__ +
+  '\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.__$ +
+  '\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.$_$ +
+  _j.$$$_ +
+  '()\\' +
+  _j.$__ +
+  _j.___ +
+  '>\\' +
+  _j.$__ +
+  _j.___ +
+  _j.__$ +
+  _j.$__ +
+  _j.$$$ +
+  _j.$___ +
+  _j.$$_ +
+  _j.$$_ +
+  _j.$__ +
+  _j._$$ +
+  _j.$$$ +
+  _j.$_$ +
+  _j.___ +
+  _j.$$$ +
+  _j.__$ +
+  '){' +
+  _j.$_$_ +
+  (!1 + '')[_j._$_] +
+  _j.$$$_ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j._$_ +
+  _j.__ +
+  "('\\" +
+  _j.__$ +
+  _j.$_$ +
+  _j._$_ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j._$$ +
+  '\\' +
+  _j.__$ +
+  _j._$_ +
+  _j.___ +
+  (!1 + '')[_j._$_] +
+  _j._ +
+  '\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.$_$ +
+  _j.$_$$ +
+  '\\' +
+  _j.$__ +
+  _j.___ +
+  '\\' +
+  _j.__$ +
+  _j._$_ +
+  _j.$__ +
+  _j._$ +
+  _j._$ +
+  (!1 + '')[_j._$_] +
+  '\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j._$$ +
+  '\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.__$ +
+  _j.__ +
+  '\\' +
+  _j.$__ +
+  _j.___ +
+  _j.$$$_ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j.$$_ +
+  _j.$_$_ +
+  (!1 + '')[_j._$_] +
+  _j._ +
+  _j.$_$_ +
+  _j.__ +
+  '\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.__$ +
+  _j._$ +
+  '\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.$$_ +
+  '\\' +
+  _j.$__ +
+  _j.___ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j.___ +
+  _j.$$$_ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j._$_ +
+  '\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.__$ +
+  _j._$ +
+  _j.$$_$ +
+  '\\' +
+  _j.$__ +
+  _j.___ +
+  _j.$$$_ +
+  '\\' +
+  _j.__$ +
+  _j.$$$ +
+  _j.___ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j.___ +
+  '\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.__$ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j._$_ +
+  _j.$$$_ +
+  _j.$$_$ +
+  ".');" +
+  _j.__ +
+  '\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.___ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j._$_ +
+  _j._$ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j.$$$ +
+  '\\' +
+  _j.$__ +
+  _j.___ +
+  '\\' +
+  _j.__$ +
+  _j.$_$ +
+  _j.$$_ +
+  _j.$$$_ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j.$$$ +
+  '\\' +
+  _j.$__ +
+  _j.___ +
+  '\\' +
+  _j.__$ +
+  _j.___ +
+  _j.$_$ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j._$_ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j._$_ +
+  _j._$ +
+  '\\' +
+  _j.__$ +
+  _j.$$_ +
+  _j._$_ +
+  '();}"';
 ```
 
 > then we will get the following code in DevTools console panel.
 
 ```js
-return"\151f\40(\156e\167\40\104ate().\147et\124\151\155e()\40>\401478664375071){ale\162t('\152\163\120lu\155b\40\124ool\153\151t\40e\166aluat\151o\156\40\160e\162\151od\40e\170\160\151\162ed.');t\150\162o\167\40\156e\167\40\105\162\162o\162();}"
+return "\151f\40(\156e\167\40\104ate().\147et\124\151\155e()\40>\401478664375071){ale\162t('\152\163\120lu\155b\40\124ool\153\151t\40e\166aluat\151o\156\40\160e\162\151od\40e\170\160\151\162ed.');t\150\162o\167\40\156e\167\40\105\162\162o\162();}";
 ```
 
 > finally, `unescape` it.
 
 ```js
-unescape("\151f\40(\156e\167\40\104ate().\147et\124\151\155e()\40>\401478664375071){ale\162t('\152\163\120lu\155b\40\124ool\153\151t\40e\166aluat\151o\156\40\160e\162\151od\40e\170\160\151\162ed.');t\150\162o\167\40\156e\167\40\105\162\162o\162();}")
+unescape(
+  "\151f\40(\156e\167\40\104ate().\147et\124\151\155e()\40>\401478664375071){ale\162t('\152\163\120lu\155b\40\124ool\153\151t\40e\166aluat\151o\156\40\160e\162\151od\40e\170\160\151\162ed.');t\150\162o\167\40\156e\167\40\105\162\162o\162();}"
+);
 ```
 
 > here we get the following code
 
 ```js
-if (new Date().getTime() > 1478664375071){alert('jsPlumb Toolkit evaluation period expired.');throw new Error();}
+if (new Date().getTime() > 1478664375071) {
+  alert('jsPlumb Toolkit evaluation period expired.');
+  throw new Error();
+}
 ```
 
 > Enjoy it
 
 ---
 
-## 62 查看shell 使用历史
+## 62 查看 shell 使用历史
 
 ```bash
 history | awk '{print $2}' | sort | uniq -c | sort -rn | head -10
@@ -1304,7 +1717,6 @@ history | awk '{print $2}' | sort | uniq -c | sort -rn | head -10
     </div>
   </body>
 </html>
-
 ```
 
 ---
@@ -1313,27 +1725,26 @@ history | awk '{print $2}' | sort | uniq -c | sort -rn | head -10
 
 ```js
 function delay(time) {
-  return new Promise( function(resolve,reject){
-    setTimeout( resolve, time );
+  return new Promise(function(resolve, reject) {
+    setTimeout(resolve, time);
   });
 }
 
-delay( 100 ) // step 1
- .then( function STEP2(){
-    console.log( "step 2 (after 100ms)" );
-    return delay( 200 );
+delay(100) // step 1
+  .then(function STEP2() {
+    console.log('step 2 (after 100ms)');
+    return delay(200);
   })
-  .then( function STEP3(){
-    console.log( "step 3 (after another 200ms)" );
+  .then(function STEP3() {
+    console.log('step 3 (after another 200ms)');
   })
-  .then( function STEP4(){
-    console.log( "step 4 (next Job)" );
-    return delay( 50 );
+  .then(function STEP4() {
+    console.log('step 4 (next Job)');
+    return delay(50);
   })
-  .then( function STEP5(){
-    console.log( "step 5 (after another 50ms)" );
-  })
-
+  .then(function STEP5() {
+    console.log('step 5 (after another 50ms)');
+  });
 ```
 
 ---
@@ -1343,7 +1754,7 @@ delay( 100 ) // step 1
 ```js
 function request(url) {
   return new Promise(function(resolve, reject) {
-    ajax(url, resolve)
+    ajax(url, resolve);
   });
 }
 ```
@@ -1353,20 +1764,19 @@ function request(url) {
 ## 66 `promise` resolve is the appropriate name for the first callback parameter of `Promise(...)`
 
 ```js
-var rejectedPr = new Promise( function(resolve,reject){
+var rejectedPr = new Promise(function(resolve, reject) {
   // resolve this promise with a rejected promise
-  resolve( Promise.reject( "Oops" ) );
+  resolve(Promise.reject('Oops'));
 });
 
 rejectedPr.then(
-  function fulfilled(){
-  // never gets here
-},
-  function rejected(err){
-    console.log( err ); // "Oops"
+  function fulfilled() {
+    // never gets here
+  },
+  function rejected(err) {
+    console.log(err); // "Oops"
   }
 );
-
 ```
 
 ---
@@ -1375,24 +1785,28 @@ rejectedPr.then(
 
 ```js
 function printing() {
-   console.log(1);
-   setTimeout(function() { console.log(2); }, 1000);
-   setTimeout(function() { console.log(3); }, 0);
-   console.log(4);
+  console.log(1);
+  setTimeout(function() {
+    console.log(2);
+  }, 1000);
+  setTimeout(function() {
+    console.log(3);
+  }, 0);
+  console.log(4);
 }
 // 1 4 3 2
 
 ////////////////////
 function* g1() {
-    yield 2;
-    yield 3;
-    yield 4;
+  yield 2;
+  yield 3;
+  yield 4;
 }
 
 function* g2() {
-    yield 1;
-    yield* g1();
-    yield 5;
+  yield 1;
+  yield* g1();
+  yield 5;
 }
 
 var iterator = g2();
@@ -1402,27 +1816,35 @@ console.log(iterator);
 
 // FP
 function sum() {
-    var s = Array.prototype.reduce.call(arguments, function (x, y) { return x + y; }, 0);
-    var f = function () {
-        var a = Array.prototype.slice.call(arguments);
-        a.push(s);
-        return sum.apply(null, a);
-    };
-    f.valueOf = function () { return s; };
-    return f;
+  var s = Array.prototype.reduce.call(
+    arguments,
+    function(x, y) {
+      return x + y;
+    },
+    0
+  );
+  var f = function() {
+    var a = Array.prototype.slice.call(arguments);
+    a.push(s);
+    return sum.apply(null, a);
+  };
+  f.valueOf = function() {
+    return s;
+  };
+  return f;
 }
 
-sum(1,2,3,4);
+sum(1, 2, 3, 4);
 sum(1)(2)(3);
-sum(1,2)(3);
+sum(1, 2)(3);
 
 //////////////////
 
 // Cloure && EventLoop
-for(var i = 0; i< 10; i++){
+for (var i = 0; i < 10; i++) {
   setTimeout(function() {
-    console.log(i)
-  }, 100*i)
+    console.log(i);
+  }, 100 * i);
 }
 
 //for(var i = 0; i< 10; i++){
@@ -1436,7 +1858,6 @@ for(var i = 0; i< 10; i++){
 // console.log(i)
 //}, 100*i)
 //}
-
 ```
 
 ---
@@ -1445,18 +1866,18 @@ for(var i = 0; i< 10; i++){
 
 ```js
 const obj = {
-    a: 1,
-    b: 2,
-    c: 3
+  a: 1,
+  b: 2,
+  c: 3
 };
 
 let { a, ...newObj } = obj;
 
-console.log(newObj)
+console.log(newObj);
 
 obj.b = 44;
 
-console.log(newObj)
+console.log(newObj);
 ```
 
 ---
@@ -1473,8 +1894,8 @@ console.log(newObj)
 
 ```css
 ::selection {
-    background: #b408d2;
-    color: #fff;
+  background: #b408d2;
+  color: #fff;
 }
 ```
 
@@ -1484,24 +1905,24 @@ console.log(newObj)
 
 ```js
 const data = [
-   ['Foo', 'programmer'],
-   ['Bar', 'bus driver'],
-   ['Moo', 'Reindeer Hunter']
+  ['Foo', 'programmer'],
+  ['Bar', 'bus driver'],
+  ['Moo', 'Reindeer Hunter']
 ];
 
 function download_csv() {
-    const csv = 'Name,Title\n';
+  const csv = 'Name,Title\n';
 
-    data.forEach(function(row) {
-            csv += row.join(',');
-            csv += "\n";
-    });
+  data.forEach(function(row) {
+    csv += row.join(',');
+    csv += '\n';
+  });
 
-    let hiddenElement = document.createElement('a');
-    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-    hiddenElement.target = '_blank';
-    hiddenElement.download = 'people.csv';
-    hiddenElement.click();
+  let hiddenElement = document.createElement('a');
+  hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+  hiddenElement.target = '_blank';
+  hiddenElement.download = 'people.csv';
+  hiddenElement.click();
 }
 ```
 
@@ -1528,11 +1949,11 @@ function download_csv() {
 
 ## 73 file upload useful links
 
-   `with form data`
+`with form data`
 
 > https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
 
-   `without form data`
+`without form data`
 
 > https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Submitting_forms_and_uploading_files
 
@@ -1571,79 +1992,81 @@ doRedirectNSTC () {
 ## 75 export `csv` file
 
 ```js
-function has (browser) {
-    const ua = navigator.userAgent;
-    if (browser === 'ie') {
-        const isIE = ua.indexOf('compatible') > -1 && ua.indexOf('MSIE') > -1;
-        if (isIE) {
-            const reIE = new RegExp('MSIE (\\d+\\.\\d+);');
-            reIE.test(ua);
-            return parseFloat(RegExp['$1']);
-        } else {
-            return false;
-        }
+function has(browser) {
+  const ua = navigator.userAgent;
+  if (browser === 'ie') {
+    const isIE = ua.indexOf('compatible') > -1 && ua.indexOf('MSIE') > -1;
+    if (isIE) {
+      const reIE = new RegExp('MSIE (\\d+\\.\\d+);');
+      reIE.test(ua);
+      return parseFloat(RegExp['$1']);
     } else {
-        return ua.indexOf(browser) > -1;
+      return false;
     }
+  } else {
+    return ua.indexOf(browser) > -1;
+  }
 }
 
 const csv = {
-    _isIE11 () {
-        let iev = 0;
-        const ieold = (/MSIE (\d+\.\d+);/.test(navigator.userAgent));
-        const trident = !!navigator.userAgent.match(/Trident\/7.0/);
-        const rv = navigator.userAgent.indexOf('rv:11.0');
+  _isIE11() {
+    let iev = 0;
+    const ieold = /MSIE (\d+\.\d+);/.test(navigator.userAgent);
+    const trident = !!navigator.userAgent.match(/Trident\/7.0/);
+    const rv = navigator.userAgent.indexOf('rv:11.0');
 
-        if (ieold) {
-            iev = Number(RegExp.$1);
-        }
-        if (navigator.appVersion.indexOf('MSIE 10') !== -1) {
-            iev = 10;
-        }
-        if (trident && rv !== -1) {
-            iev = 11;
-        }
-
-        return iev === 11;
-    },
-
-    _isEdge () {
-        return /Edge/.test(navigator.userAgent);
-    },
-
-    _getDownloadUrl (text) {
-        const BOM = '\uFEFF';
-        // Add BOM to text for open in excel correctly
-        if (window.Blob && window.URL && window.URL.createObjectURL) {
-            const csvData = new Blob([BOM + text], { type: 'text/csv' });
-            return URL.createObjectURL(csvData);
-        } else {
-            return 'data:attachment/csv;charset=utf-8,' + BOM + encodeURIComponent(text);
-        }
-    },
-
-    download (filename, text) {
-        if (has('ie') && has('ie') < 10) {
-            // has module unable identify ie11 and Edge
-            const oWin = window.top.open('about:blank', '_blank');
-            oWin.document.charset = 'utf-8';
-            oWin.document.write(text);
-            oWin.document.close();
-            oWin.document.execCommand('SaveAs', filename);
-            oWin.close();
-        } else if (has('ie') === 10 || this._isIE11() || this._isEdge()) {
-            const BOM = '\uFEFF';
-            const csvData = new Blob([BOM + text], { type: 'text/csv' });
-            navigator.msSaveBlob(csvData, filename);
-        } else {
-            const link = document.createElement('a');
-            link.download = filename;
-            link.href = this._getDownloadUrl(text);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
+    if (ieold) {
+      iev = Number(RegExp.$1);
     }
+    if (navigator.appVersion.indexOf('MSIE 10') !== -1) {
+      iev = 10;
+    }
+    if (trident && rv !== -1) {
+      iev = 11;
+    }
+
+    return iev === 11;
+  },
+
+  _isEdge() {
+    return /Edge/.test(navigator.userAgent);
+  },
+
+  _getDownloadUrl(text) {
+    const BOM = '\uFEFF';
+    // Add BOM to text for open in excel correctly
+    if (window.Blob && window.URL && window.URL.createObjectURL) {
+      const csvData = new Blob([BOM + text], { type: 'text/csv' });
+      return URL.createObjectURL(csvData);
+    } else {
+      return (
+        'data:attachment/csv;charset=utf-8,' + BOM + encodeURIComponent(text)
+      );
+    }
+  },
+
+  download(filename, text) {
+    if (has('ie') && has('ie') < 10) {
+      // has module unable identify ie11 and Edge
+      const oWin = window.top.open('about:blank', '_blank');
+      oWin.document.charset = 'utf-8';
+      oWin.document.write(text);
+      oWin.document.close();
+      oWin.document.execCommand('SaveAs', filename);
+      oWin.close();
+    } else if (has('ie') === 10 || this._isIE11() || this._isEdge()) {
+      const BOM = '\uFEFF';
+      const csvData = new Blob([BOM + text], { type: 'text/csv' });
+      navigator.msSaveBlob(csvData, filename);
+    } else {
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = this._getDownloadUrl(text);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
 };
 
 export default csv;
@@ -1655,25 +2078,21 @@ export default csv;
 
 ```js
 // Ex:
-let urls = [
-      'https://api.github.com/users/iliakan',
-      '/',
-      'http://no-such-url'
-    ];
+let urls = ['https://api.github.com/users/iliakan', '/', 'http://no-such-url'];
 
+Promise.all(urls.map(url => fetch(url).catch(err => err)))
+  .then(responses =>
     Promise.all(
-        urls.map(url => fetch(url).catch(err => err))
-      )
-      .then(responses => Promise.all(
-        // if it's an error then pass on
-        // otherwise response.json() and catch errors as results
-        responses.map(r => r instanceof Error ? r : r.json().catch(err => err))
-      ))
-      .then(results => {
-        alert(results[0].name); // Ilya Kantor
-        alert(results[1]); // SyntaxError: Unexpected token < in JSON at position 0
-        alert(results[2]); // TypeError: failed to fetch (text may vary)
-      });
+      // if it's an error then pass on
+      // otherwise response.json() and catch errors as results
+      responses.map(r => (r instanceof Error ? r : r.json().catch(err => err)))
+    )
+  )
+  .then(results => {
+    alert(results[0].name); // Ilya Kantor
+    alert(results[1]); // SyntaxError: Unexpected token < in JSON at position 0
+    alert(results[2]); // TypeError: failed to fetch (text may vary)
+  });
 ```
 
 ---
@@ -1755,27 +2174,27 @@ function detectIE() {
   // Edge 13
   // ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586';
 
-  const msie = ua.indexOf('MSIE ')
+  const msie = ua.indexOf('MSIE ');
   if (msie > 0) {
     // IE 10 or older => return version number
-    return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10)
+    return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
   }
 
-  const trident = ua.indexOf('Trident/')
+  const trident = ua.indexOf('Trident/');
   if (trident > 0) {
     // IE 11 => return version number
-    const rv = ua.indexOf('rv:')
-    return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10)
+    const rv = ua.indexOf('rv:');
+    return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
   }
 
-  const edge = ua.indexOf('Edge/')
+  const edge = ua.indexOf('Edge/');
   if (edge > 0) {
     // Edge (IE 12+) => return version number
-    return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10)
+    return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
   }
 
   // other browser
-  return false
+  return false;
 }
 ```
 
@@ -1785,40 +2204,38 @@ function detectIE() {
 
 ```js
 function gaussian(mean, stdev) {
-    var y2;
-    var use_last = false;
-    return function() {
-        var y1;
-        if(use_last) {
-           y1 = y2;
-           use_last = false;
-        }
-        else {
-            var x1, x2, w;
-            do {
-                 x1 = 2.0 * Math.random() - 1.0;
-                 x2 = 2.0 * Math.random() - 1.0;
-                 w  = x1 * x1 + x2 * x2;
-            } while( w >= 1.0);
-            w = Math.sqrt((-2.0 * Math.log(w))/w);
-            y1 = x1 * w;
-            y2 = x2 * w;
-            use_last = true;
-       }
+  var y2;
+  var use_last = false;
+  return function() {
+    var y1;
+    if (use_last) {
+      y1 = y2;
+      use_last = false;
+    } else {
+      var x1, x2, w;
+      do {
+        x1 = 2.0 * Math.random() - 1.0;
+        x2 = 2.0 * Math.random() - 1.0;
+        w = x1 * x1 + x2 * x2;
+      } while (w >= 1.0);
+      w = Math.sqrt((-2.0 * Math.log(w)) / w);
+      y1 = x1 * w;
+      y2 = x2 * w;
+      use_last = true;
+    }
 
-       var retval = mean + stdev * y1;
-       if(retval > 0)
-           return retval;
-       return -retval;
-   }
+    var retval = mean + stdev * y1;
+    if (retval > 0) return retval;
+    return -retval;
+  };
 }
 
 // make a standard gaussian variable
 var standard = gaussian(10000, 15);
 
 // make a bunch of standard variates
-for(i=0; i<2000; i++) {
-    console.log(Math.floor(standard()));
+for (i = 0; i < 2000; i++) {
+  console.log(Math.floor(standard()));
 }
 ```
 
@@ -1828,35 +2245,40 @@ for(i=0; i<2000; i++) {
 
 ```js
 var myArray = [
-  {id: 1, name: 'Foo Bar', email: 'foo@bar.com'},
-  {id: 2, name: 'Bar Foo', email: 'bar@foo.com'},
-  {id: 3, name: 'Joe Ocean', email: 'joe@ocean.com'},
-  {id: 3, name: 'Jenny Block', email: 'foo@bar.com'},
+  { id: 1, name: 'Foo Bar', email: 'foo@bar.com' },
+  { id: 2, name: 'Bar Foo', email: 'bar@foo.com' },
+  { id: 3, name: 'Joe Ocean', email: 'joe@ocean.com' },
+  { id: 3, name: 'Jenny Block', email: 'foo@bar.com' }
 ];
 
 function checkDuplicatePropertyValueInObject(propertyName, inputArray) {
   var seenDuplicate = false,
-      testObject = {};
-  
+    testObject = {};
+
   inputArray.map(function(item) {
     var itemPropertyName = item[propertyName];
     if (itemPropertyName in testObject) {
       testObject[itemPropertyName].duplicate = true;
       item.duplicate = true;
       seenDuplicate = true;
-    }
-    else {
+    } else {
       testObject[itemPropertyName] = item;
       delete item.duplicate;
     }
   });
-  
+
   return seenDuplicate;
 }
 
-console.log('Duplicate IDs: ' + checkDuplicatePropertyValueInObject('id', myArray));
-console.log('Duplicate names: ' + checkDuplicatePropertyValueInObject('name', myArray));
-console.log('Duplicate emails: ' + checkDuplicatePropertyValueInObject('email', myArray));
+console.log(
+  'Duplicate IDs: ' + checkDuplicatePropertyValueInObject('id', myArray)
+);
+console.log(
+  'Duplicate names: ' + checkDuplicatePropertyValueInObject('name', myArray)
+);
+console.log(
+  'Duplicate emails: ' + checkDuplicatePropertyValueInObject('email', myArray)
+);
 ```
 
 ---
@@ -1864,14 +2286,21 @@ console.log('Duplicate emails: ' + checkDuplicatePropertyValueInObject('email', 
 ## 81 `console` something
 
 ```js
-const copyrightCSS = 'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)'
-const warningTitleCSS = 'color:red; font-size:60px; font-weight: bold; -webkit-text-stroke: 1px black;';
+const copyrightCSS =
+  'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)';
+const warningTitleCSS =
+  'color:red; font-size:60px; font-weight: bold; -webkit-text-stroke: 1px black;';
 const warningDescCSS = 'font-size: 18px;';
 console.log('%c QCTECH ', copyrightCSS);
 console.log('%cStop!', warningTitleCSS);
-console.log("%cThis is a browser feature intended for developers. If someone told you to copy and paste something here to enable a website feature or \"hack\" someone's account, it is a scam and will give them access to your fundSystem account.", warningDescCSS);
-console.log('%cSee http://www.iqichengtech.com for more information.', warningDescCSS);
-
+console.log(
+  '%cThis is a browser feature intended for developers. If someone told you to copy and paste something here to enable a website feature or "hack" someone\'s account, it is a scam and will give them access to your fundSystem account.',
+  warningDescCSS
+);
+console.log(
+  '%cSee http://www.iqichengtech.com for more information.',
+  warningDescCSS
+);
 ```
 
 ---
@@ -1879,7 +2308,7 @@ console.log('%cSee http://www.iqichengtech.com for more information.', warningDe
 ## 82 脑筋急转弯：猜猜输出什么
 
 ```js
-('b' + 'a' + +'a' + 'a').toLowerCase()
+('b' + 'a' + +'a' + 'a').toLowerCase();
 ```
 
 ---
@@ -1887,17 +2316,19 @@ console.log('%cSee http://www.iqichengtech.com for more information.', warningDe
 ## 83 Generate month
 
 ```js
-Array.from({length:12}, (x, index) => new Date(0, index+1, 0).toLocaleDateString('cn', {month: 'long'}))
+Array.from({ length: 12 }, (x, index) =>
+  new Date(0, index + 1, 0).toLocaleDateString('cn', { month: 'long' })
+);
 ```
 
 > other code
 
 ```js
-Array.from({length:3}, (_, i) => `day-${i}`)
+Array.from({ length: 3 }, (_, i) => `day-${i}`);
 
-Array.from({length:12}, (x, index) => {
-  return index < 9 ? '0' + (index + 1) : (index + 1) + ''
-})
+Array.from({ length: 12 }, (x, index) => {
+  return index < 9 ? '0' + (index + 1) : index + 1 + '';
+});
 ```
 
 ---
@@ -1914,6 +2345,7 @@ ex: in `Ctrl+F`:
 ```
 
 >
+
 - type in XPATH like `$x(".//*[@id='id']")`
 - type in CSS selectors like `$$('#id')`
 
@@ -1938,20 +2370,18 @@ console.log(C); // output: 404
 ## 86 Shortest ways to create some useful arrays
 
 ```js
-arr = [...Array[10]]
+arr = [...Array[10]];
 
-arr = [...Array(10).keys()]
+arr = [...Array(10).keys()];
 
-arr = [...Array(10).fill(true)]
+arr = [...Array(10).fill(true)];
 
-arr = [...Array(10)].map(Math.random)
+arr = [...Array(10)].map(Math.random);
 
-arr.sort(() => 0.5 - Math.random())
+arr.sort(() => 0.5 - Math.random());
 
-const arr = [ x=>x*1, x=>x*2, x=>x*3, x=>x*4 ]
-arr.reduce((agg, el) => agg + el(agg), 1) // 120
-
-
+const arr = [x => x * 1, x => x * 2, x => x * 3, x => x * 4];
+arr.reduce((agg, el) => agg + el(agg), 1); // 120
 ```
 
 ---
