@@ -2422,6 +2422,36 @@ function getFirstLast (array) {
 getFirstLast('apple'); // => { first: "a", last: "e" }
 getFirstLast(['foo', 'bar', 'baz', 'quux']) // => {first: "foo", last: "quux"}
 
+// get a random item from an array
+const items = [12, 548 , 'a' , 2 , 5478 , 'foo' , 8852, , 'Doe' , 2145 , 119];
+const randomItem = items[Math.floor(Math.random() * items.length)];
+console.log(randomItem);
+
+// Get a random number in a specific range
+const x = Math.floor(Math.random() * (max - min + 1)) + min;
+
+// Generate an array of numbers with numbers from 0 to max
+let numbersArray = []
+let max = 100;
+for( var i=1; numbersArray.push(i++) < max;);  // numbers = [1,2,3 ... 100]
+
+// Generate a random set of alphanumeric characters
+function generateRandomAlphaNum(len) {
+    let rdmString = "";
+    for( ; rdmString.length < len; rdmString  += Math.random().toString(36).substr(2));
+    return rdmString.substr(0, len);
+}
+
+// Shuffle an array of numbers
+var numbers = [5, 458 , 120 , -215 , 228 , 400 , 122205, -85411];
+numbers = numbers.sort(function(){ return Math.random() - 0.5});
+
+// `Comma Operator`
+let a = 0;
+let b = ( a++, 99 );
+console.log(a);  // a will be equal to 1
+console.log(b);
+
 ```
 
 ---
@@ -2489,5 +2519,45 @@ JSON.stringify(window);
 
 `Google JavaScript Style Guide`
 [Google JavaScript guide](https://google.github.io/styleguide/javascriptguide.xml)
+
+---
+
+## 89 Set timeout to `XHR`
+
+```js
+let xhr = new XMLHttpRequest (); 
+xhr.onreadystatechange = function () {  
+    if (this.readyState == 4) {  
+        clearTimeout(timeout);  
+        // do something with response data
+    }  
+}  
+let timeout = setTimeout( function () {  
+    xhr.abort(); // call error callback  
+}, 60*1000 /* timeout after a minute */ );
+xhr.open('GET', url, true);  
+
+xhr.send();
+```
+
+> `WebSocket` timeout
+
+```js
+let timerID = 0;
+function keepAlive() {
+    let timeout = 15000;  
+    if (webSocket.readyState == webSocket.OPEN) {  
+        webSocket.send('');  
+    }  
+    timerId = setTimeout(keepAlive, timeout);  
+}  
+function cancelKeepAlive() {  
+    if (timerId) {  
+        cancelTimeout(timerId);  
+    }  
+}
+```
+
+> The `keepAlive()` function should be added at the end of the `onOpen()` method of the webSocket connection and the `cancelKeepAlive()` at the end of the `onClose()` method.
 
 ---
