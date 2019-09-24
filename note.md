@@ -2382,6 +2382,34 @@ arr.sort(() => 0.5 - Math.random());
 
 const arr = [x => x * 1, x => x * 2, x => x * 3, x => x * 4];
 arr.reduce((agg, el) => agg + el(agg), 1); // 120
+
+// when you don't want to name the first parameter
+arr.map((_iDontNeedThis, index) => index);
+arr.map((...[, index]) => index);
+
+// code
+"" || "foo" // => "foo"
+
+undefined || 32 // => 32
+
+var a = 0;
+a || 32 // => 32
+
+expr && doSomething();
+// Instead of
+if (expr) {
+  doSomething();
+}
+
+function doSomething () {
+  return {
+    foo: "bar"
+  };
+}
+var expr = true;
+var res = expr && doSomething();
+res && console.log(res); // => { foo: "bar" }
+
 ```
 
 ---
