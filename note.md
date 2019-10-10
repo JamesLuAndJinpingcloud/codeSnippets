@@ -2561,3 +2561,24 @@ function cancelKeepAlive() {
 > The `keepAlive()` function should be added at the end of the `onOpen()` method of the webSocket connection and the `cancelKeepAlive()` at the end of the `onClose()` method.
 
 ---
+
+## 90 Calculate `Standard Deviation`
+
+```js
+
+let data = [20, 9320, 9010, 9340, 12900, 13300, 13200]
+
+let arrayAverage = arr => arr.reduce((sum, x) => x + sum, 0) / arr.length
+
+let averageArr = arrayAverage(data)
+
+let differences = data.map(x => x - averageArr).map(x => x * x)
+
+let averageDifference = arrayAverage(differences)
+
+let standardDeviation = Math.sqrt(averageDifference)
+
+console.log(standardDeviation) // output
+```
+
+---
