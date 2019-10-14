@@ -2457,6 +2457,11 @@ const a = 'Wes Bos,ScottTolinski'.split('.')
 a.map(x => x.split(' '))
 Object.fromEntries($_) // $_ is the last thing returned from dev tools.
 
+const names = new Map()
+names.set('wes', 'cool')
+names.set('scott', 'neat')
+Object.fromEntries(names)
+
 ```
 
 ---
