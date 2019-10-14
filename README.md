@@ -1,7 +1,5 @@
 # Code Snippets
 
-# SanyFunds
+> programing code snippets
 
-## `三一资金`
-
-## `README`
+---
