@@ -2450,7 +2450,12 @@ numbers = numbers.sort(function(){ return Math.random() - 0.5});
 let a = 0;
 let b = ( a++, 99 );
 console.log(a);  // a will be equal to 1
-console.log(b);
+console.log(b);  // b will be equal to 99
+
+// Array to Object method
+const a = 'Wes Bos,ScottTolinski'.split('.')
+a.map(x => x.split(' '))
+Object.fromEntries($_) // $_ is the last thing returned from dev tools.
 
 ```
 
