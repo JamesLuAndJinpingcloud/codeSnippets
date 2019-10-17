@@ -2592,3 +2592,14 @@ console.log(standardDeviation) // output
 ```
 
 ---
+
+## 91. debug `knockoutjs`
+
+```js
+// knockoutjs  方便调试
+<!-- ko text: ko.toJSON($data) --><!-- /ko -->
+
+<span data-bind="text: ko.toJSON($data)"></span>
+```
+
+---
