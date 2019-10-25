@@ -2602,4 +2602,12 @@ console.log(standardDeviation) // output
 <span data-bind="text: ko.toJSON($data)"></span>
 ```
 
+```html
+<!-- ko foreach: selectedValue -->
+    <div>
+        <span data-bind="text: $data"></span>
+    </div>
+<!-- /ko -->
+```
+
 ---
