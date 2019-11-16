@@ -1901,7 +1901,7 @@ console.log(newObj);
 
 ---
 
-## 71 download `csv` 文件
+## 71 download `csv` file.
 
 ```js
 const data = [
@@ -2608,6 +2608,84 @@ console.log(standardDeviation) // output
         <span data-bind="text: $data"></span>
     </div>
 <!-- /ko -->
+```
+
+---
+
+## 92. cool js snippets.
+
+```js
+const cars = [
+  { name: 'Honda', miles: 1232 },
+  { name: 'Ford', miles: 1233 },
+  { name: 'Mercury', miles: 785 },
+  { name: 'Highlander', miles: 11567 },
+  { name: 'Expedition', miles: 214 },
+  { name: 'Hatchback', miles: 2211 }
+]
+
+const carNames = Array.from(cars, ({ name }) => name)
+console.log(carNames)
+```
+> merge methods
+
+```js
+const mergeA = (target, source) => Object.assign({}, target, source)
+
+const mergeB = (target, source) => ({ ...target, ...source })
+```
+
+> no repeats.
+
+```js
+const values = [ 1, 1, 1, 2, 2, 3, 2 ]
+
+/**
+* Filters out values that repeat
+* @param {object} value Value of the element in an Array
+* @param {number} index Location of the element in the Array
+* @param {Array} array Array being filtered
+*/
+const noRepeats = (value, index, array) => {
+  const isStart = index === 0
+
+  if (isStart || value !== array[index - 1]) {
+    return true
+  }
+
+  return false
+}
+
+values.filter(noRepeats) // [ 1, 2, 3, 2 ]
+```
+
+```js
+// Some questions to ask the user
+const questions = [
+  { title: 'What is your name?' },
+  { title: 'What is your age?', cancel: true },
+  { title: 'What is your dogs name?' }
+]
+
+// asyncMap util function
+async function asyncMap (array, callback) {
+  const results = []
+
+  for (const item of array) {
+    // this await pauses the async function / for of loop
+    results.push(await callback(item))
+  }
+
+  return results
+}
+
+async function go () {
+  // the ask function pops up a modal dialog, so we can't just promise.all() and pop up three dialogs
+  const answers = await asyncMap(questions, ask)
+  console.log(answers)
+}
+
+go()
 ```
 
 ---
