@@ -5,21 +5,19 @@
 ### js 对象及数组的常用函数
 
 ```js
-
 const a = [1, 2, 3, 4, 5];
 // Implement this
 a.multiply();
 console.log(a); // [1, 2, 3, 4, 5, 1, 4, 9, 16, 25]
-
 ```
 
 > 以下输出结果是:
 
 ```js
-for(var i = 0; i< 10; i++){
-    setTimeout(function() {
-        console.log(i)
-    }, 100 * i)
+for (var i = 0; i < 10; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, 100 * i);
 }
 ```
 
@@ -45,8 +43,88 @@ array.reduce((unique, item) => unique.includes(item) ? unique : [...unique, item
 
 ```js
 // false
-0.2 + 0.1 === 0.3
+0.2 + 0.1 === 0.3;
 ```
+
+---
+
+### tiny function.
+
+````js
+function printing() {
+  console.log(1);
+  setTimeout(function() {
+    console.log(2);
+  }, 1000);
+  setTimeout(function() {
+    console.log(3);
+  }, 0);
+  console.log(4);
+}
+// 1 4 3 2
+
+////////////////////
+function* g1() {
+  yield 2;
+  yield 3;
+  yield 4;
+}
+
+function* g2() {
+  yield 1;
+  yield* g1();
+  yield 5;
+}
+
+var iterator = g2();
+console.log(iterator);
+
+////////////////////
+
+// FP
+function sum() {
+  var s = Array.prototype.reduce.call(
+    arguments,
+    function(x, y) {
+      return x + y;
+    },
+    0
+  );
+  var f = function() {
+    var a = Array.prototype.slice.call(arguments);
+    a.push(s);
+    return sum.apply(null, a);
+  };
+  f.valueOf = function() {
+    return s;
+  };
+  return f;
+}
+
+sum(1, 2, 3, 4);
+sum(1)(2)(3);
+sum(1, 2)(3);
+
+//////////////////
+
+// Cloure && EventLoop
+for (var i = 0; i < 10; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, 100 * i);
+}
+
+//for(var i = 0; i< 10; i++){
+// setTimeout((function() {
+// console.log(i)
+// })(i), 100*i)
+//}
+
+// for(let i = 0; i< 10; i++){
+// setTimeout(function() {
+// console.log(i)
+//}, 100*i)
+//}
 
 ---
 
@@ -85,7 +163,7 @@ const a = {
 }
 // What will happen
 console.log(JSON.stringify(a));
-```
+````
 
 ---
 
@@ -131,7 +209,7 @@ Hint: A pixel is not a pixel is not a pixel — ppk.
 - Components 深入 Web-Components
 - Transitions
 - Routing
-- Light weight  VueJS is light weight library compared to other frameworks
+- Light weight VueJS is light weight library compared to other frameworks
 
 ---
 
@@ -144,13 +222,10 @@ Hint: A pixel is not a pixel is not a pixel — ppk.
 ### What is the difference v-bind and v-model? Provide some code example.
 
 ```html
-<input v-model="something">
+<input v-model="something" />
 
 <!-- it's just syntactic sugar for: -->
-<input
-   v-bind:value="something"
-   v-on:input="something = $event.target.value"
->
+<input v-bind:value="something" v-on:input="something = $event.target.value" />
 ```
 
 ---
@@ -165,30 +240,30 @@ Hint: A pixel is not a pixel is not a pixel — ppk.
 
 ```js
 const routeA = new VueRouter({
-    routes: [
-        {
-            path: '/user/:userId',
-            component: PageUser
-        },
-        {
-            path: '/user/me',
-            component: PageMe
-        }
-    ]
+  routes: [
+    {
+      path: "/user/:userId",
+      component: PageUser
+    },
+    {
+      path: "/user/me",
+      component: PageMe
+    }
+  ]
 });
 
 const routeB = new VueRouter({
-    routes: [
-        {
-            path: '/user/me',
-            component: PageMe
-        },
-        {
-            path: '/user/:userId',
-            component: PageUser
-        }
-    ]
-})
+  routes: [
+    {
+      path: "/user/me",
+      component: PageMe
+    },
+    {
+      path: "/user/:userId",
+      component: PageUser
+    }
+  ]
+});
 ```
 
 ---
@@ -227,7 +302,7 @@ vm.items.splice(newLength)
 
 ---
 
-### Vue 里面 实现 Angular `Service` 的方式   (会Angular 的可以问下)
+### Vue 里面 实现 Angular `Service` 的方式 (会 Angular 的可以问下)
 
 - Stateless service: use mixins
 - Statefull service: use Vuex
@@ -238,7 +313,7 @@ vm.items.splice(newLength)
 
 ### Vuex
 
-介绍下Vuex，及解决了什么问题
+介绍下 Vuex，及解决了什么问题
 
 - Multiple views may depend on the same piece of state. Passing props can be tedious for deeply nested components, and simply doesn't work for sibling components
 
