@@ -2914,3 +2914,15 @@ const adultCats = cats.filter(isNotKitten)
 ```
 
 ---
+
+## 101 for log
+
+```js
+for(
+  let i = (console.log('setting i to 0'), 0);
+  console.log(`i is ${i}`) || i < 5;
+  console.log(`${i} => ${++i}`)
+);
+```
+
+---
