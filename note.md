@@ -2793,3 +2793,85 @@ console.log(clean)
 ```
 
 ---
+
+## 97. an `async` function
+
+```js
+async function asyncFunction () {
+  const promises = [
+    fetch('file1.json'),
+    fetch('file2.json'),
+    fetch('file3.json'),
+    fetch('file4.json')
+  ]
+
+  // Normal iterator
+  for (const item of promises) {
+    console.log(item)
+  }
+
+  // async iterator
+  for await (const item of promises) {
+    console.log(item)
+  }
+}
+```
+
+---
+
+## 98 factory function instead of Class
+
+```js
+class Cat {
+  constructor (name) {
+    this.name = name
+  }
+
+  speak () {
+    console.log(`${this.name} says MEOW`)
+  }
+}
+
+const cat = new Cat('Mojo')
+cat.speak()
+```
+
+> better
+
+```js
+const createCat = (name) => ({name})
+const speak = ({name}) => {
+  console.log(`${name} says MEOW`)
+}
+const cat = createCat('Mojo')
+speak(cat)
+```
+
+```js
+const createCat = (name) => {
+  const speak = () => {
+    console.log(`${name} says MEOW`)
+  }
+
+  return {
+    name,
+    speak
+  }
+}
+```
+
+---
+
+## 99 promise finally
+
+```js
+Promise.resolve({ some: 'data' })
+  .finally(() => { console.log('WHALE HELLO THERE 🧶') })
+  .then(data => ({ ...data, anAdditional: 'key' }))
+  .finally(() => { console.log('GOAT HELLO THERE 🎄') })
+  .then(data => { ...data, yetAnthor: 'thing added' })
+  .finally(() => { console.log('SHEEP HELLO THERE 🎭') })
+  .then(data => { console.log('Final result:', data) })
+```
+
+---
