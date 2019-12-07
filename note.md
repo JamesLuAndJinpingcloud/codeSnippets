@@ -2875,3 +2875,42 @@ Promise.resolve({ some: 'data' })
 ```
 
 ---
+
+## 100 creating a fluent api without `this` or protoptypes
+
+```js
+const functor = value => ({
+  value,
+  map: func => functor(func(value)),
+  inspect: () => `functor(${JSON.stringfy(value)})`
+})
+
+const double = number => number * 2
+functor(100)
+  .map(double)
+  .map(double)
+  .map(double)
+```
+
+> other code
+
+```js
+const cats = [
+  { name: 'Mojo', months: 120 },
+  { name: 'Sachi', months: 112 },
+  { name: 'Kitty', months: 3 }
+]
+
+const isKitten = ({ months }) => months <= 6
+
+const not = func => arg => !func(arg)
+
+const isNotKitten = not(isKitten)
+
+const kittens = cats.filter(isKitten)
+
+const adultCats = cats.filter(isNotKitten)
+
+```
+
+---
