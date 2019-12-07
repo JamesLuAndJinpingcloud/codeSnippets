@@ -2689,3 +2689,107 @@ go()
 ```
 
 ---
+
+## 92. `Intl` format time
+
+```js
+const relative = new Intl.RelativeTimeFormat('en', { style: 'long', numeric: 'auto' })
+
+relative.format(3, 'day')
+relative.format(7, 'day')
+relative.format(1, 'day')
+relative.format(-2, 'day')
+relative.format(100, 'year')
+relative.format(-1, 'year')
+relative.format(0, 'year')
+relative.format(-20, 'second')
+relative.format(10, 'second')
+```
+
+---
+
+## 93. create a `HOF`, ex: catch `promise` error
+
+```js
+// make a function to handle that error
+function handleError(fn) {
+  return function (...params) {
+    return fn(...params).catch(function(err) {
+      // do something with the error!
+      console.log(`Oops`, err)
+    })
+  }
+}
+```
+
+---
+
+## 94. chunk array
+
+```js
+// this is a big array of 76 items. I need to split into groups of 10
+const hugeArray = Array.from({ length: 76 }, (_, i) => i)
+
+function chunkify(array, chunkSize = 10) {
+  // make a new array
+  const chunks = Array.from(
+    // give it however many slots are needed - in out case 8
+    // 1-7 with 10 items, and 8th slot will have 6
+    { length: Math.ceil(array.length / chunkSize) },
+    // this is map function that will fill up out slots
+    (_, i) => {
+      // make a slice of 100 items
+      const start = chunkSize * i
+      // slice our the piece of the array we need
+      return array.slice(start, start + chunkSize)
+    }
+  )
+  return chunks
+}
+
+console.log(chunkify(hugeArray))
+/*
+0: (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+1: (10) [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+2: (10) [20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+3: (10) [30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
+4: (10) [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+5: (10) [50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+6: (10) [60, 61, 62, 63, 64, 65, 66, 67, 68, 69]
+7: (6) [70, 71, 72, 73, 74, 75]
+*/
+```
+
+---
+
+## 95 map, filter, reduce using case
+
+```js
+const faces = ['😀', '🤯', '🤡', '🤑', '🤩', '🐶', '😼', '😺']
+
+function attachBody(face, body) {
+  return `
+    ${face}
+    ${body.repeat(3)}
+    ${Array(3).fill(body).join(' ')}
+  👇    ${body.repeat(2)}  👇
+    ${Array(2).fill(body).join('    ')}
+    ${Array(2).fill(body).join('    ')}
+      🦶            🦶
+  `
+}
+
+faces.map(face => attachBody(face, '🍟')).forEach(body => console.log(body))
+```
+
+---
+
+## 96. Get rid of falsy values in an array
+
+```js
+const array = ['need', '', 'to', null, 'clean', 0, false, 'up']
+const clean = array.filter(Boolean)
+console.log(clean)
+```
+
+---
