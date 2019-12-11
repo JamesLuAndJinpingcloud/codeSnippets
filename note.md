@@ -4,13 +4,9 @@
 // TODO replace this code with something better
 ```
 
-## 1. 工作账号 s
+## 1. 工作账号
 
-公司代码库：GitLab A: `sai.lu@itdev.xiangguang.com` , P：`12345678`
-
-公司电脑：登录本地 **Administrator： `.\Administrator`, P: `!QAZ1qaz`**
-
-公司电脑自己搞的 teamcity:
+公司电脑的 teamcity:
 teamCity： `admin 123456`,
 super token： `admin`
 
@@ -51,21 +47,38 @@ registry = https://registry.npm.taobao.org
 npm install --save-dev chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver
 ```
 
----
+i---
 
 ## 7. knockoutjs 方便调试
 
 ```html
-<span data-bind="text: ko.toJSON(commodityItem)"></span>
+<span data-bind="text: ko.toJSON(object)"></span>
+
+<!-- ko text: ko.toJSON($data) --><!-- /ko -->
+
+<!-- ko text: ko.toJSON($data, null, 2) --><!-- /ko -->
+
+<span data-bind="text: ko.toJSON(object)"></span>
+
+<pre data-bind="text: ko.toJSON(object, null, 2)"></pre>
+
+```
+
+```bash
+# windows下查看端口：
+ netstat -ano | findstr 8080
+
+# install `node-saas`
+npm install --save node-sass --registry=https://registry.npm.taobao.org
 ```
 
 ---
 
-## 8. JetBrain 激活服务器 <http://idea.codebeta.cn>
+## 8
 
 ---
 
-## 9. `fiddler`, `Vorlon.js`、 `Weinre` 等用于移动端浏览器的远程调试工具。
+## 9. `fiddler`, `Vorlon.js`、 `Weinre` 等用于移动端浏览器的远程调试工具
 
 ---
 
