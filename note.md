@@ -47,7 +47,7 @@ registry = https://registry.npm.taobao.org
 npm install --save-dev chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver
 ```
 
-i---
+---
 
 ## 7. knockoutjs 方便调试
 
@@ -74,7 +74,7 @@ npm install --save node-sass --registry=https://registry.npm.taobao.org
 
 ---
 
-## 8
+## 8 Code Fonts: `Fira Code`, `Monaco`, `Cascadia`, `VictorMono`
 
 ---
 
@@ -2640,6 +2640,7 @@ const cars = [
 const carNames = Array.from(cars, ({ name }) => name)
 console.log(carNames)
 ```
+
 > merge methods
 
 ```js
