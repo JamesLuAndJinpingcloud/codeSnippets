@@ -2990,7 +2990,7 @@ getUserIP(console.log)
 
 ---
 
-## 104 文本过多，横向滚动显示[codepen](https://codepen.io/z-/pen/eZQKEr)
+## 104 文本过多，横向滚动显示[codepen](https://codepen.io/Hyper615/pen/YzPpoWO)
 
 > 其他好的滚动资源
 - https://codepen.io/AndrewHyte/pen/DcExu
@@ -3000,6 +3000,8 @@ getUserIP(console.log)
 - https://css-tricks.com/infinite-all-css-scrolling-slideshow/
 
 - https://css-tricks.com/css-animation-libraries/
+
+- https://codepen.io/z-/pen/eZQKEr
 
 ---
 
