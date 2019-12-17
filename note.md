@@ -2989,3 +2989,58 @@ getUserIP(console.log)
 ```
 
 ---
+
+## 104 文本过多，横向滚动显示[codepen](https://codepen.io/z-/pen/eZQKEr)
+
+> 其他好的滚动资源
+- https://codepen.io/AndrewHyte/pen/DcExu
+
+- https://codepen.io/AndrewHyte/pen/DcExu
+
+- https://css-tricks.com/infinite-all-css-scrolling-slideshow/
+
+- https://css-tricks.com/css-animation-libraries/
+
+---
+
+## 105 Homebrew 配置[`USTC`](http://mirrors.ustc.edu.cn/help/homebrew-cask.git.html)源
+
+`Homebrew Bottles`: Homebrew 预编译二进制软件包
+
+```bash
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.bash_profile
+source ~/.bash_profile
+```
+
+```zsh
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.zshrc
+source ~/.zshrc
+```
+
+> `homebrew core`: 使用 USTC 源
+
+```zsh
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+```
+
+重置为官方地址
+```zsh
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://github.com/Homebrew/homebrew-core
+```
+
+> `homebrew cask`: 提供 macOS 应用和大型二进制文件
+
+```zsh
+cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+```
+
+重置为官方地址：
+```zsh
+cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
+git remote set-url origin https://github.com/Homebrew/homebrew-cask
+```
+
+---
