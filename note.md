@@ -3046,3 +3046,11 @@ git remote set-url origin https://github.com/Homebrew/homebrew-cask
 ```
 
 ---
+
+## 106 js generate `GUID-UUID`
+
+```js
+Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+```
+
+---
