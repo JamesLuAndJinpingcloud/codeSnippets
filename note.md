@@ -3054,3 +3054,34 @@ Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substri
 ```
 
 ---
+
+## 107 Turn any object into an Iterable usie `Symbol.iterator` to control how your object is iterated
+
+```js
+const toKeyValue = ([key, value]) => ({key, value})
+
+const toIterable = object => ({
+  ...object,
+  [Symbol.iterator]: function() {
+    const entries = Object.entries(this)
+    let current = 0
+
+    const next = () => current < entries.length
+      ? { done: false, value: toKeyValue(entries[current++]) }
+      : { done: true }
+
+    return { next }
+  }
+})
+
+const object = { a: 1, b: 2, c: 3 }
+const iterable = toIterable(object)
+
+const entries = [...iterable]
+
+for (let i of iterable) {
+  console.log(i)
+}
+```
+
+---
