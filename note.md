@@ -3085,3 +3085,17 @@ for (let i of iterable) {
 ```
 
 ---
+
+## 108 firefox scrollbar
+
+```css
+.scroller {
+  width: 300px;
+  height: 100px;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+```
+
+---
