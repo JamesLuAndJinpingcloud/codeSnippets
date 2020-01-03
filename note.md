@@ -61,7 +61,6 @@ npm install --save-dev chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.
 <span data-bind="text: ko.toJSON(object)"></span>
 
 <pre data-bind="text: ko.toJSON(object, null, 2)"></pre>
-
 ```
 
 ```bash
@@ -2401,12 +2400,12 @@ arr.map((_iDontNeedThis, index) => index);
 arr.map((...[, index]) => index);
 
 // code
-"" || "foo" // => "foo"
+'' || 'foo'; // => "foo"
 
-undefined || 32 // => 32
+undefined || 32; // => 32
 
 var a = 0;
-a || 32 // => 32
+a || 32; // => 32
 
 expr && doSomething();
 // Instead of
@@ -2414,9 +2413,9 @@ if (expr) {
   doSomething();
 }
 
-function doSomething () {
+function doSomething() {
   return {
-    foo: "bar"
+    foo: 'bar'
   };
 }
 var expr = true;
@@ -2424,19 +2423,15 @@ var res = expr && doSomething();
 res && console.log(res); // => { foo: "bar" }
 
 // get First, Last element of Array
-function getFirstLast (array) {
-  const {
-    0: first,
-    length: len,
-    [len - 1]: last
-  } = array
-  return { first, last }
+function getFirstLast(array) {
+  const { 0: first, length: len, [len - 1]: last } = array;
+  return { first, last };
 }
 getFirstLast('apple'); // => { first: "a", last: "e" }
-getFirstLast(['foo', 'bar', 'baz', 'quux']) // => {first: "foo", last: "quux"}
+getFirstLast(['foo', 'bar', 'baz', 'quux']); // => {first: "foo", last: "quux"}
 
 // get a random item from an array
-const items = [12, 548 , 'a' , 2 , 5478 , 'foo' , 8852, , 'Doe' , 2145 , 119];
+const items = [12, 548, 'a', 2, 5478, 'foo', 8852, , 'Doe', 2145, 119];
 const randomItem = items[Math.floor(Math.random() * items.length)];
 console.log(randomItem);
 
@@ -2444,37 +2439,44 @@ console.log(randomItem);
 const x = Math.floor(Math.random() * (max - min + 1)) + min;
 
 // Generate an array of numbers with numbers from 0 to max
-let numbersArray = []
+let numbersArray = [];
 let max = 100;
-for( var i=1; numbersArray.push(i++) < max;);  // numbers = [1,2,3 ... 100]
+for (var i = 1; numbersArray.push(i++) < max; ); // numbers = [1,2,3 ... 100]
 
 // Generate a random set of alphanumeric characters
 function generateRandomAlphaNum(len) {
-    let rdmString = "";
-    for( ; rdmString.length < len; rdmString  += Math.random().toString(36).substr(2));
-    return rdmString.substr(0, len);
+  let rdmString = '';
+  for (
+    ;
+    rdmString.length < len;
+    rdmString += Math.random()
+      .toString(36)
+      .substr(2)
+  );
+  return rdmString.substr(0, len);
 }
 
 // Shuffle an array of numbers
-var numbers = [5, 458 , 120 , -215 , 228 , 400 , 122205, -85411];
-numbers = numbers.sort(function(){ return Math.random() - 0.5});
+var numbers = [5, 458, 120, -215, 228, 400, 122205, -85411];
+numbers = numbers.sort(function() {
+  return Math.random() - 0.5;
+});
 
 // `Comma Operator`
 let a = 0;
-let b = ( a++, 99 );
-console.log(a);  // a will be equal to 1
-console.log(b);  // b will be equal to 99
+let b = (a++, 99);
+console.log(a); // a will be equal to 1
+console.log(b); // b will be equal to 99
 
 // Array to Object method
-const a = 'Wes Bos,ScottTolinski'.split('.')
-a.map(x => x.split(' '))
-Object.fromEntries($_) // $_ is the last thing returned from dev tools.
+const a = 'Wes Bos,ScottTolinski'.split('.');
+a.map(x => x.split(' '));
+Object.fromEntries($_); // $_ is the last thing returned from dev tools.
 
-const names = new Map()
-names.set('wes', 'cool')
-names.set('scott', 'neat')
-Object.fromEntries(names)
-
+const names = new Map();
+names.set('wes', 'cool');
+names.set('scott', 'neat');
+Object.fromEntries(names);
 ```
 
 ---
@@ -2484,7 +2486,7 @@ Object.fromEntries(names)
 ```js
 // From anything to a number
 
-var foo = "42";
+var foo = '42';
 var myNumber = +foo; // shortcut for Number(foo)
 // → 42
 
@@ -2494,31 +2496,31 @@ var negativeFoo = -foo; // or -Number(foo)
 
 // From object to array
 // Tip: `arguments` is an object and in general you want to use it as array
-var args = { 0: "foo", 1: "bar", length: 2 };
-Array.prototype.slice.call(args)
+var args = { 0: 'foo', 1: 'bar', length: 2 };
+Array.prototype.slice.call(args);
 // → [ 'foo', 'bar' ]
 
 // Anything to boolean
 /// Non non p is a boolean p
 var t = 1;
 var f = 0;
-!!t
+!!t;
 // → true
-!!f
+!!f;
 // → false
 
 /// And non-p is a boolean non-p
-!t
+!t;
 // → false
-!f
+!f;
 // → true
 
 // Anything to string
 var foo = 42;
-"" + foo // shortcut for String(foo)
+'' + foo; // shortcut for String(foo)
 // → "42"
 
-foo = { hello: "world" };
+foo = { hello: 'world' };
 JSON.stringify(foo);
 // → '{ "hello":"world" }'
 
@@ -2548,17 +2550,17 @@ JSON.stringify(window);
 ## 89 Set timeout to `XHR`
 
 ```js
-let xhr = new XMLHttpRequest (); 
-xhr.onreadystatechange = function () {  
-    if (this.readyState == 4) {  
-        clearTimeout(timeout);  
-        // do something with response data
-    }  
-}  
-let timeout = setTimeout( function () {  
-    xhr.abort(); // call error callback  
-}, 60*1000 /* timeout after a minute */ );
-xhr.open('GET', url, true);  
+let xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+  if (this.readyState == 4) {
+    clearTimeout(timeout);
+    // do something with response data
+  }
+};
+let timeout = setTimeout(function() {
+  xhr.abort(); // call error callback
+}, 60 * 1000 /* timeout after a minute */);
+xhr.open('GET', url, true);
 
 xhr.send();
 ```
@@ -2568,16 +2570,16 @@ xhr.send();
 ```js
 let timerID = 0;
 function keepAlive() {
-    let timeout = 15000;  
-    if (webSocket.readyState == webSocket.OPEN) {  
-        webSocket.send('');  
-    }  
-    timerId = setTimeout(keepAlive, timeout);  
-}  
-function cancelKeepAlive() {  
-    if (timerId) {  
-        cancelTimeout(timerId);  
-    }  
+  let timeout = 15000;
+  if (webSocket.readyState == webSocket.OPEN) {
+    webSocket.send('');
+  }
+  timerId = setTimeout(keepAlive, timeout);
+}
+function cancelKeepAlive() {
+  if (timerId) {
+    cancelTimeout(timerId);
+  }
 }
 ```
 
@@ -2588,20 +2590,19 @@ function cancelKeepAlive() {
 ## 90 Calculate `Standard Deviation`
 
 ```js
+let data = [20, 9320, 9010, 9340, 12900, 13300, 13200];
 
-let data = [20, 9320, 9010, 9340, 12900, 13300, 13200]
+let arrayAverage = arr => arr.reduce((sum, x) => x + sum, 0) / arr.length;
 
-let arrayAverage = arr => arr.reduce((sum, x) => x + sum, 0) / arr.length
+let averageArr = arrayAverage(data);
 
-let averageArr = arrayAverage(data)
+let differences = data.map(x => x - averageArr).map(x => x * x);
 
-let differences = data.map(x => x - averageArr).map(x => x * x)
+let averageDifference = arrayAverage(differences);
 
-let averageDifference = arrayAverage(differences)
+let standardDeviation = Math.sqrt(averageDifference);
 
-let standardDeviation = Math.sqrt(averageDifference)
-
-console.log(standardDeviation) // output
+console.log(standardDeviation); // output
 ```
 
 ---
@@ -2617,9 +2618,9 @@ console.log(standardDeviation) // output
 
 ```html
 <!-- ko foreach: selectedValue -->
-    <div>
-        <span data-bind="text: $data"></span>
-    </div>
+<div>
+  <span data-bind="text: $data"></span>
+</div>
 <!-- /ko -->
 ```
 
@@ -2635,42 +2636,42 @@ const cars = [
   { name: 'Highlander', miles: 11567 },
   { name: 'Expedition', miles: 214 },
   { name: 'Hatchback', miles: 2211 }
-]
+];
 
-const carNames = Array.from(cars, ({ name }) => name)
-console.log(carNames)
+const carNames = Array.from(cars, ({ name }) => name);
+console.log(carNames);
 ```
 
 > merge methods
 
 ```js
-const mergeA = (target, source) => Object.assign({}, target, source)
+const mergeA = (target, source) => Object.assign({}, target, source);
 
-const mergeB = (target, source) => ({ ...target, ...source })
+const mergeB = (target, source) => ({ ...target, ...source });
 ```
 
 > no repeats.
 
 ```js
-const values = [ 1, 1, 1, 2, 2, 3, 2 ]
+const values = [1, 1, 1, 2, 2, 3, 2];
 
 /**
-* Filters out values that repeat
-* @param {object} value Value of the element in an Array
-* @param {number} index Location of the element in the Array
-* @param {Array} array Array being filtered
-*/
+ * Filters out values that repeat
+ * @param {object} value Value of the element in an Array
+ * @param {number} index Location of the element in the Array
+ * @param {Array} array Array being filtered
+ */
 const noRepeats = (value, index, array) => {
-  const isStart = index === 0
+  const isStart = index === 0;
 
   if (isStart || value !== array[index - 1]) {
-    return true
+    return true;
   }
 
-  return false
-}
+  return false;
+};
 
-values.filter(noRepeats) // [ 1, 2, 3, 2 ]
+values.filter(noRepeats); // [ 1, 2, 3, 2 ]
 ```
 
 ```js
@@ -2679,27 +2680,27 @@ const questions = [
   { title: 'What is your name?' },
   { title: 'What is your age?', cancel: true },
   { title: 'What is your dogs name?' }
-]
+];
 
 // asyncMap util function
-async function asyncMap (array, callback) {
-  const results = []
+async function asyncMap(array, callback) {
+  const results = [];
 
   for (const item of array) {
     // this await pauses the async function / for of loop
-    results.push(await callback(item))
+    results.push(await callback(item));
   }
 
-  return results
+  return results;
 }
 
-async function go () {
+async function go() {
   // the ask function pops up a modal dialog, so we can't just promise.all() and pop up three dialogs
-  const answers = await asyncMap(questions, ask)
-  console.log(answers)
+  const answers = await asyncMap(questions, ask);
+  console.log(answers);
 }
 
-go()
+go();
 ```
 
 ---
@@ -2707,17 +2708,20 @@ go()
 ## 92. `Intl` format time
 
 ```js
-const relative = new Intl.RelativeTimeFormat('en', { style: 'long', numeric: 'auto' })
+const relative = new Intl.RelativeTimeFormat('en', {
+  style: 'long',
+  numeric: 'auto'
+});
 
-relative.format(3, 'day')
-relative.format(7, 'day')
-relative.format(1, 'day')
-relative.format(-2, 'day')
-relative.format(100, 'year')
-relative.format(-1, 'year')
-relative.format(0, 'year')
-relative.format(-20, 'second')
-relative.format(10, 'second')
+relative.format(3, 'day');
+relative.format(7, 'day');
+relative.format(1, 'day');
+relative.format(-2, 'day');
+relative.format(100, 'year');
+relative.format(-1, 'year');
+relative.format(0, 'year');
+relative.format(-20, 'second');
+relative.format(10, 'second');
 ```
 
 ---
@@ -2727,12 +2731,12 @@ relative.format(10, 'second')
 ```js
 // make a function to handle that error
 function handleError(fn) {
-  return function (...params) {
+  return function(...params) {
     return fn(...params).catch(function(err) {
       // do something with the error!
-      console.log(`Oops`, err)
-    })
-  }
+      console.log(`Oops`, err);
+    });
+  };
 }
 ```
 
@@ -2742,7 +2746,7 @@ function handleError(fn) {
 
 ```js
 // this is a big array of 76 items. I need to split into groups of 10
-const hugeArray = Array.from({ length: 76 }, (_, i) => i)
+const hugeArray = Array.from({ length: 76 }, (_, i) => i);
 
 function chunkify(array, chunkSize = 10) {
   // make a new array
@@ -2753,15 +2757,15 @@ function chunkify(array, chunkSize = 10) {
     // this is map function that will fill up out slots
     (_, i) => {
       // make a slice of 100 items
-      const start = chunkSize * i
+      const start = chunkSize * i;
       // slice our the piece of the array we need
-      return array.slice(start, start + chunkSize)
+      return array.slice(start, start + chunkSize);
     }
-  )
-  return chunks
+  );
+  return chunks;
 }
 
-console.log(chunkify(hugeArray))
+console.log(chunkify(hugeArray));
 /*
 0: (10) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 1: (10) [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
@@ -2779,21 +2783,27 @@ console.log(chunkify(hugeArray))
 ## 95 map, filter, reduce using case
 
 ```js
-const faces = ['😀', '🤯', '🤡', '🤑', '🤩', '🐶', '😼', '😺']
+const faces = ['😀', '🤯', '🤡', '🤑', '🤩', '🐶', '😼', '😺'];
 
 function attachBody(face, body) {
   return `
     ${face}
     ${body.repeat(3)}
-    ${Array(3).fill(body).join(' ')}
+    ${Array(3)
+      .fill(body)
+      .join(' ')}
   👇    ${body.repeat(2)}  👇
-    ${Array(2).fill(body).join('    ')}
-    ${Array(2).fill(body).join('    ')}
+    ${Array(2)
+      .fill(body)
+      .join('    ')}
+    ${Array(2)
+      .fill(body)
+      .join('    ')}
       🦶            🦶
-  `
+  `;
 }
 
-faces.map(face => attachBody(face, '🍟')).forEach(body => console.log(body))
+faces.map(face => attachBody(face, '🍟')).forEach(body => console.log(body));
 ```
 
 ---
@@ -2801,9 +2811,9 @@ faces.map(face => attachBody(face, '🍟')).forEach(body => console.log(body))
 ## 96. Get rid of falsy values in an array
 
 ```js
-const array = ['need', '', 'to', null, 'clean', 0, false, 'up']
-const clean = array.filter(Boolean)
-console.log(clean)
+const array = ['need', '', 'to', null, 'clean', 0, false, 'up'];
+const clean = array.filter(Boolean);
+console.log(clean);
 ```
 
 ---
@@ -2811,22 +2821,22 @@ console.log(clean)
 ## 97. an `async` function
 
 ```js
-async function asyncFunction () {
+async function asyncFunction() {
   const promises = [
     fetch('file1.json'),
     fetch('file2.json'),
     fetch('file3.json'),
     fetch('file4.json')
-  ]
+  ];
 
   // Normal iterator
   for (const item of promises) {
-    console.log(item)
+    console.log(item);
   }
 
   // async iterator
   for await (const item of promises) {
-    console.log(item)
+    console.log(item);
   }
 }
 ```
@@ -2837,41 +2847,41 @@ async function asyncFunction () {
 
 ```js
 class Cat {
-  constructor (name) {
-    this.name = name
+  constructor(name) {
+    this.name = name;
   }
 
-  speak () {
-    console.log(`${this.name} says MEOW`)
+  speak() {
+    console.log(`${this.name} says MEOW`);
   }
 }
 
-const cat = new Cat('Mojo')
-cat.speak()
+const cat = new Cat('Mojo');
+cat.speak();
 ```
 
 > better
 
 ```js
-const createCat = (name) => ({name})
-const speak = ({name}) => {
-  console.log(`${name} says MEOW`)
-}
-const cat = createCat('Mojo')
-speak(cat)
+const createCat = name => ({ name });
+const speak = ({ name }) => {
+  console.log(`${name} says MEOW`);
+};
+const cat = createCat('Mojo');
+speak(cat);
 ```
 
 ```js
-const createCat = (name) => {
+const createCat = name => {
   const speak = () => {
-    console.log(`${name} says MEOW`)
-  }
+    console.log(`${name} says MEOW`);
+  };
 
   return {
     name,
     speak
-  }
-}
+  };
+};
 ```
 
 ---
@@ -2897,13 +2907,13 @@ const functor = value => ({
   value,
   map: func => functor(func(value)),
   inspect: () => `functor(${JSON.stringfy(value)})`
-})
+});
 
-const double = number => number * 2
+const double = number => number * 2;
 functor(100)
   .map(double)
   .map(double)
-  .map(double)
+  .map(double);
 ```
 
 > other code
@@ -2913,18 +2923,17 @@ const cats = [
   { name: 'Mojo', months: 120 },
   { name: 'Sachi', months: 112 },
   { name: 'Kitty', months: 3 }
-]
+];
 
-const isKitten = ({ months }) => months <= 6
+const isKitten = ({ months }) => months <= 6;
 
-const not = func => arg => !func(arg)
+const not = func => arg => !func(arg);
 
-const isNotKitten = not(isKitten)
+const isNotKitten = not(isKitten);
 
-const kittens = cats.filter(isKitten)
+const kittens = cats.filter(isKitten);
 
-const adultCats = cats.filter(isNotKitten)
-
+const adultCats = cats.filter(isNotKitten);
 ```
 
 ---
@@ -2932,7 +2941,7 @@ const adultCats = cats.filter(isNotKitten)
 ## 101 for log
 
 ```js
-for(
+for (
   let i = (console.log('setting i to 0'), 0);
   console.log(`i is ${i}`) || i < 5;
   console.log(`${i} => ${++i}`)
@@ -2948,9 +2957,13 @@ for(
 ## 103 get IP using `WebRTC`
 
 ```js
-function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
+function getUserIP(onNewIP) {
+  //  onNewIp - your listener function for new IPs
   //compatibility for firefox and chrome
-  var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+  var myPeerConnection =
+    window.RTCPeerConnection ||
+    window.mozRTCPeerConnection ||
+    window.webkitRTCPeerConnection;
   var pc = new myPeerConnection({
       iceServers: []
     }),
@@ -2963,29 +2976,37 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
     if (!localIPs[ip]) onNewIP(ip);
     localIPs[ip] = true;
   }
-  onNewIP
+  onNewIP;
   //create a bogus data channel
-  pc.createDataChannel("");
+  pc.createDataChannel('');
 
   // create offer and set local description
-  pc.createOffer().then(function(sdp) {
-    sdp.sdp.split('\n').forEach(function(line) {
-      if (line.indexOf('candidate') < 0) return;
-      line.match(ipRegex).forEach(iterateIP);
-    });
+  pc.createOffer()
+    .then(function(sdp) {
+      sdp.sdp.split('\n').forEach(function(line) {
+        if (line.indexOf('candidate') < 0) return;
+        line.match(ipRegex).forEach(iterateIP);
+      });
 
-    pc.setLocalDescription(sdp, noop, noop);
-  }).catch(function(reason) {
-    // An error occurred, so handle the failure to connect
-  });
+      pc.setLocalDescription(sdp, noop, noop);
+    })
+    .catch(function(reason) {
+      // An error occurred, so handle the failure to connect
+    });
 
   //listen for candidate events
   pc.onicecandidate = function(ice) {
-    if (!ice || !ice.candidate || !ice.candidate.candidate || !ice.candidate.candidate.match(ipRegex)) return;
+    if (
+      !ice ||
+      !ice.candidate ||
+      !ice.candidate.candidate ||
+      !ice.candidate.candidate.match(ipRegex)
+    )
+      return;
     ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
   };
 }
-getUserIP(console.log)
+getUserIP(console.log);
 ```
 
 ---
@@ -2993,6 +3014,7 @@ getUserIP(console.log)
 ## 104 文本过多，横向滚动显示[codepen](https://codepen.io/Hyper615/pen/YzPpoWO)
 
 > 其他好的滚动资源
+
 - https://codepen.io/AndrewHyte/pen/DcExu
 
 - https://codepen.io/AndrewHyte/pen/DcExu
@@ -3027,6 +3049,7 @@ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
 ```
 
 重置为官方地址
+
 ```zsh
 cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
 git remote set-url origin https://github.com/Homebrew/homebrew-core
@@ -3040,6 +3063,7 @@ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
 ```
 
 重置为官方地址：
+
 ```zsh
 cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
 git remote set-url origin https://github.com/Homebrew/homebrew-cask
@@ -3050,7 +3074,12 @@ git remote set-url origin https://github.com/Homebrew/homebrew-cask
 ## 106 js generate `GUID-UUID`
 
 ```js
-Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+Math.random()
+  .toString(36)
+  .substring(2, 15) +
+  Math.random()
+    .toString(36)
+    .substring(2, 15);
 ```
 
 ---
@@ -3058,29 +3087,30 @@ Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substri
 ## 107 Turn any object into an Iterable usie `Symbol.iterator` to control how your object is iterated
 
 ```js
-const toKeyValue = ([key, value]) => ({key, value})
+const toKeyValue = ([key, value]) => ({ key, value });
 
 const toIterable = object => ({
   ...object,
   [Symbol.iterator]: function() {
-    const entries = Object.entries(this)
-    let current = 0
+    const entries = Object.entries(this);
+    let current = 0;
 
-    const next = () => current < entries.length
-      ? { done: false, value: toKeyValue(entries[current++]) }
-      : { done: true }
+    const next = () =>
+      current < entries.length
+        ? { done: false, value: toKeyValue(entries[current++]) }
+        : { done: true };
 
-    return { next }
+    return { next };
   }
-})
+});
 
-const object = { a: 1, b: 2, c: 3 }
-const iterable = toIterable(object)
+const object = { a: 1, b: 2, c: 3 };
+const iterable = toIterable(object);
 
-const entries = [...iterable]
+const entries = [...iterable];
 
 for (let i of iterable) {
-  console.log(i)
+  console.log(i);
 }
 ```
 
@@ -3096,6 +3126,28 @@ for (let i of iterable) {
   scrollbar-color: rebeccapurple green;
   scrollbar-width: thin;
 }
+```
+
+---
+
+## 109 Values contained in a closure will be "private" to the environment outside of the closure;Funfctions `inc` and `dec` have exclusive access to `state`;`state` is protected from outside changes
+
+```js
+function createCounter(start = 0) {
+  let state = start;
+
+  const inc = () => ++state;
+  const dec = () => --state;
+
+  return { inc, dec };
+}
+// Ex
+const { inc, dec } = createCounter();
+inc(); //? 1
+inc(); //? 2
+inc(); //? 3
+dec(); //? 2
+dec(); //? 1
 ```
 
 ---
