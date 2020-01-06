@@ -48,7 +48,33 @@ array.reduce((unique, item) => unique.includes(item) ? unique : [...unique, item
 
 ---
 
-### tiny function.
+### why `b` become a global variable when call this function
+
+```js
+function myFunc() {
+  let a = b = 0;
+}
+
+myFunc();
+
+// because it equals to above code:
+function myFunc() {
+  let a = (b = 0);
+}
+
+myFunc();
+
+// how to solve this problem
+function myFunc() {
+  let a,b;
+  a = b = 0;
+}
+myFunc();
+```
+
+---
+
+### tiny function
 
 ````js
 function printing() {
@@ -191,7 +217,7 @@ Specifically what will happen in each of the following scenarios:
 
 ---
 
-### How CSS pixel is different than hardware/physical pixel?
+### How CSS pixel is different than hardware/physical pixel
 
 Hint: A pixel is not a pixel is not a pixel — ppk.
 
@@ -215,11 +241,11 @@ Hint: A pixel is not a pixel is not a pixel — ppk.
 
 ### Vue instance lifecycle
 
-<img width="100" src="https://vuejs.org/images/lifecycle.png" alt="Vue lifecycle">
+<img width="100" src="https://vuejs.org/images/lifecycle.png" alt="Vue lifecycle" />
 
 ---
 
-### What is the difference v-bind and v-model? Provide some code example.
+### What is the difference v-bind and v-model? Provide some code example
 
 ```html
 <input v-model="something" />
@@ -332,3 +358,5 @@ vm.items.splice(newLength)
 ### TypeScript
 
 ### Vue3.0 计划
+
+### [70-javascript-interview-questiones](https://dev.to/macmacky/70-javascript-interview-questions-5gfi)

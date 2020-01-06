@@ -1913,7 +1913,7 @@ console.log(newObj);
 
 ---
 
-## 71 download `csv` file.
+## 71 download `csv` file
 
 ```js
 const data = [
@@ -2626,7 +2626,7 @@ console.log(standardDeviation); // output
 
 ---
 
-## 92. cool js snippets.
+## 92. cool js snippets
 
 ```js
 const cars = [
