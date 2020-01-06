@@ -3175,3 +3175,29 @@ pipe(
 ```
 
 ---
+
+## check even num without `%`
+
+> using `&` with `1`
+
+```js
+function isEven(num) {
+  if (num & 1) {
+    return false;
+  } else {
+    return true;
+  }
+};
+```
+
+> or using `recursive` function
+
+```js
+function isEven(num) {
+  if (num < 0 || num === 1) return false;
+  if (num == 0) return true;
+  return isEven(num - 2);
+}
+```
+
+---
