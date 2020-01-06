@@ -223,6 +223,12 @@ Hint: A pixel is not a pixel is not a pixel — ppk.
 
 ---
 
+### What's the difference between the in operator and the hasOwnProperty method in objects?
+
+> As you know both of these features check if a property exists in an object. It will return truefalse. The difference between them is that the `in` operator also checks the objects' `Prototype Chain` if the property was not found in the current object while the hasOwnProperty method just checks if the property exists in the `current object` ignoring the `Prototype Chain`.
+
+---
+
 ## Vue
 
 ### List some features of Vue.js
