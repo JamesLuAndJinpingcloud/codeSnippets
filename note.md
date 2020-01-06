@@ -3151,3 +3151,27 @@ dec(); //? 1
 ```
 
 ---
+
+## 110 `pipe` function using `reduce` and `Arrow function`
+
+```js
+const pipe = (...funcs) => v => {
+  funcs.reduce((res, func) => {
+    return func(res);
+  }, v);
+};
+
+const minusFive = v => v - 5;
+const addFour = v => v + 4;
+const multiplyByTen = v => v * 10;
+
+pipe(
+  minusFive,
+  addFour,
+  multiplyByTen,
+  Math.abs,
+  console.log
+)(0); // 10
+```
+
+---
