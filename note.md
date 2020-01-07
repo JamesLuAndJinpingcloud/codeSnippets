@@ -3236,3 +3236,14 @@ memoizedReduceAdd([1, 2, 3, 4, 5], 5);
 ```
 
 ---
+
+## 113. 页面渲染保留换行符、空格
+
+```html
+<!-- 方法1  -->
+<pre>{{data}}<pre>
+<!-- 方法2 -->
+<span style="white-space: pre;">{{data}}</span>
+```
+
+---
