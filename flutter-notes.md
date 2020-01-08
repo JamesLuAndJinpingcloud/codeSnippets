@@ -23,7 +23,7 @@ git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
 
 ---
 
-## Mac ShadowSocks Proxy in terminal
+## Mac `ShadowSocks` Proxy in terminal
 
 ```zsh
 # 1.
@@ -32,10 +32,10 @@ vim ~/.zshrc
 # 2. 添加下列内容
 
 `````````
-# proxy list
->alias proxy='export all_proxy=socks5://127.0.0.1:1086'
+> #proxy list
+>>alias proxy='export all_proxy=socks5://127.0.0.1:1086'
 
->alias unproxy='unset all_proxy'
+>>alias unproxy='unset all_proxy'
 `````````
 
 # 3. 保存退出
