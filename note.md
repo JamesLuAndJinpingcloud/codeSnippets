@@ -3277,3 +3277,25 @@ memoizedReduceAdd([1, 2, 3, 4, 5], 5);
 ```
 
 ---
+
+## 115. compare two array is equal
+
+```js
+var first = [1,2,3];
+var second = [1,2,3];
+var third = [3,2,1];
+var fourth = [1,3];
+var fifth = [0,1,2,3,4];
+
+console.log(compareArrays(first, second));
+console.log(compareArrays(first, third));
+console.log(compareArrays(first, fourth));
+console.log(compareArrays(first, fifth));
+
+function compareArrays(first, second){
+    //write type error
+    return first.every((e)=> second.includes(e)) && second.every((e)=> first.includes(e));
+}
+```
+
+---
