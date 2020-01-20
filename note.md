@@ -3299,3 +3299,19 @@ function compareArrays(first, second){
 ```
 
 ---
+
+## 116.  function delete some property of object
+
+```js
+const user = {
+  id: 100,
+  name: 'test',
+  password: 'password'
+};
+
+const removeProperty = prop => ({ [prop]: _, ...rest  }) => rest;
+const removePassword = removeProperty('password');
+removePassword(user);
+```
+
+---
