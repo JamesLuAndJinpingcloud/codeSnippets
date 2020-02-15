@@ -640,7 +640,7 @@ $('#download').click(function() {
   window.open(downloadableCSV(rows));
 });
 
-**Excel汉字乱码**
+**Excel汉字乱码**[参考链接](https://stackoverflow.com/questions/31959487/utf-8-encoidng-issue-when-exporting-csv-file-javascript)
 
 > 问题是编码问题需要使用`utf-8 with BOM`
 ```js
