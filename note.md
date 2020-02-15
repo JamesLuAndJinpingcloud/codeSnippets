@@ -639,6 +639,17 @@ var rows = [
 $('#download').click(function() {
   window.open(downloadableCSV(rows));
 });
+
+**Excel汉字乱码**
+
+> 问题是编码问题需要使用`utf-8 with BOM`
+```js
+var blob = new Blob(["\uFEFF"+csv], {
+    type: 'text/csv; charset=utf-18'
+});
+```
+> 文档带BOM编码
+
 ```
 
 ---
