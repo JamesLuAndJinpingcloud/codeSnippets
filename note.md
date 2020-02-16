@@ -640,7 +640,7 @@ $('#download').click(function() {
   window.open(downloadableCSV(rows));
 });
 
-**Excel汉字乱码**[参考链接](https://stackoverflow.com/questions/31959487/utf-8-encoidng-issue-when-exporting-csv-file-javascript)
+**Excel打开CSV文件汉字乱码**[参考链接](https://stackoverflow.com/questions/31959487/utf-8-encoidng-issue-when-exporting-csv-file-javascript)
 
 > 问题是编码问题需要使用`utf-8 with BOM`
 ```js
@@ -650,6 +650,9 @@ var blob = new Blob(["\uFEFF"+csv], {
 ```
 > 文档带BOM编码
 
+>> Excel打开CSV文件，
+>> 数据里面含有"1,900.00"这样带`,`的数据会解析错误，解决方法是在数据外面用`'`包起来一层；
+>> 数据里面含有"2020-02-16"这样的数据会显示成一堆`#`号，解决方法是在数据前加`\t`
 ```
 
 ---
