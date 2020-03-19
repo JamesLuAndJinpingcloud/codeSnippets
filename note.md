@@ -3347,3 +3347,15 @@ Object.assign([], string);
 ```
 
 ---
+
+## 119. Adsome and useful link for teaching yourself
+
+- https://github.com/keithnull/TeachYourselfCS-CN
+
+- https://github.com/ossu/computer-science
+
+- https://github.com/SSHeRun/CS-Xmind-Note
+
+- https://github.com/QSCTech/zju-icicles
+
+- https://github.com/PKUanonym/REKCARC-TSC-UHT
