@@ -3359,3 +3359,13 @@ Object.assign([], string);
 - https://github.com/QSCTech/zju-icicles
 
 - https://github.com/PKUanonym/REKCARC-TSC-UHT
+
+---
+
+## 120. Remove `last` digits
+
+```js
+const number = 2020202 / 10 | 0;
+```
+
+---
