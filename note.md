@@ -3369,3 +3369,13 @@ const number = 2020202 / 10 | 0;
 ```
 
 ---
+
+## 121. Generate Random whole numbers [Stackoverflow](https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range)
+
+```js
+function randomBetween(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+```
+
+---
