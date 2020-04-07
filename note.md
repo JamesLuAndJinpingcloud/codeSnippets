@@ -3379,3 +3379,80 @@ function randomBetween(min, max) {
 ```
 
 ---
+
+## 122. some snippets
+
+```js
+// If all redicate function returen true for all elements, return true
+const all = (arr, fn = Boolean) => arr.every(fn);
+
+all([4, 2, 3], x => x > 1); // true
+all([1, 2, 3]); // true
+
+// check all elements in an array are equal.
+const allEqual = arr => arr.every(val => val === arr[0])
+
+allEqual([1, 2, 3, 4, 5, 6]); // false
+allEqual([1, 1, 1]) // true
+
+// return the average of numbers
+const average = (...nums) => nums.reduce((acc, val) => acc + val, 0) / nums.length;
+
+average(...[1, 2, 3]); // 2
+average(1, 2, 3); // 2
+
+// return the length of a string in bytes
+const byteSize = str => new Blob([str]).size;
+
+byteSize('😀'); // 4
+byteSize('Hello World'); // 11
+
+// remove falsy values from an array
+const compact = arr => arr.filter(Boolean);
+compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34]); // [ 1, 2, 3, 'a', 's', 34 ]
+
+// gets the day of the year from a Date object
+const dayOfYear = date =>
+  Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+
+dayOfYear(new Date()); // 98
+
+// converts an angle from degrees to radians.
+const degreesToRads = deg => (deg * Math.PI) / 180.0;
+degreesToRads(90.0); // ~1.5708
+
+// returns the difference between two arrays.
+const difference = (a, b) => {
+  const s = new Set(b);
+  return a.filter(x => !s.has(x));
+};
+
+difference([1, 2, 3], [1, 2, 4]); // [3]
+
+// returns the distance between two points.
+const distance = (x0, y0, x1, y1) => Math.hypot(x1 - x0, y1 - y0);
+distance(1, 1, 2, 3); // 2.23606797749979
+
+// returns a new array with n elements removed from the left.
+const drop = (arr, n = 1) => arr.slice(n);
+drop([1, 2, 3]); // [2,3]
+drop([1, 2, 3], 2); // [3]
+drop([1, 2, 3], 42); // []
+
+// returns every nth element in an array.
+const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
+everyNth([1, 2, 3, 4, 5, 6], 2); // [ 2, 4, 6 ]
+
+// calculates the factorial of a number.
+const factorial = n =>
+  n < 0
+    ? (() => {
+      throw new TypeError('Negative numbers are not allowed!');
+    })()
+    : n <= 1
+      ? 1
+      : n * factorial(n - 1);
+factorial(6); // 720
+```
+
+---
