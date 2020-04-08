@@ -35,6 +35,12 @@ npm --registry https://registry.npm.taobao.org info underscore
 registry = https://registry.npm.taobao.org
 ```
 
+> 4.npm private proxy registry, `verdaccio`
+
+```text
+https://github.com/verdaccio/verdaccio
+```
+
 ---
 
 ## 4. 建立或使用镜像,参考: <https://github.com/cnpm/cnpmjs.org>
