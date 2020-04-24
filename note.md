@@ -6,13 +6,13 @@
 
 ## 1. 工作账号
 
-公司电脑的 teamcity:
+> 公司电脑的 teamcity:
 teamCity： `admin 123456`,
 super token： `admin`
-
+公司电脑 WSL ubuntu: root用户密码： toor
 ---
 
-## 2. npm 淘宝镜像使用方法(三种办法任意一种都能解决问题，建议使用第三种，将配置写死，下次用的时候配置还在)
+## 2. npm 淘宝镜像使用方法
 
 > 1.通过 config 命令
 
@@ -3460,5 +3460,14 @@ const factorial = n =>
       : n * factorial(n - 1);
 factorial(6); // 720
 ```
+
+---
+
+## 123. Code Review时，需要针对审查出有问题的代码添加评论。评论可以进行分级, 不同级别的结果可以打不同等Tag.
+
+> [blocker]: 在评论前面加上一个[blocker]标记，表示这个代码行的问题必须要修改
+[optional]：在评论前面加上一个[optional]标记，表示这个代码行的问题可改可不改
+[question]：在评论前面加上一个[question]标记，表示对这个代码行不理解，有问题需要问，被审查者需要针对问题进行回复澄清 
+类似这样的分级可以帮助被审查者直观了解Review结果，提高Review效率
 
 ---
