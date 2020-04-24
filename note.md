@@ -3471,3 +3471,21 @@ factorial(6); // 720
 类似这样的分级可以帮助被审查者直观了解Review结果，提高Review效率
 
 ---
+
+## 124. new method for validate `Url`
+
+```js
+const validateUrl = url => {
+    try{
+        new URL(url)
+        return true
+    }
+    catch {
+        return false
+    }
+}
+console.log(validateUrl('aaa'))
+console.log(validateUrl('http://aaa.com'))
+```
+
+---
