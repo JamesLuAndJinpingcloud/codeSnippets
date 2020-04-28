@@ -3508,3 +3508,13 @@ console.log(validateUrl('http://aaa.com'))
 ```
 
 ---
+
+## 125. `binary` <--> `Decimal`
+
+```js
+parseInt(11101000, 2) // 232
+
+(232).toString(2) // "11101000"
+```
+
+---
