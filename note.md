@@ -3518,3 +3518,19 @@ parseInt(11101000, 2) // 232
 ```
 
 ---
+
+## 126. Invoking Methods on Number Literals
+
+> can't write `1.toString()`
+
+```js
+// should
+1..toString()
+1 .toString()
+(1).toString()
+1.0.toString()
+```
+
+---
+
+## 127.
