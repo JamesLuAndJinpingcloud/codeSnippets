@@ -3533,4 +3533,17 @@ parseInt(11101000, 2) // 232
 
 ---
 
-## 127.
+## 127. Compare nonintegers, take an upper bound. Such an upper bound is called a `machine epsilon`. The standard epsilon value for double precision is 2^-53.
+
+```js
+let EPSILON = Math.pow(2, -53)
+function epsEqu(x, y) {
+  return Math.abs(x - y) < EPSILON
+}
+
+// usage
+0.1 + 0.2 === 0.3 // false
+epsEqu(0.1 + 0.2, 0.3) // true
+```
+
+---
