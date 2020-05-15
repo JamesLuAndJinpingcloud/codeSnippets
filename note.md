@@ -3547,3 +3547,32 @@ epsEqu(0.1 + 0.2, 0.3) // true
 ```
 
 ---
+
+## 128. `%` in not modulo
+
+> The result of the remainder operator always has the sign of the first operand (for modulo, it is the sign of the second operand):
+
+```js
+-5 % 2 // -1
+//That means that the following function does not work:
+
+// Wrong!
+function isOdd(n) { 
+  return n % 2 === 1;
+} 
+console.log(isOdd(-5)); // false
+console.log(isOdd(-4)); // false
+
+
+// The correct version is:
+
+function isOdd(n) { 
+  return Math.abs(n % 2) === 1;
+} 
+console.log(isOdd(-5)); // true
+console.log(isOdd(-4)); // false
+```
+
+---
+
+## 129.
