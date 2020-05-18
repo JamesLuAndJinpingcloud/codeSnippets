@@ -3575,4 +3575,6 @@ console.log(isOdd(-4)); // false
 
 ---
 
-## 129.
+## 129. `__proto__` is pronounced `dunder proto`
+
+> __proto__ is pronounced “dunder proto,” an abbreviation of “double underscore proto.” That pronunciation has been borrowed from the Python programming lan‐ guage (as suggested by Ned Batchelder in 2006). Special variables with double un‐ derscores are quite frequent in Python.
