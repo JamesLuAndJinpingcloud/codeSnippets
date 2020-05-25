@@ -3578,3 +3578,60 @@ console.log(isOdd(-4)); // false
 ## 129. `__proto__` is pronounced `dunder proto`
 
 > __proto__ is pronounced “dunder proto,” an abbreviation of “double underscore proto.” That pronunciation has been borrowed from the Python programming lan‐ guage (as suggested by Ned Batchelder in 2006). Special variables with double un‐ derscores are quite frequent in Python.
+
+## 130. `JSON.stringify()` only considers enumerable own properties.
+
+```js
+console.log(JSON.stringify(data, null, 4));
+
+console.log(JSON.stringify({a: 0, b: ['\n']}, null, '|--'));
+
+console.log(JSON.stringify(function() {})); // undefined
+
+console.log(JSON.stringify({ foo: function() {} })); // '{}'
+
+console.log(JSON.stringify([ function () {} ])); // '[null]'
+
+// The toJSON() Method
+console.log(JSON.stringify({ toJSON: function () { return 'Cool' } })); // '"Cool"'
+
+// Dates already have a toJSON method that produces an ISO 8601 date string
+console.log(JSON.stringify(new Date('2011-07-29'))); // '"2011-07-28T22:00:00.000Z"'
+
+// built-in toJSON() methods
+let obj={
+  toJSON: function (key) {
+    // Use JSON.stringify for nicer-looking output
+    console.log(JSON.stringify(key));
+    return 0;
+  }
+};
+JSON.stringify({ foo: obj, bar: [ obj ]})
+//    "foo"
+//    "0"
+//    '{"foo":0,"bar":[0]}'
+
+• Boolean.prototype.toJSON() 
+• Number.prototype.toJSON() 
+• String.prototype.toJSON() 
+• Date.prototype.toJSON()
+
+// JSON.parse(text, reviver?)
+function dateReviver(key, value) {
+  if (typeof value === 'string') {
+    let x = Date.parse(value);
+    if (!isNaN(x)) { // valid date string?
+    return new Date(x); 
+  }
+}
+  return value; 
+}
+
+let str = '{ "name": "John", "birth": "2011-07-28T22:00:00.000Z" }';
+console.log(JSON.parse(str, dateReviver));
+// { name: 'John', birth: Thu, 28 Jul 2011 22:00:00 GMT }
+
+
+```
+
+---
