@@ -3635,3 +3635,16 @@ console.log(JSON.parse(str, dateReviver));
 ```
 
 ---
+
+## 131. `AudioContext` API
+
+```js
+const context = new AudioContext()
+const oscillator = context.createOscillator()
+oscillator.frequency.value = 448
+oscillator.connect(context.destination)
+oscillator.start()
+oscillator.stop()
+```
+
+---
