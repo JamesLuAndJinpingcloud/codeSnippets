@@ -2357,6 +2357,23 @@ Array.from({ length: 3 }, (_, i) => `day-${i}`);
 Array.from({ length: 12 }, (x, index) => {
   return index < 9 ? '0' + (index + 1) : index + 1 + '';
 });
+
+// Generate Array
+[...Array(N).keys()].map(i => i+1); // [1,2,3,...1000]
+
+Array(N).fill().map((_, i) => i+1);
+
+Array.from(Array(N), (_, i) => i+1);
+
+Array.from({ length: N }, (_, i) => i+1);
+
+// 
+[...Array(N).keys()].map(f);
+
+Array(45).fill(0).map((e,i)=>i+1) // [1,...,45]
+
+Array.from({length: 5}, (v, k) => k+1); // [1,2,3,4,5]
+
 ```
 
 ---
