@@ -4,12 +4,8 @@
 // TODO replace this code with something better
 ```
 
-## 1. 工作账号
+## 1. TODO
 
-> 公司电脑的 teamcity:
-teamCity： `admin 123456`,
-super token： `admin`
-公司电脑 WSL ubuntu: root用户密码： toor
 ---
 
 ## 2. npm 淘宝镜像使用方法
