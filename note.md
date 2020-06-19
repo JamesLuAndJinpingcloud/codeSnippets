@@ -8,12 +8,13 @@
 
 ---
 
-## 2. npm 淘宝镜像使用方法
+## 2. npm, yarn 淘宝镜像使用方法
 
 > 1.通过 config 命令
 
 ```bash
 .1 npm config set registry https://registry.npm.taobao.org
+// yarn config set registry http://registry.npm.taobao.org/
 .2 npm info underscore
 
 #（如果上面配置正确, 2 会有字符串response）
