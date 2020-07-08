@@ -3662,3 +3662,38 @@ oscillator.stop()
 ```
 
 ---
+
+## 132. custom `contains()` function.
+
+```js
+/**
+ * 包含浏览器检测的contains()方法
+ * 
+ * compareDocumentPosition() 确定2个节点间关系，返回表示该关系的位掩码(bitmask)
+ *  1 无关
+ *  2 居前
+ *  4 居后
+ *  8 包含
+ *  16 被包含
+ */
+function contains(refNode, otherNode) {
+  if (typeof refNode.contains == 'function' && 
+    (!client.engine.webkit || client.engine.webkit >= 522)) {
+      return refNode.contains(otherNode);
+  } else if (typeof refNode.compareDocumentPosition == 'function') {
+    return !!(refNode.compareDocumentPosition(otherNode) & 16);
+  } else {
+    let node = otherNode.parentNode;
+    do {
+      if (node === refNode) {
+        return true;
+      } else {
+        node = node.parentNode;
+      }
+    } while (node !== null);
+    return false;
+  }
+}
+```
+
+---
