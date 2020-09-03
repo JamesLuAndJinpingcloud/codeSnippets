@@ -3697,3 +3697,26 @@ function contains(refNode, otherNode) {
 ```
 
 ---
+
+## 133. Filter List Data with multiple property
+
+```js
+let allList = []
+const filterBy = {
+  trhFrom: '123',
+  modelId: 'CRH380D',
+  date: '2021-04-26'
+}
+
+let filterByList = allList.filter(o => {
+  return Object.keys(filterBy).every(k => {
+    if (filterBy[k]) {
+      return filter[k].includes(o[k])
+    }
+    return true
+  })
+})
+console.log(filterByList)
+```
+
+---
