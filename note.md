@@ -2810,6 +2810,16 @@ console.log(chunkify(hugeArray));
 6: (10) [60, 61, 62, 63, 64, 65, 66, 67, 68, 69]
 7: (6) [70, 71, 72, 73, 74, 75]
 */
+
+// Or
+function chunkArray(array, size) {
+    let result = []
+    for (let i = 0; i < array.length; i += size) {
+        let chunk = array.slice(i, i + size)
+        result.push(chunk)
+    }
+    return result
+}
 ```
 
 ---
