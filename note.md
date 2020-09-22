@@ -3730,3 +3730,20 @@ console.log(filterByList)
 ```
 
 ---
+
+## 134. calc diff days between two days
+
+```js
+const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24
+function dayDifference(date1, date2) {  
+   const timeDiff = Math.abs(date2.getTime() - date1.getTime())
+   const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY)
+   return diffDays
+}
+let date1 = new Date() //May 28 2019 
+let date2 = new Date() 
+date2.setDate(22);
+dayDifference(date, date1); // 7
+```
+
+---
