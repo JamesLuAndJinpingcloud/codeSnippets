@@ -3760,3 +3760,58 @@ dayDifference(date, date1); // 7
 ```
 
 ---
+
+## 135. `display: inline-block `或 `overflow: hidden` 引起的元素高度莫名增大
+
+
+- 引起原因：与`inline-block`的元素的baseline定义与实现有关，参考[w3c关于元素baseline的说明](https://www.w3.org/TR/CSS2/visudet.html#leading)
+
+- 解决方法：加`vertial-align：top`或别的值， 参考[stackoverflow解决方法](https://stackoverflow.com/questions/9273016/why-is-this-inline-block-element-pushed-downward)
+
+---
+
+## 136. 安装多个不同版本的`npm`包
+
+目的：不想升级一个`npm`包，但是想用它的一些新功能，可以在一个项目中安装不同版本的`npm`包，以`react`为例。
+
+准备：`node`及`npm`版本要求
+
+> NPM version: 6.9.0 or above [发布说明](https://github.com/npm/cli/releases/tag/v6.9.0)
+
+>Node version: 10.16.0 or above [发布说明](https://nodejs.org/en/download/releases/)
+
+安装：使用package aliases命令实现
+
+```bash
+npm i <package_name_alias>@npm:<package_name>
+```
+
+例如：安装最新版本的`react`，别名为`react-latest`
+
+```bash
+# 安装
+npm i react-latest@npm:react
+```
+
+```js
+// 项目中引用
+import React from react-latest
+```
+
+```bash
+# 安装一个确定版本的包
+npm i react-latest@npm:react@16.8.0
+```
+对应的`package.json`文件为
+```json
+{
+  "name": "project-name",
+  "version": "1.0.0",
+  "dependencies": {
+    "react": "15.5.0",
+    "react-latest": "npm:react@^16.8.0"
+  }
+}
+```
+
+---
