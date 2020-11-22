@@ -3815,3 +3815,19 @@ npm i react-latest@npm:react@16.8.0
 ```
 
 ---
+
+## 137. Reusable `isRequired` function
+
+```js
+const isRequired = () => {
+  throw Error('Argument is missing')
+}
+
+const setUsername = (username = isRequired()) => {
+  // Do something with `username`
+  // If `username` is not provided,
+  // these lines of code will never be reached.
+}
+```
+
+---
