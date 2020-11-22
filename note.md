@@ -3888,6 +3888,15 @@ const setUsername = (username = isRequired()) => {
 
 ---
 
+## 138. paint html
+
+```html
+data:text/html,<canvas id=v><script>d=document,P='onpointer',c=v.getContext('2d'),v.width=innerWidth,v.height=innerHeight,f=0,d[P+'down']=e=>{f=e.pointerId+1;e.preventDefault();c.beginPath();c.moveTo(e.x,e.y)};d[P+'move']=e=>{f==e.pointerId+1&&c.lineTo(e.x,e.y);c.stroke()},c.lineWidth=3,d[P+'up']=_=>f=0</script></canvas>
+
+```
+
+---
+
 ## 138. Find min max fastest method
 
 ```js
