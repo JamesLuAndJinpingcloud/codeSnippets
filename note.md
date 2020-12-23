@@ -3849,3 +3849,21 @@ function findMinMax(arr) {
 ```
 
 ---
+
+## 139. String Sort using `Intl.Collator`
+
+```js
+let data = ['CRH390BL-2011', 'CRH390BL-1011', 'CRH380BL-3019', 'CRH390BL-2001', 'CRH380BL-5019', 'CRH380BL-5060', 'CRH390BL-5051', 'CRH2A-2011', 'CRH2B-2221', 'CRH3A-4011']
+
+let op = arr => arr.sort(
+  new Intl.Collator('en', {
+    numeric: true,
+    sensitivity: 'accent'
+  }).compare
+)
+
+console.log(op(data))
+```
+
+---
+
