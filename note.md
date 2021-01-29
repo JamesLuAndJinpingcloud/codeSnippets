@@ -3420,7 +3420,7 @@ Object.assign([], string);
 
 ---
 
-## 119. Adsome and useful link for teaching yourself
+## 119. Awesome and useful link for teaching yourself
 
 - https://github.com/keithnull/TeachYourselfCS-CN
 
