@@ -231,6 +231,16 @@ function search (tree, value, key = 'id', reverse = false) {
 }
 
 search(data, 'randomNode_2', 'title')
+
+
+// Other methods make tree
+function toTree (items, id = '0', link = 'parentId') {
+  return items.filter(item => item[link] === id)
+    .map(item => ({
+      ...item,
+      children: toTree(items, item.id)
+    }))
+}
 ```
 
 ---
@@ -3866,4 +3876,3 @@ console.log(op(data))
 ```
 
 ---
-
