@@ -3876,3 +3876,11 @@ console.log(op(data))
 ```
 
 ---
+
+## 140. 查看Windows系列号
+
+```cmd
+wmic bios get serialnumber
+```
+
+---
