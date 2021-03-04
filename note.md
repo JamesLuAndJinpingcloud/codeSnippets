@@ -3884,3 +3884,28 @@ wmic bios get serialnumber
 ```
 
 ---
+## 141. Tagged Template Destructuring
+
+```js
+const fail = message => { throw Error(message) }
+const given = f => f()
+const destructure = (strings, ...variables) =>
+    target => ["", ...variables]
+        .reduce((accum, name, index) => given((
+            needle = strings[index],
+            found = index === variables.length ? 
+                target.length :
+                target.indexOf(needle, accum.index)) =>
+                found === -1 ?
+                    fail(`Target string did not match template.`) :
+                    (index !== 0 && (accum.results[name] = target.slice(accum.index, found)),
+                    accum.index = found + needle.length,
+                    accum)),
+                    { index: 0, results: { } }).results
+      
+const testURL = "https://google.com/pizza/pie"
+const { host, path } = destructure `https://${"host"}/${"path"}` (testURL)
+
+```
+
+---
