@@ -3909,3 +3909,21 @@ const { host, path } = destructure `https://${"host"}/${"path"}` (testURL)
 ```
 
 ---
+
+## 142. str2Unicode
+
+```js
+function toUnicode(str) {
+	return str.split('').map(function (value, index, array) {
+		var temp = value.charCodeAt(0).toString(16).toUpperCase();
+		if (temp.length > 2) {
+			return '\\u' + temp;
+		}
+		return value;
+	}).join('');
+}
+
+toUnicode('替代描述') // "\u66FF\u4EE3\u63CF\u8FF0"
+```
+
+---
