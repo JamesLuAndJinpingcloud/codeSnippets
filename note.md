@@ -234,14 +234,60 @@ search(data, 'randomNode_2', 'title')
 
 
 // Other methods make tree
-function toTree (items, id = '0', link = 'parentId') {
-  return items.filter(item => item[link] === id)
+function toTree (items, rootId = null, idAlias = 'id', parentIdAlias = 'parentId') {
+  return items.filter(item => item[parentIdAlias] === rootId)
     .map(item => ({
       ...item,
-      children: toTree(items, item.id)
+      children: toTree(items, item[idAlias], idAlias, parentIdAlias)
     }))
 }
+
+function toTree2 (items = [], rootId = null, idAlias = 'id', parentIdAlias = 'parentId') {
+  const output = []
+
+  for (const i in items) {
+    if (item[i][parentIdAlias] === rootId) {
+      const children = toTree2(items, items[i][idAlias], idAlias, parentIdAlias)
+
+      if (children.length) {
+        items[i].children = children
+      }
+
+      output.push(items[i])
+    }
+  }
+}
+
+function toTree3 (items = [], rootId = null, idAlias = 'id', parentIdAlias = 'parentId' ) {
+  const idMapping = items.reduce((acc, el, i) => {
+    acc[el[idAlias]] = i
+    return acc
+  }, {})
+
+  let root
+
+  items.forEach(el => {
+    if (el[idAlias] === rootId) {
+      root = el
+      return
+    }
+
+    const parentEl = items[idMapping[el[parentIdAlias]]]
+    parentEl.children = [...(parentEl.children) || [], el]
+  })
+
+  return [root]
+}
+
 ```
+
+> Test Performance: items.length = `12137`
+
+> `toTree`: `40276ms`
+
+> `toTree2`: `21210ms`
+
+> `toTree3`: `129ms`
 
 ---
 
