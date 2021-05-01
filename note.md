@@ -1307,7 +1307,7 @@ var arr = [
   }
 ];
 
-console.log(groupBy(arr, 'systemName');
+console.log(groupBy(arr, 'systemName')
 ```
 
 ---
@@ -3897,7 +3897,7 @@ data:text/html,<canvas id=v><script>d=document,P='onpointer',c=v.getContext('2d'
 
 ---
 
-## 138. Find min max fastest method
+## 139. Find min max the fastest method
 
 ```js
 function findMinMax(arr) {
@@ -3915,7 +3915,7 @@ function findMinMax(arr) {
 
 ---
 
-## 139. String Sort using `Intl.Collator`
+## 140. String Sort using `Intl.Collator`
 
 ```js
 let data = ['CRH390BL-2011', 'CRH390BL-1011', 'CRH380BL-3019', 'CRH390BL-2001', 'CRH380BL-5019', 'CRH380BL-5060', 'CRH390BL-5051', 'CRH2A-2011', 'CRH2B-2221', 'CRH3A-4011']
@@ -3932,14 +3932,14 @@ console.log(op(data))
 
 ---
 
-## 140. 查看Windows系列号
+## 141. 查看Windows系列号
 
 ```cmd
 wmic bios get serialnumber
 ```
 
 ---
-## 141. Tagged Template Destructuring
+## 142. Tagged Template Destructuring
 
 ```js
 const fail = message => { throw Error(message) }
@@ -3965,7 +3965,7 @@ const { host, path } = destructure `https://${"host"}/${"path"}` (testURL)
 
 ---
 
-## 142. str2Unicode
+## 143. str2Unicode
 
 ```js
 function toUnicode(str) {
