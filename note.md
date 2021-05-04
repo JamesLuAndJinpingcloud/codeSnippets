@@ -3432,7 +3432,7 @@ function compareArrays(first, second){
 
 ---
 
-## 116.  function delete some property of object
+## 116. function delete some property of object
 
 ```js
 const user = {
@@ -3790,7 +3790,7 @@ const filterBy = {
 let filterByList = allList.filter(o => {
   return Object.keys(filterBy).every(k => {
     if (filterBy[k]) {
-      return filter[k].includes(o[k])
+      return filterBy[k].includes(o[k])
     }
     return true
   })
