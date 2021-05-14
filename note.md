@@ -3969,16 +3969,82 @@ const { host, path } = destructure `https://${"host"}/${"path"}` (testURL)
 
 ```js
 function toUnicode(str) {
-	return str.split('').map(function (value, index, array) {
-		var temp = value.charCodeAt(0).toString(16).toUpperCase();
-		if (temp.length > 2) {
-			return '\\u' + temp;
-		}
-		return value;
-	}).join('');
+  return str.split('').map(function (value, index, array) {
+    var temp = value.charCodeAt(0).toString(16).toUpperCase();
+    
+    if (temp.length > 2) {
+      return '\\u' + temp;
+      }
+      return value;
+  }).join('');
 }
 
 toUnicode('替代描述') // "\u66FF\u4EE3\u63CF\u8FF0"
+```
+
+---
+
+## 144. JSON.stringify nested object
+
+```js
+function censor(censor) {
+  var i = 0;
+
+  return function(key, value) {
+    if(i !== 0 && typeof(censor) === 'object' && typeof(value) == 'object' && censor == value) 
+      return '[Circular]'; 
+
+    if(i >= 29)
+      return '[Unknown]';
+
+    ++i; 
+
+    return value;  
+  }
+}
+
+
+const a = {}
+a.b=1
+a.c=2
+
+a.d = a
+
+JSON.stringify(a, censor(a))
+```
+
+---
+
+## 145. calc DOM content tag count
+
+```js
+const getNode = (el)=>{
+    const treeWalker = document.createTreeWalker(el || document.body, NodeFilter.SHOW_ELEMENT, {
+        acceptNode: function(node) {
+            return NodeFilter.FILTER_ACCEPT;
+        }
+    }, false);
+
+    let nodeList = [];
+    let currentNode = treeWalker.currentNode;
+
+    while (currentNode) {
+        nodeList.push(currentNode);
+        currentNode = treeWalker.nextNode();
+    }
+
+    return nodeList
+}
+
+const nodeNameList = (nodeList) => {
+  return [...nodeList].map(o => o.nodeName)
+}
+
+const count = (arr) => {
+  return arr.reduce((prev, curr) => (prev[curr] = ++prev[curr] || 1, prev), {})
+}
+
+console.log(count(nodeNameList(getNode($0)))) // output: {P: 1, CODE: 8, EM: 2}
 ```
 
 ---
