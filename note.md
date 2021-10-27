@@ -4048,3 +4048,23 @@ console.log(count(nodeNameList(getNode($0)))) // output: {P: 1, CODE: 8, EM: 2}
 ```
 
 ---
+
+## 146. '2021Q3M9W1' => { Y: '2021', Q: '3', M: '9', W: '1' } 
+
+```js
+const extractDate = (rawStr) => {
+  const str = 'Y' + rawStr
+  const arr = str?.match(/[YQMW][0-9]{1,4}/g)
+  
+  return arr?.reduce((acc, cur) => {
+    return {
+      ...acc,
+      [cur[0]]: cur.slice(1)
+    }
+  }, {})
+}
+
+extractDate('2021Q3M9W1') // { Y: '2021', Q: '3', M: '9', W: '1' } 
+```
+
+---
