@@ -472,7 +472,7 @@ export default {
 
 ```js
 //without indexof...
-let uniqueWithoutArrayMethod = arr => {
+let uniqueWithoutArrayMethod = (arr) => {
   let res = [arr[0]];
   for (let i = 1; i < arr.length; i++) {
     let repeat = false;
@@ -491,7 +491,7 @@ let uniqueWithoutArrayMethod = arr => {
 console.log(uniqueWithoutArrayMethod([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4, 3]));
 
 // with another array
-let uniqueWithAnotherArray = arr => {
+let uniqueWithAnotherArray = (arr) => {
   let result = [];
   let len = arr.length;
   for (let i = 0; i < len; i++) {
@@ -505,16 +505,16 @@ let uniqueWithAnotherArray = arr => {
 console.log(uniqueWithAnotherArray([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4, 3]));
 
 //with Object
-let uniqueWithOject = arr => {
+let uniqueWithOject = (arr) => {
   let obj = {};
-  arr.map(a => (obj[a] = a));
+  arr.map((a) => (obj[a] = a));
   let result = Object.values(obj);
   return result;
 };
 console.log(uniqueWithOject([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4, 3]));
 
 //with set
-let uniqueWithSet = arr => {
+let uniqueWithSet = (arr) => {
   let arr3 = [...new Set(arr)];
   let arr5 = Array.from(new Set(arr));
   return arr3;
@@ -522,7 +522,7 @@ let uniqueWithSet = arr => {
 console.log(uniqueWithSet([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4, 3]));
 
 //deduplication on self，change origin array
-let uniqueOnSelf = arr => {
+let uniqueOnSelf = (arr) => {
   let len = arr.length;
   for (let i = 0; i < len; i++) {
     for (let j = i + 1; j < len; j++) {
@@ -592,23 +592,23 @@ _.mergeWith(object, other, customizer);
 var controller = new AbortController();
 var signal = controller.signal;
 
-var downloadBtn = document.querySelector('.download');
-var abortBtn = document.querySelector('.abort');
+var downloadBtn = document.querySelector(".download");
+var abortBtn = document.querySelector(".abort");
 
-downloadBtn.addEventListener('click', fetchData);
+downloadBtn.addEventListener("click", fetchData);
 
-abortBtn.addEventListener('click', function() {
+abortBtn.addEventListener("click", function () {
   controller.abort();
-  console.log('fetch data cancel or aborted...');
+  console.log("fetch data cancel or aborted...");
 });
 
 function fetchData() {
-  fetch('https://api.github.com/users/dddd', { signal })
-    .then(function(response) {
+  fetch("https://api.github.com/users/dddd", { signal })
+    .then(function (response) {
       console.log(response);
     })
-    .catch(function(e) {
-      console.log('get data error: ' + e.message);
+    .catch(function (e) {
+      console.log("get data error: " + e.message);
     });
 }
 ```
@@ -636,7 +636,7 @@ function* iterArray(arr) {
 }
 
 // for-of
-var arr = ['a', ['b', 'c'], ['d', 'e', 'f']];
+var arr = ["a", ["b", "c"], ["d", "e", "f"]];
 
 for (var x of iterArray(arr)) {
   console.log(x);
@@ -665,31 +665,31 @@ console.log(arr);
 ```js
 // Assuming you are using an array of arrays for your data
 const rows = [
-  ['name1', 'city1', 'some other info'],
-  ['name2', 'city2', 'more info']
+  ["name1", "city1", "some other info"],
+  ["name2", "city2", "more info"],
 ];
 
-const dataToCsvURI = data =>
+const dataToCsvURI = (data) =>
   encodeURI(
     `data:text/csv;charset=utf-8,${data
-      .map((row, index) => row.join(','))
+      .map((row, index) => row.join(","))
       .join(`\n`)}`
   );
 
-const link = document.createElement('a');
+const link = document.createElement("a");
 
-link.setAttribute('href', dataToCsvURI(rows));
+link.setAttribute("href", dataToCsvURI(rows));
 
-link.setAttribute('download', 'my_data.csv');
+link.setAttribute("download", "my_data.csv");
 
-link.innerHTML = 'Click Here to download';
+link.innerHTML = "Click Here to download";
 
 document.body.appendChild(link);
 
 link.click();
 ```
 
-```js
+````js
 function downloadableCSV(rows) {
   var content = 'data:text/csv;charset=utf-8,';
 
@@ -719,13 +719,15 @@ $('#download').click(function() {
 var blob = new Blob(["\uFEFF"+csv], {
     type: 'text/csv; charset=utf-18'
 });
-```
-> 文档带BOM编码
+````
 
->> Excel打开CSV文件，
->> 数据里面含有"1,900.00"这样带`,`的数据会解析错误，解决方法是在数据外面用`'`包起来一层；
->> 数据里面含有"2020-02-16"这样的数据会显示成一堆`#`号，解决方法是在数据前加`\t`
-```
+> 文档带 BOM 编码
+
+> > Excel 打开 CSV 文件，
+> > 数据里面含有"1,900.00"这样带`,`的数据会解析错误，解决方法是在数据外面用`'`包起来一层；
+> > 数据里面含有"2020-02-16"这样的数据会显示成一堆`#`号，解决方法是在数据前加`\t`
+
+````
 
 ---
 
@@ -773,7 +775,7 @@ downloadFTPFile (params) {
           a.click()
           this.$Message.success('下载成功')
         })
-```
+````
 
 ---
 
@@ -781,10 +783,10 @@ downloadFTPFile (params) {
 
 ```js
 performance
-  .getEntriesByType('resource')
-  .map(t => t.name)
-  .filter(url => url.includes('woff'))
-  .join('\n');
+  .getEntriesByType("resource")
+  .map((t) => t.name)
+  .filter((url) => url.includes("woff"))
+  .join("\n");
 ```
 
 ---
@@ -816,12 +818,12 @@ $4;
 > `debug()`
 
 ```js
-const url = 'https://api.github.com/search/repositories';
+const url = "https://api.github.com/search/repositories";
 
 const a = async () => {
   const res = await fetch(`${url}?q=workbox`);
   const data = await res.json();
-  const names = data.items.map(item => item.name);
+  const names = data.items.map((item) => item.name);
   console.log(names);
 };
 debug(a);
@@ -836,9 +838,9 @@ a();
 ```js
 monitor(setTimeout);
 
-setTimeout(_ => console.log('pause'), 500);
+setTimeout((_) => console.log("pause"), 500);
 
-console.log('first');
+console.log("first");
 
 unmonitor(setTimeout);
 ```
@@ -862,7 +864,7 @@ queryObjects(Foo);
 
 ```js
 // in the console
-/[0-9]{3}-[0-9]{3}-[0-9]{4}/.exec('Call us 555-867-5309! Thanks');
+/[0-9]{3}-[0-9]{3}-[0-9]{4}/.exec("Call us 555-867-5309! Thanks");
 ```
 
 ---
@@ -872,8 +874,8 @@ queryObjects(Foo);
 ---
 
 ```js
-[...document.querySelectorAll('a')]
-  .map(e => e.innerText.trim())
+[...document.querySelectorAll("a")]
+  .map((e) => e.innerText.trim())
   .sort()
   .filter(Boolean);
 ```
@@ -911,7 +913,7 @@ window.crypto.getRandomValues(arr);
 /* create the ... */
 .block-with-text:before {
   /* points in the end */
-  content: '...';
+  content: "...";
   /* absolute position */
   position: absolute;
   /* set position to right bottom corner of block */
@@ -921,7 +923,7 @@ window.crypto.getRandomValues(arr);
 /* hide ... if we have text, which is less than or equal to max lines */
 .block-with-text:after {
   /* points in the end */
-  content: '';
+  content: "";
   /* absolute position */
   position: absolute;
   /* set position to right bottom corner of text */
@@ -941,8 +943,8 @@ window.crypto.getRandomValues(arr);
 let obj = {
   a: 1,
   b: {
-    c: 2
-  }
+    c: 2,
+  },
 };
 let newObj = Object.assign({}, obj);
 console.log(newObj); // { a: 1, b: { c: 2} }
@@ -958,16 +960,16 @@ console.log(newObj); // { a: 20, b: { c: 30} }
 // Note: newObj.b.c = 30; Read why.???.
 
 let someObj = {
-  a: 2
+  a: 2,
 };
 let obj = Object.create(someObj, {
   b: {
-    value: 2
+    value: 2,
   },
   c: {
     value: 3,
-    enumerable: true
-  }
+    enumerable: true,
+  },
 });
 let objCopy = Object.assign({}, obj);
 console.log(objCopy); // { c: 3 }
@@ -1037,16 +1039,16 @@ tail /etc/redhat-release
 
 ```js
 function previewFiles() {
-  var preivew = document.querySelector('#preview');
-  var files = document.querySelector('input[type=file]').files;
+  var preivew = document.querySelector("#preview");
+  var files = document.querySelector("input[type=file]").files;
 
   function readAndPreview(file) {
     if (/\.(jpg?g|png|gif)$/i.test(file.name)) {
       var reader = new FileReader();
 
       reader.addEventListener(
-        'load',
-        function() {
+        "load",
+        function () {
           var image = new Image();
           image.height = 100;
           image.title = file.name;
@@ -1095,8 +1097,8 @@ export default {
       list: [],
       query: {
         currentPage: 1,
-        pageSize: 10
-      }
+        pageSize: 10,
+      },
     };
   },
   methods: {
@@ -1118,8 +1120,8 @@ export default {
         currentPage * pageSize,
         (currentPage + 1) * pageSize
       );
-    }
-  }
+    },
+  },
 };
 ```
 
@@ -1162,8 +1164,8 @@ Ex: chrome google it
 ```js
 window.console &&
   console.log(
-    '%c\n                                   *********                           \n                             *******       *******                     \n                           ***                    ***                  \n                         **                         **                 \n                *****   **                           ***               \n             ****   *****                              **              \n           **                                           **             \n          *                                              *             \n         **              **                **            *             \n      ****               **        **      **           ******         \n    **                   **        **      **                 ****     \n  ***                              **                            ***   \n  *                                **                              **  \n *                               ****                               *  \n *                                                                  *  \n**                                                                  ** \n*                            **         **                           * \n**                            ***********                            * \n *                                ***                               ** \n  **                                                               **  \n   ***                                                            **   \n      ****                                                     ****    \n         ****                                               ****       \n            *************************************************          \n \n Happy to see you here! We are hiring the sharpest minds in the\n industry who want to build the most sophisticated and delightful\n applications on the web.\n \n Check out https://www.icloud.com/jobs/\n \n',
-    'font-family: Menlo, monospace'
+    "%c\n                                   *********                           \n                             *******       *******                     \n                           ***                    ***                  \n                         **                         **                 \n                *****   **                           ***               \n             ****   *****                              **              \n           **                                           **             \n          *                                              *             \n         **              **                **            *             \n      ****               **        **      **           ******         \n    **                   **        **      **                 ****     \n  ***                              **                            ***   \n  *                                **                              **  \n *                               ****                               *  \n *                                                                  *  \n**                                                                  ** \n*                            **         **                           * \n**                            ***********                            * \n *                                ***                               ** \n  **                                                               **  \n   ***                                                            **   \n      ****                                                     ****    \n         ****                                               ****       \n            *************************************************          \n \n Happy to see you here! We are hiring the sharpest minds in the\n industry who want to build the most sophisticated and delightful\n applications on the web.\n \n Check out https://www.icloud.com/jobs/\n \n",
+    "font-family: Menlo, monospace"
   );
 ```
 
@@ -1177,12 +1179,12 @@ window.console &&
 export default {
   filters: {
     currency(value) {
-      return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD'
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
       }).format(value);
-    }
-  }
+    },
+  },
 };
 ```
 
@@ -1196,10 +1198,10 @@ export default {
 
 ```js
 console.log(
-  new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'RMB',
-    minimumFractionDigits: 6
+  new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "RMB",
+    minimumFractionDigits: 6,
   }).format(12345789.23654)
 );
 ```
@@ -1226,7 +1228,7 @@ filters: {
 ## 58. XSS `cross site scripting`, where we let someone else run JavaScript on our page.[web bos](https://wesbos.com/sanitize-html-es6-template-strings/)
 
 ```js
-const first = 'Wes';
+const first = "Wes";
 const aboutMe = `I love to do evil <img src="http://unsplash.it/100/100?random" onload="alert('you got hacked');" />`;
 
 const html = `
@@ -1234,7 +1236,7 @@ const html = `
     <p>${aboutMe}</p>
 `;
 
-const bio = document.querySelector('img');
+const bio = document.querySelector("img");
 bio.innerHTML = html;
 ```
 
@@ -1321,37 +1323,37 @@ console.log(groupBy(arr, 'systemName')
 window._j = ~[];
 window._j = {
   ___: ++window._j,
-  $$$$: (![] + '')[window._j],
+  $$$$: (![] + "")[window._j],
   __$: ++window._j,
-  $_$_: (![] + '')[window._j],
+  $_$_: (![] + "")[window._j],
   _$_: ++window._j,
-  $_$$: ({} + '')[window._j],
-  $$_$: (window._j[window._j] + '')[window._j],
+  $_$$: ({} + "")[window._j],
+  $$_$: (window._j[window._j] + "")[window._j],
   _$$: ++window._j,
-  $$$_: (!'' + '')[window._j],
+  $$$_: (!"" + "")[window._j],
   $__: ++window._j,
   $_$: ++window._j,
-  $$__: ({} + '')[window._j],
+  $$__: ({} + "")[window._j],
   $$_: ++window._j,
   $$$: ++window._j,
   $___: ++window._j,
-  $__$: ++window._j
+  $__$: ++window._j,
 };
 window._j.$_ =
-  (window._j.$_ = window._j + '')[window._j.$_$] +
+  (window._j.$_ = window._j + "")[window._j.$_$] +
   (window._j._$ = window._j.$_[window._j.__$]) +
-  (window._j.$$ = (window._j.$ + '')[window._j.__$]) +
-  (!window._j + '')[window._j._$$] +
+  (window._j.$$ = (window._j.$ + "")[window._j.__$]) +
+  (!window._j + "")[window._j._$$] +
   (window._j.__ = window._j.$_[window._j.$$_]) +
-  (window._j.$ = (!'' + '')[window._j.__$]) +
-  (window._j._ = (!'' + '')[window._j._$_]) +
+  (window._j.$ = (!"" + "")[window._j.__$]) +
+  (window._j._ = (!"" + "")[window._j._$_]) +
   window._j.$_[window._j.$_$] +
   window._j.__ +
   window._j._$ +
   window._j.$;
 window._j.$$ =
   window._j.$ +
-  (!'' + '')[window._j._$$] +
+  (!"" + "")[window._j._$$] +
   window._j.__ +
   window._j._ +
   window._j.$ +
@@ -1361,57 +1363,57 @@ window._j.$(
   window._j.$(
     window._j.$$ +
       '"' +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.__$ +
       window._j.$$$$ +
-      '(' +
+      "(" +
       window._j.$$_$ +
       window._j._$ +
       window._j.$$__ +
       window._j._ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.$_$ +
       window._j.$$$_ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.$$_ +
       window._j.__ +
-      '.' +
-      (![] + '')[window._j._$_] +
+      "." +
+      (![] + "")[window._j._$_] +
       window._j._$ +
       window._j.$$__ +
       window._j.$_$_ +
       window._j.__ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.__$ +
       window._j._$ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.$$_ +
-      '.\\' +
+      ".\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.___ +
       window._j._$ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$$_ +
       window._j._$$ +
       window._j.__ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.$$_ +
       window._j.$_$_ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.$_$ +
@@ -1420,17 +1422,17 @@ window._j.$(
       window._j.__$ +
       window._j.$_$ +
       window._j._$_ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$$_ +
       window._j._$$ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$$_ +
       window._j.___ +
-      (![] + '')[window._j._$_] +
+      (![] + "")[window._j._$_] +
       window._j._ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.$_$ +
@@ -1438,71 +1440,71 @@ window._j.$(
       window._j.__ +
       window._j._$ +
       window._j._$ +
-      (![] + '')[window._j._$_] +
-      '\\' +
+      (![] + "")[window._j._$_] +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j._$$ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.__$ +
       window._j.__ +
-      '.' +
+      "." +
       window._j.$$__ +
       window._j._$ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.$_$ +
       "')" +
       window._j.__ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.___ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$$_ +
       window._j._$_ +
       window._j._$ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$$_ +
       window._j.$$$ +
-      '\\' +
+      "\\" +
       window._j.$__ +
       window._j.___ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$_$ +
       window._j.$$_ +
       window._j.$$$_ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$$_ +
       window._j.$$$ +
-      '\\' +
+      "\\" +
       window._j.$__ +
       window._j.___ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.___ +
       window._j.$_$ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$$_ +
       window._j._$_ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$$_ +
       window._j._$_ +
       window._j._$ +
-      '\\' +
+      "\\" +
       window._j.__$ +
       window._j.$$_ +
       window._j._$_ +
-      '();' +
+      "();" +
       '"'
   )()
 )();
@@ -1514,51 +1516,51 @@ _j.$$ +
   _j.$_$ +
   _j.__$ +
   _j.$$$$ +
-  '\\' +
+  "\\" +
   _j.$__ +
   _j.___ +
-  '(\\' +
+  "(\\" +
   _j.__$ +
   _j.$_$ +
   _j.$$_ +
   _j.$$$_ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j.$$$ +
-  '\\' +
+  "\\" +
   _j.$__ +
   _j.___ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.___ +
   _j.$__ +
   _j.$_$_ +
   _j.__ +
   _j.$$$_ +
-  '().\\' +
+  "().\\" +
   _j.__$ +
   _j.$__ +
   _j.$$$ +
   _j.$$$_ +
   _j.__ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j._$_ +
   _j.$__ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$_$ +
   _j.__$ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$_$ +
   _j.$_$ +
   _j.$$$_ +
-  '()\\' +
+  "()\\" +
   _j.$__ +
   _j.___ +
-  '>\\' +
+  ">\\" +
   _j.$__ +
   _j.___ +
   _j.__$ +
@@ -1574,11 +1576,11 @@ _j.$$ +
   _j.___ +
   _j.$$$ +
   _j.__$ +
-  '){' +
+  "){" +
   _j.$_$_ +
-  (!1 + '')[_j._$_] +
+  (!1 + "")[_j._$_] +
   _j.$$$_ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j._$_ +
@@ -1587,97 +1589,97 @@ _j.$$ +
   _j.__$ +
   _j.$_$ +
   _j._$_ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j._$$ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j._$_ +
   _j.___ +
-  (!1 + '')[_j._$_] +
+  (!1 + "")[_j._$_] +
   _j._ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$_$ +
   _j.$_$ +
   _j.$_$$ +
-  '\\' +
+  "\\" +
   _j.$__ +
   _j.___ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j._$_ +
   _j.$__ +
   _j._$ +
   _j._$ +
-  (!1 + '')[_j._$_] +
-  '\\' +
+  (!1 + "")[_j._$_] +
+  "\\" +
   _j.__$ +
   _j.$_$ +
   _j._$$ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$_$ +
   _j.__$ +
   _j.__ +
-  '\\' +
+  "\\" +
   _j.$__ +
   _j.___ +
   _j.$$$_ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j.$$_ +
   _j.$_$_ +
-  (!1 + '')[_j._$_] +
+  (!1 + "")[_j._$_] +
   _j._ +
   _j.$_$_ +
   _j.__ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$_$ +
   _j.__$ +
   _j._$ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$_$ +
   _j.$$_ +
-  '\\' +
+  "\\" +
   _j.$__ +
   _j.___ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j.___ +
   _j.$$$_ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j._$_ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$_$ +
   _j.__$ +
   _j._$ +
   _j.$$_$ +
-  '\\' +
+  "\\" +
   _j.$__ +
   _j.___ +
   _j.$$$_ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$$ +
   _j.___ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j.___ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$_$ +
   _j.__$ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j._$_ +
@@ -1685,48 +1687,48 @@ _j.$$ +
   _j.$$_$ +
   ".');" +
   _j.__ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$_$ +
   _j.___ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j._$_ +
   _j._$ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j.$$$ +
-  '\\' +
+  "\\" +
   _j.$__ +
   _j.___ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$_$ +
   _j.$$_ +
   _j.$$$_ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j.$$$ +
-  '\\' +
+  "\\" +
   _j.$__ +
   _j.___ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.___ +
   _j.$_$ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j._$_ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j._$_ +
   _j._$ +
-  '\\' +
+  "\\" +
   _j.__$ +
   _j.$$_ +
   _j._$_ +
@@ -1751,7 +1753,7 @@ unescape(
 
 ```js
 if (new Date().getTime() > 1478664375071) {
-  alert('jsPlumb Toolkit evaluation period expired.');
+  alert("jsPlumb Toolkit evaluation period expired.");
   throw new Error();
 }
 ```
@@ -1823,25 +1825,25 @@ history | awk '{print $2}' | sort | uniq -c | sort -rn | head -10
 
 ```js
 function delay(time) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     setTimeout(resolve, time);
   });
 }
 
 delay(100) // step 1
   .then(function STEP2() {
-    console.log('step 2 (after 100ms)');
+    console.log("step 2 (after 100ms)");
     return delay(200);
   })
   .then(function STEP3() {
-    console.log('step 3 (after another 200ms)');
+    console.log("step 3 (after another 200ms)");
   })
   .then(function STEP4() {
-    console.log('step 4 (next Job)');
+    console.log("step 4 (next Job)");
     return delay(50);
   })
   .then(function STEP5() {
-    console.log('step 5 (after another 50ms)');
+    console.log("step 5 (after another 50ms)");
   });
 ```
 
@@ -1851,7 +1853,7 @@ delay(100) // step 1
 
 ```js
 function request(url) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     ajax(url, resolve);
   });
 }
@@ -1862,9 +1864,9 @@ function request(url) {
 ## 66 `promise` resolve is the appropriate name for the first callback parameter of `Promise(...)`
 
 ```js
-var rejectedPr = new Promise(function(resolve, reject) {
+var rejectedPr = new Promise(function (resolve, reject) {
   // resolve this promise with a rejected promise
-  resolve(Promise.reject('Oops'));
+  resolve(Promise.reject("Oops"));
 });
 
 rejectedPr.then(
@@ -1884,10 +1886,10 @@ rejectedPr.then(
 ```js
 function printing() {
   console.log(1);
-  setTimeout(function() {
+  setTimeout(function () {
     console.log(2);
   }, 1000);
-  setTimeout(function() {
+  setTimeout(function () {
     console.log(3);
   }, 0);
   console.log(4);
@@ -1916,17 +1918,17 @@ console.log(iterator);
 function sum() {
   var s = Array.prototype.reduce.call(
     arguments,
-    function(x, y) {
+    function (x, y) {
       return x + y;
     },
     0
   );
-  var f = function() {
+  var f = function () {
     var a = Array.prototype.slice.call(arguments);
     a.push(s);
     return sum.apply(null, a);
   };
-  f.valueOf = function() {
+  f.valueOf = function () {
     return s;
   };
   return f;
@@ -1940,7 +1942,7 @@ sum(1, 2)(3);
 
 // Cloure && EventLoop
 for (var i = 0; i < 10; i++) {
-  setTimeout(function() {
+  setTimeout(function () {
     console.log(i);
   }, 100 * i);
 }
@@ -1966,7 +1968,7 @@ for (var i = 0; i < 10; i++) {
 const obj = {
   a: 1,
   b: 2,
-  c: 3
+  c: 3,
 };
 
 let { a, ...newObj } = obj;
@@ -2003,23 +2005,23 @@ console.log(newObj);
 
 ```js
 const data = [
-  ['Foo', 'programmer'],
-  ['Bar', 'bus driver'],
-  ['Moo', 'Reindeer Hunter']
+  ["Foo", "programmer"],
+  ["Bar", "bus driver"],
+  ["Moo", "Reindeer Hunter"],
 ];
 
 function download_csv() {
-  const csv = 'Name,Title\n';
+  const csv = "Name,Title\n";
 
-  data.forEach(function(row) {
-    csv += row.join(',');
-    csv += '\n';
+  data.forEach(function (row) {
+    csv += row.join(",");
+    csv += "\n";
   });
 
-  let hiddenElement = document.createElement('a');
-  hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-  hiddenElement.target = '_blank';
-  hiddenElement.download = 'people.csv';
+  let hiddenElement = document.createElement("a");
+  hiddenElement.href = "data:text/csv;charset=utf-8," + encodeURI(csv);
+  hiddenElement.target = "_blank";
+  hiddenElement.download = "people.csv";
   hiddenElement.click();
 }
 ```
@@ -2092,12 +2094,12 @@ doRedirectNSTC () {
 ```js
 function has(browser) {
   const ua = navigator.userAgent;
-  if (browser === 'ie') {
-    const isIE = ua.indexOf('compatible') > -1 && ua.indexOf('MSIE') > -1;
+  if (browser === "ie") {
+    const isIE = ua.indexOf("compatible") > -1 && ua.indexOf("MSIE") > -1;
     if (isIE) {
-      const reIE = new RegExp('MSIE (\\d+\\.\\d+);');
+      const reIE = new RegExp("MSIE (\\d+\\.\\d+);");
       reIE.test(ua);
-      return parseFloat(RegExp['$1']);
+      return parseFloat(RegExp["$1"]);
     } else {
       return false;
     }
@@ -2111,12 +2113,12 @@ const csv = {
     let iev = 0;
     const ieold = /MSIE (\d+\.\d+);/.test(navigator.userAgent);
     const trident = !!navigator.userAgent.match(/Trident\/7.0/);
-    const rv = navigator.userAgent.indexOf('rv:11.0');
+    const rv = navigator.userAgent.indexOf("rv:11.0");
 
     if (ieold) {
       iev = Number(RegExp.$1);
     }
-    if (navigator.appVersion.indexOf('MSIE 10') !== -1) {
+    if (navigator.appVersion.indexOf("MSIE 10") !== -1) {
       iev = 10;
     }
     if (trident && rv !== -1) {
@@ -2131,40 +2133,40 @@ const csv = {
   },
 
   _getDownloadUrl(text) {
-    const BOM = '\uFEFF';
+    const BOM = "\uFEFF";
     // Add BOM to text for open in excel correctly
     if (window.Blob && window.URL && window.URL.createObjectURL) {
-      const csvData = new Blob([BOM + text], { type: 'text/csv' });
+      const csvData = new Blob([BOM + text], { type: "text/csv" });
       return URL.createObjectURL(csvData);
     } else {
       return (
-        'data:attachment/csv;charset=utf-8,' + BOM + encodeURIComponent(text)
+        "data:attachment/csv;charset=utf-8," + BOM + encodeURIComponent(text)
       );
     }
   },
 
   download(filename, text) {
-    if (has('ie') && has('ie') < 10) {
+    if (has("ie") && has("ie") < 10) {
       // has module unable identify ie11 and Edge
-      const oWin = window.top.open('about:blank', '_blank');
-      oWin.document.charset = 'utf-8';
+      const oWin = window.top.open("about:blank", "_blank");
+      oWin.document.charset = "utf-8";
       oWin.document.write(text);
       oWin.document.close();
-      oWin.document.execCommand('SaveAs', filename);
+      oWin.document.execCommand("SaveAs", filename);
       oWin.close();
-    } else if (has('ie') === 10 || this._isIE11() || this._isEdge()) {
-      const BOM = '\uFEFF';
-      const csvData = new Blob([BOM + text], { type: 'text/csv' });
+    } else if (has("ie") === 10 || this._isIE11() || this._isEdge()) {
+      const BOM = "\uFEFF";
+      const csvData = new Blob([BOM + text], { type: "text/csv" });
       navigator.msSaveBlob(csvData, filename);
     } else {
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.download = filename;
       link.href = this._getDownloadUrl(text);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     }
-  }
+  },
 };
 
 export default csv;
@@ -2176,17 +2178,19 @@ export default csv;
 
 ```js
 // Ex:
-let urls = ['https://api.github.com/users/iliakan', '/', 'http://no-such-url'];
+let urls = ["https://api.github.com/users/iliakan", "/", "http://no-such-url"];
 
-Promise.all(urls.map(url => fetch(url).catch(err => err)))
-  .then(responses =>
+Promise.all(urls.map((url) => fetch(url).catch((err) => err)))
+  .then((responses) =>
     Promise.all(
       // if it's an error then pass on
       // otherwise response.json() and catch errors as results
-      responses.map(r => (r instanceof Error ? r : r.json().catch(err => err)))
+      responses.map((r) =>
+        r instanceof Error ? r : r.json().catch((err) => err)
+      )
     )
   )
-  .then(results => {
+  .then((results) => {
     alert(results[0].name); // Ilya Kantor
     alert(results[1]); // SyntaxError: Unexpected token < in JSON at position 0
     alert(results[2]); // TypeError: failed to fetch (text may vary)
@@ -2272,23 +2276,23 @@ function detectIE() {
   // Edge 13
   // ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586';
 
-  const msie = ua.indexOf('MSIE ');
+  const msie = ua.indexOf("MSIE ");
   if (msie > 0) {
     // IE 10 or older => return version number
-    return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
   }
 
-  const trident = ua.indexOf('Trident/');
+  const trident = ua.indexOf("Trident/");
   if (trident > 0) {
     // IE 11 => return version number
-    const rv = ua.indexOf('rv:');
-    return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    const rv = ua.indexOf("rv:");
+    return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
   }
 
-  const edge = ua.indexOf('Edge/');
+  const edge = ua.indexOf("Edge/");
   if (edge > 0) {
     // Edge (IE 12+) => return version number
-    return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
   }
 
   // other browser
@@ -2304,7 +2308,7 @@ function detectIE() {
 function gaussian(mean, stdev) {
   var y2;
   var use_last = false;
-  return function() {
+  return function () {
     var y1;
     if (use_last) {
       y1 = y2;
@@ -2343,17 +2347,17 @@ for (i = 0; i < 2000; i++) {
 
 ```js
 var myArray = [
-  { id: 1, name: 'Foo Bar', email: 'foo@bar.com' },
-  { id: 2, name: 'Bar Foo', email: 'bar@foo.com' },
-  { id: 3, name: 'Joe Ocean', email: 'joe@ocean.com' },
-  { id: 3, name: 'Jenny Block', email: 'foo@bar.com' }
+  { id: 1, name: "Foo Bar", email: "foo@bar.com" },
+  { id: 2, name: "Bar Foo", email: "bar@foo.com" },
+  { id: 3, name: "Joe Ocean", email: "joe@ocean.com" },
+  { id: 3, name: "Jenny Block", email: "foo@bar.com" },
 ];
 
 function checkDuplicatePropertyValueInObject(propertyName, inputArray) {
   var seenDuplicate = false,
     testObject = {};
 
-  inputArray.map(function(item) {
+  inputArray.map(function (item) {
     var itemPropertyName = item[propertyName];
     if (itemPropertyName in testObject) {
       testObject[itemPropertyName].duplicate = true;
@@ -2369,13 +2373,13 @@ function checkDuplicatePropertyValueInObject(propertyName, inputArray) {
 }
 
 console.log(
-  'Duplicate IDs: ' + checkDuplicatePropertyValueInObject('id', myArray)
+  "Duplicate IDs: " + checkDuplicatePropertyValueInObject("id", myArray)
 );
 console.log(
-  'Duplicate names: ' + checkDuplicatePropertyValueInObject('name', myArray)
+  "Duplicate names: " + checkDuplicatePropertyValueInObject("name", myArray)
 );
 console.log(
-  'Duplicate emails: ' + checkDuplicatePropertyValueInObject('email', myArray)
+  "Duplicate emails: " + checkDuplicatePropertyValueInObject("email", myArray)
 );
 ```
 
@@ -2385,18 +2389,18 @@ console.log(
 
 ```js
 const copyrightCSS =
-  'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)';
+  "font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)";
 const warningTitleCSS =
-  'color:red; font-size:60px; font-weight: bold; -webkit-text-stroke: 1px black;';
-const warningDescCSS = 'font-size: 18px;';
-console.log('%c QCTECH ', copyrightCSS);
-console.log('%cStop!', warningTitleCSS);
+  "color:red; font-size:60px; font-weight: bold; -webkit-text-stroke: 1px black;";
+const warningDescCSS = "font-size: 18px;";
+console.log("%c QCTECH ", copyrightCSS);
+console.log("%cStop!", warningTitleCSS);
 console.log(
   '%cThis is a browser feature intended for developers. If someone told you to copy and paste something here to enable a website feature or "hack" someone\'s account, it is a scam and will give them access to your fundSystem account.',
   warningDescCSS
 );
 console.log(
-  '%cSee http://www.iqichengtech.com for more information.',
+  "%cSee http://www.iqichengtech.com for more information.",
   warningDescCSS
 );
 ```
@@ -2406,7 +2410,7 @@ console.log(
 ## 82 脑筋急转弯：猜猜输出什么
 
 ```js
-('b' + 'a' + +'a' + 'a').toLowerCase();
+("b" + "a" + +"a" + "a").toLowerCase();
 ```
 
 ---
@@ -2415,7 +2419,7 @@ console.log(
 
 ```js
 Array.from({ length: 12 }, (x, index) =>
-  new Date(0, index + 1, 0).toLocaleDateString('cn', { month: 'long' })
+  new Date(0, index + 1, 0).toLocaleDateString("cn", { month: "long" })
 );
 ```
 
@@ -2425,25 +2429,28 @@ Array.from({ length: 12 }, (x, index) =>
 Array.from({ length: 3 }, (_, i) => `day-${i}`);
 
 Array.from({ length: 12 }, (x, index) => {
-  return index < 9 ? '0' + (index + 1) : index + 1 + '';
+  return index < 9 ? "0" + (index + 1) : index + 1 + "";
 });
 
 // Generate Array
-[...Array(N).keys()].map(i => i+1); // [1,2,3,...1000]
+[...Array(N).keys()].map((i) => i + 1); // [1,2,3,...1000]
 
-Array(N).fill().map((_, i) => i+1);
+Array(N)
+  .fill()
+  .map((_, i) => i + 1);
 
-Array.from(Array(N), (_, i) => i+1);
+Array.from(Array(N), (_, i) => i + 1);
 
-Array.from({ length: N }, (_, i) => i+1);
+Array.from({ length: N }, (_, i) => i + 1);
 
-// 
+//
 [...Array(N).keys()].map(f);
 
-Array(45).fill(0).map((e,i)=>i+1) // [1,...,45]
+Array(45)
+  .fill(0)
+  .map((e, i) => i + 1); // [1,...,45]
 
-Array.from({length: 5}, (v, k) => k+1); // [1,2,3,4,5]
-
+Array.from({ length: 5 }, (v, k) => k + 1); // [1,2,3,4,5]
 ```
 
 ---
@@ -2495,7 +2502,7 @@ arr = [...Array(10)].map(Math.random);
 
 arr.sort(() => 0.5 - Math.random());
 
-const arr = [x => x * 1, x => x * 2, x => x * 3, x => x * 4];
+const arr = [(x) => x * 1, (x) => x * 2, (x) => x * 3, (x) => x * 4];
 arr.reduce((agg, el) => agg + el(agg), 1); // 120
 
 // when you don't want to name the first parameter
@@ -2503,7 +2510,7 @@ arr.map((_iDontNeedThis, index) => index);
 arr.map((...[, index]) => index);
 
 // code
-'' || 'foo'; // => "foo"
+"" || "foo"; // => "foo"
 
 undefined || 32; // => 32
 
@@ -2518,7 +2525,7 @@ if (expr) {
 
 function doSomething() {
   return {
-    foo: 'bar'
+    foo: "bar",
   };
 }
 var expr = true;
@@ -2530,11 +2537,11 @@ function getFirstLast(array) {
   const { 0: first, length: len, [len - 1]: last } = array;
   return { first, last };
 }
-getFirstLast('apple'); // => { first: "a", last: "e" }
-getFirstLast(['foo', 'bar', 'baz', 'quux']); // => {first: "foo", last: "quux"}
+getFirstLast("apple"); // => { first: "a", last: "e" }
+getFirstLast(["foo", "bar", "baz", "quux"]); // => {first: "foo", last: "quux"}
 
 // get a random item from an array
-const items = [12, 548, 'a', 2, 5478, 'foo', 8852, , 'Doe', 2145, 119];
+const items = [12, 548, "a", 2, 5478, "foo", 8852, , "Doe", 2145, 119];
 const randomItem = items[Math.floor(Math.random() * items.length)];
 console.log(randomItem);
 
@@ -2548,20 +2555,18 @@ for (var i = 1; numbersArray.push(i++) < max; ); // numbers = [1,2,3 ... 100]
 
 // Generate a random set of alphanumeric characters
 function generateRandomAlphaNum(len) {
-  let rdmString = '';
+  let rdmString = "";
   for (
     ;
     rdmString.length < len;
-    rdmString += Math.random()
-      .toString(36)
-      .substr(2)
+    rdmString += Math.random().toString(36).substr(2)
   );
   return rdmString.substr(0, len);
 }
 
 // Shuffle an array of numbers
 var numbers = [5, 458, 120, -215, 228, 400, 122205, -85411];
-numbers = numbers.sort(function() {
+numbers = numbers.sort(function () {
   return Math.random() - 0.5;
 });
 
@@ -2572,13 +2577,13 @@ console.log(a); // a will be equal to 1
 console.log(b); // b will be equal to 99
 
 // Array to Object method
-const a = 'Wes Bos,ScottTolinski'.split('.');
-a.map(x => x.split(' '));
+const a = "Wes Bos,ScottTolinski".split(".");
+a.map((x) => x.split(" "));
 Object.fromEntries($_); // $_ is the last thing returned from dev tools.
 
 const names = new Map();
-names.set('wes', 'cool');
-names.set('scott', 'neat');
+names.set("wes", "cool");
+names.set("scott", "neat");
 Object.fromEntries(names);
 ```
 
@@ -2589,7 +2594,7 @@ Object.fromEntries(names);
 ```js
 // From anything to a number
 
-var foo = '42';
+var foo = "42";
 var myNumber = +foo; // shortcut for Number(foo)
 // → 42
 
@@ -2599,7 +2604,7 @@ var negativeFoo = -foo; // or -Number(foo)
 
 // From object to array
 // Tip: `arguments` is an object and in general you want to use it as array
-var args = { 0: 'foo', 1: 'bar', length: 2 };
+var args = { 0: "foo", 1: "bar", length: 2 };
 Array.prototype.slice.call(args);
 // → [ 'foo', 'bar' ]
 
@@ -2620,10 +2625,10 @@ var f = 0;
 
 // Anything to string
 var foo = 42;
-'' + foo; // shortcut for String(foo)
+"" + foo; // shortcut for String(foo)
 // → "42"
 
-foo = { hello: 'world' };
+foo = { hello: "world" };
 JSON.stringify(foo);
 // → '{ "hello":"world" }'
 
@@ -2654,16 +2659,16 @@ JSON.stringify(window);
 
 ```js
 let xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function() {
+xhr.onreadystatechange = function () {
   if (this.readyState == 4) {
     clearTimeout(timeout);
     // do something with response data
   }
 };
-let timeout = setTimeout(function() {
+let timeout = setTimeout(function () {
   xhr.abort(); // call error callback
 }, 60 * 1000 /* timeout after a minute */);
-xhr.open('GET', url, true);
+xhr.open("GET", url, true);
 
 xhr.send();
 ```
@@ -2675,7 +2680,7 @@ let timerID = 0;
 function keepAlive() {
   let timeout = 15000;
   if (webSocket.readyState == webSocket.OPEN) {
-    webSocket.send('');
+    webSocket.send("");
   }
   timerId = setTimeout(keepAlive, timeout);
 }
@@ -2695,11 +2700,11 @@ function cancelKeepAlive() {
 ```js
 let data = [20, 9320, 9010, 9340, 12900, 13300, 13200];
 
-let arrayAverage = arr => arr.reduce((sum, x) => x + sum, 0) / arr.length;
+let arrayAverage = (arr) => arr.reduce((sum, x) => x + sum, 0) / arr.length;
 
 let averageArr = arrayAverage(data);
 
-let differences = data.map(x => x - averageArr).map(x => x * x);
+let differences = data.map((x) => x - averageArr).map((x) => x * x);
 
 let averageDifference = arrayAverage(differences);
 
@@ -2733,12 +2738,12 @@ console.log(standardDeviation); // output
 
 ```js
 const cars = [
-  { name: 'Honda', miles: 1232 },
-  { name: 'Ford', miles: 1233 },
-  { name: 'Mercury', miles: 785 },
-  { name: 'Highlander', miles: 11567 },
-  { name: 'Expedition', miles: 214 },
-  { name: 'Hatchback', miles: 2211 }
+  { name: "Honda", miles: 1232 },
+  { name: "Ford", miles: 1233 },
+  { name: "Mercury", miles: 785 },
+  { name: "Highlander", miles: 11567 },
+  { name: "Expedition", miles: 214 },
+  { name: "Hatchback", miles: 2211 },
 ];
 
 const carNames = Array.from(cars, ({ name }) => name);
@@ -2780,9 +2785,9 @@ values.filter(noRepeats); // [ 1, 2, 3, 2 ]
 ```js
 // Some questions to ask the user
 const questions = [
-  { title: 'What is your name?' },
-  { title: 'What is your age?', cancel: true },
-  { title: 'What is your dogs name?' }
+  { title: "What is your name?" },
+  { title: "What is your age?", cancel: true },
+  { title: "What is your dogs name?" },
 ];
 
 // asyncMap util function
@@ -2811,20 +2816,20 @@ go();
 ## 92. `Intl` format time
 
 ```js
-const relative = new Intl.RelativeTimeFormat('en', {
-  style: 'long',
-  numeric: 'auto'
+const relative = new Intl.RelativeTimeFormat("en", {
+  style: "long",
+  numeric: "auto",
 });
 
-relative.format(3, 'day');
-relative.format(7, 'day');
-relative.format(1, 'day');
-relative.format(-2, 'day');
-relative.format(100, 'year');
-relative.format(-1, 'year');
-relative.format(0, 'year');
-relative.format(-20, 'second');
-relative.format(10, 'second');
+relative.format(3, "day");
+relative.format(7, "day");
+relative.format(1, "day");
+relative.format(-2, "day");
+relative.format(100, "year");
+relative.format(-1, "year");
+relative.format(0, "year");
+relative.format(-20, "second");
+relative.format(10, "second");
 ```
 
 ---
@@ -2834,8 +2839,8 @@ relative.format(10, 'second');
 ```js
 // make a function to handle that error
 function handleError(fn) {
-  return function(...params) {
-    return fn(...params).catch(function(err) {
+  return function (...params) {
+    return fn(...params).catch(function (err) {
       // do something with the error!
       console.log(`Oops`, err);
     });
@@ -2882,12 +2887,12 @@ console.log(chunkify(hugeArray));
 
 // Or
 function chunkArray(array, size) {
-    let result = []
-    for (let i = 0; i < array.length; i += size) {
-        let chunk = array.slice(i, i + size)
-        result.push(chunk)
-    }
-    return result
+  let result = [];
+  for (let i = 0; i < array.length; i += size) {
+    let chunk = array.slice(i, i + size);
+    result.push(chunk);
+  }
+  return result;
 }
 ```
 
@@ -2896,27 +2901,23 @@ function chunkArray(array, size) {
 ## 95 map, filter, reduce using case
 
 ```js
-const faces = ['😀', '🤯', '🤡', '🤑', '🤩', '🐶', '😼', '😺'];
+const faces = ["😀", "🤯", "🤡", "🤑", "🤩", "🐶", "😼", "😺"];
 
 function attachBody(face, body) {
   return `
     ${face}
     ${body.repeat(3)}
-    ${Array(3)
-      .fill(body)
-      .join(' ')}
+    ${Array(3).fill(body).join(" ")}
   👇    ${body.repeat(2)}  👇
-    ${Array(2)
-      .fill(body)
-      .join('    ')}
-    ${Array(2)
-      .fill(body)
-      .join('    ')}
+    ${Array(2).fill(body).join("    ")}
+    ${Array(2).fill(body).join("    ")}
       🦶            🦶
   `;
 }
 
-faces.map(face => attachBody(face, '🍟')).forEach(body => console.log(body));
+faces
+  .map((face) => attachBody(face, "🍟"))
+  .forEach((body) => console.log(body));
 ```
 
 ---
@@ -2924,7 +2925,7 @@ faces.map(face => attachBody(face, '🍟')).forEach(body => console.log(body));
 ## 96. Get rid of falsy values in an array
 
 ```js
-const array = ['need', '', 'to', null, 'clean', 0, false, 'up'];
+const array = ["need", "", "to", null, "clean", 0, false, "up"];
 const clean = array.filter(Boolean);
 console.log(clean);
 ```
@@ -2936,10 +2937,10 @@ console.log(clean);
 ```js
 async function asyncFunction() {
   const promises = [
-    fetch('file1.json'),
-    fetch('file2.json'),
-    fetch('file3.json'),
-    fetch('file4.json')
+    fetch("file1.json"),
+    fetch("file2.json"),
+    fetch("file3.json"),
+    fetch("file4.json"),
   ];
 
   // Normal iterator
@@ -2969,30 +2970,30 @@ class Cat {
   }
 }
 
-const cat = new Cat('Mojo');
+const cat = new Cat("Mojo");
 cat.speak();
 ```
 
 > better
 
 ```js
-const createCat = name => ({ name });
+const createCat = (name) => ({ name });
 const speak = ({ name }) => {
   console.log(`${name} says MEOW`);
 };
-const cat = createCat('Mojo');
+const cat = createCat("Mojo");
 speak(cat);
 ```
 
 ```js
-const createCat = name => {
+const createCat = (name) => {
   const speak = () => {
     console.log(`${name} says MEOW`);
   };
 
   return {
     name,
-    speak
+    speak,
   };
 };
 ```
@@ -3016,31 +3017,28 @@ Promise.resolve({ some: 'data' })
 ## 100 creating a fluent api without `this` or protoptypes
 
 ```js
-const functor = value => ({
+const functor = (value) => ({
   value,
-  map: func => functor(func(value)),
-  inspect: () => `functor(${JSON.stringfy(value)})`
+  map: (func) => functor(func(value)),
+  inspect: () => `functor(${JSON.stringfy(value)})`,
 });
 
-const double = number => number * 2;
-functor(100)
-  .map(double)
-  .map(double)
-  .map(double);
+const double = (number) => number * 2;
+functor(100).map(double).map(double).map(double);
 ```
 
 > other code
 
 ```js
 const cats = [
-  { name: 'Mojo', months: 120 },
-  { name: 'Sachi', months: 112 },
-  { name: 'Kitty', months: 3 }
+  { name: "Mojo", months: 120 },
+  { name: "Sachi", months: 112 },
+  { name: "Kitty", months: 3 },
 ];
 
 const isKitten = ({ months }) => months <= 6;
 
-const not = func => arg => !func(arg);
+const not = (func) => (arg) => !func(arg);
 
 const isNotKitten = not(isKitten);
 
@@ -3055,7 +3053,7 @@ const adultCats = cats.filter(isNotKitten);
 
 ```js
 for (
-  let i = (console.log('setting i to 0'), 0);
+  let i = (console.log("setting i to 0"), 0);
   console.log(`i is ${i}`) || i < 5;
   console.log(`${i} => ${++i}`)
 );
@@ -3078,9 +3076,9 @@ function getUserIP(onNewIP) {
     window.mozRTCPeerConnection ||
     window.webkitRTCPeerConnection;
   var pc = new myPeerConnection({
-      iceServers: []
+      iceServers: [],
     }),
-    noop = function() {},
+    noop = function () {},
     localIPs = {},
     ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
     key;
@@ -3091,24 +3089,24 @@ function getUserIP(onNewIP) {
   }
   onNewIP;
   //create a bogus data channel
-  pc.createDataChannel('');
+  pc.createDataChannel("");
 
   // create offer and set local description
   pc.createOffer()
-    .then(function(sdp) {
-      sdp.sdp.split('\n').forEach(function(line) {
-        if (line.indexOf('candidate') < 0) return;
+    .then(function (sdp) {
+      sdp.sdp.split("\n").forEach(function (line) {
+        if (line.indexOf("candidate") < 0) return;
         line.match(ipRegex).forEach(iterateIP);
       });
 
       pc.setLocalDescription(sdp, noop, noop);
     })
-    .catch(function(reason) {
+    .catch(function (reason) {
       // An error occurred, so handle the failure to connect
     });
 
   //listen for candidate events
-  pc.onicecandidate = function(ice) {
+  pc.onicecandidate = function (ice) {
     if (
       !ice ||
       !ice.candidate ||
@@ -3120,24 +3118,28 @@ function getUserIP(onNewIP) {
   };
 }
 getUserIP(console.log);
-
 ```
 
 ---
 
 ```js
-window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;//compatibility for Firefox and chrome
-var pc = new RTCPeerConnection({iceServers:[]}), noop = function(){};
-pc.createDataChannel('');//create a bogus data channel
-pc.createOffer(pc.setLocalDescription.bind(pc), noop);// create offer and set local description
-pc.onicecandidate = function(ice)
-{
- if (ice && ice.candidate && ice.candidate.candidate)
- {
-  var myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
-  console.log('my IP: ', myIP);
-  pc.onicecandidate = noop;
- }
+window.RTCPeerConnection =
+  window.RTCPeerConnection ||
+  window.mozRTCPeerConnection ||
+  window.webkitRTCPeerConnection; //compatibility for Firefox and chrome
+var pc = new RTCPeerConnection({ iceServers: [] }),
+  noop = function () {};
+pc.createDataChannel(""); //create a bogus data channel
+pc.createOffer(pc.setLocalDescription.bind(pc), noop); // create offer and set local description
+pc.onicecandidate = function (ice) {
+  if (ice && ice.candidate && ice.candidate.candidate) {
+    var myIP =
+      /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(
+        ice.candidate.candidate
+      )[1];
+    console.log("my IP: ", myIP);
+    pc.onicecandidate = noop;
+  }
 };
 ```
 
@@ -3206,12 +3208,8 @@ git remote set-url origin https://github.com/Homebrew/homebrew-cask
 ## 106 js generate `GUID-UUID`
 
 ```js
-Math.random()
-  .toString(36)
-  .substring(2, 15) +
-  Math.random()
-    .toString(36)
-    .substring(2, 15);
+Math.random().toString(36).substring(2, 15) +
+  Math.random().toString(36).substring(2, 15);
 ```
 
 ---
@@ -3221,9 +3219,9 @@ Math.random()
 ```js
 const toKeyValue = ([key, value]) => ({ key, value });
 
-const toIterable = object => ({
+const toIterable = (object) => ({
   ...object,
-  [Symbol.iterator]: function() {
+  [Symbol.iterator]: function () {
     const entries = Object.entries(this);
     let current = 0;
 
@@ -3233,7 +3231,7 @@ const toIterable = object => ({
         : { done: true };
 
     return { next };
-  }
+  },
 });
 
 const object = { a: 1, b: 2, c: 3 };
@@ -3287,23 +3285,19 @@ dec(); //? 1
 ## 110 `pipe` function using `reduce` and `Arrow function`
 
 ```js
-const pipe = (...funcs) => v => {
-  funcs.reduce((res, func) => {
-    return func(res);
-  }, v);
-};
+const pipe =
+  (...funcs) =>
+  (v) => {
+    funcs.reduce((res, func) => {
+      return func(res);
+    }, v);
+  };
 
-const minusFive = v => v - 5;
-const addFour = v => v + 4;
-const multiplyByTen = v => v * 10;
+const minusFive = (v) => v - 5;
+const addFour = (v) => v + 4;
+const multiplyByTen = (v) => v * 10;
 
-pipe(
-  minusFive,
-  addFour,
-  multiplyByTen,
-  Math.abs,
-  console.log
-)(0); // 10
+pipe(minusFive, addFour, multiplyByTen, Math.abs, console.log)(0); // 10
 ```
 
 ---
@@ -3319,7 +3313,7 @@ function isEven(num) {
   } else {
     return true;
   }
-};
+}
 ```
 
 > or using `recursive` function
@@ -3344,7 +3338,7 @@ function memoize(fn) {
     const params = slice.call(args);
     console.log(params);
     if (cache[params]) {
-      console.log('cached');
+      console.log("cached");
       return cache[params];
     } else {
       let result = fn(...args);
@@ -3352,10 +3346,11 @@ function memoize(fn) {
       console.log(`not cached`);
       return result;
     }
-  }
+  };
 }
 const makeFullName = (fName, lName) => `${fName} ${lName}`;
-const reduceAdd = (numbers, startingValue = 0) => numbers.reduce((total, cur) => total + cur, startingValue);
+const reduceAdd = (numbers, startingValue = 0) =>
+  numbers.reduce((total, cur) => total + cur, startingValue);
 
 const memoizedMakeFullName = memoize(makeFullName);
 const memoizedReduceAdd = memoize(reduceAdd);
@@ -3413,20 +3408,23 @@ memoizedReduceAdd([1, 2, 3, 4, 5], 5);
 ## 115. compare two array is equal
 
 ```js
-var first = [1,2,3];
-var second = [1,2,3];
-var third = [3,2,1];
-var fourth = [1,3];
-var fifth = [0,1,2,3,4];
+var first = [1, 2, 3];
+var second = [1, 2, 3];
+var third = [3, 2, 1];
+var fourth = [1, 3];
+var fifth = [0, 1, 2, 3, 4];
 
 console.log(compareArrays(first, second));
 console.log(compareArrays(first, third));
 console.log(compareArrays(first, fourth));
 console.log(compareArrays(first, fifth));
 
-function compareArrays(first, second){
-    //write type error
-    return first.every((e)=> second.includes(e)) && second.every((e)=> first.includes(e));
+function compareArrays(first, second) {
+  //write type error
+  return (
+    first.every((e) => second.includes(e)) &&
+    second.every((e) => first.includes(e))
+  );
 }
 ```
 
@@ -3437,12 +3435,15 @@ function compareArrays(first, second){
 ```js
 const user = {
   id: 100,
-  name: 'test',
-  password: 'password'
+  name: "test",
+  password: "password",
 };
 
-const removeProperty = prop => ({ [prop]: _, ...rest  }) => rest;
-const removePassword = removeProperty('password');
+const removeProperty =
+  (prop) =>
+  ({ [prop]: _, ...rest }) =>
+    rest;
+const removePassword = removeProperty("password");
 removePassword(user);
 ```
 
@@ -3455,7 +3456,7 @@ removePassword(user);
 ## 118. 4 ways to convert `String` to `Character Array`
 
 ```js
-string.split('');
+string.split("");
 
 [...string];
 
@@ -3483,7 +3484,7 @@ Object.assign([], string);
 ## 120. Remove `last` digits
 
 ```js
-const number = 2020202 / 10 | 0;
+const number = (2020202 / 10) | 0;
 ```
 
 ---
@@ -3504,45 +3505,46 @@ function randomBetween(min, max) {
 // If all redicate function returen true for all elements, return true
 const all = (arr, fn = Boolean) => arr.every(fn);
 
-all([4, 2, 3], x => x > 1); // true
+all([4, 2, 3], (x) => x > 1); // true
 all([1, 2, 3]); // true
 
 // check all elements in an array are equal.
-const allEqual = arr => arr.every(val => val === arr[0])
+const allEqual = (arr) => arr.every((val) => val === arr[0]);
 
 allEqual([1, 2, 3, 4, 5, 6]); // false
-allEqual([1, 1, 1]) // true
+allEqual([1, 1, 1]); // true
 
 // return the average of numbers
-const average = (...nums) => nums.reduce((acc, val) => acc + val, 0) / nums.length;
+const average = (...nums) =>
+  nums.reduce((acc, val) => acc + val, 0) / nums.length;
 
 average(...[1, 2, 3]); // 2
 average(1, 2, 3); // 2
 
 // return the length of a string in bytes
-const byteSize = str => new Blob([str]).size;
+const byteSize = (str) => new Blob([str]).size;
 
-byteSize('😀'); // 4
-byteSize('Hello World'); // 11
+byteSize("😀"); // 4
+byteSize("Hello World"); // 11
 
 // remove falsy values from an array
-const compact = arr => arr.filter(Boolean);
-compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34]); // [ 1, 2, 3, 'a', 's', 34 ]
+const compact = (arr) => arr.filter(Boolean);
+compact([0, 1, false, 2, "", 3, "a", "e" * 23, NaN, "s", 34]); // [ 1, 2, 3, 'a', 's', 34 ]
 
 // gets the day of the year from a Date object
-const dayOfYear = date =>
+const dayOfYear = (date) =>
   Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
 
 dayOfYear(new Date()); // 98
 
 // converts an angle from degrees to radians.
-const degreesToRads = deg => (deg * Math.PI) / 180.0;
+const degreesToRads = (deg) => (deg * Math.PI) / 180.0;
 degreesToRads(90.0); // ~1.5708
 
 // returns the difference between two arrays.
 const difference = (a, b) => {
   const s = new Set(b);
-  return a.filter(x => !s.has(x));
+  return a.filter((x) => !s.has(x));
 };
 
 difference([1, 2, 3], [1, 2, 4]); // [3]
@@ -3562,42 +3564,41 @@ const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
 everyNth([1, 2, 3, 4, 5, 6], 2); // [ 2, 4, 6 ]
 
 // calculates the factorial of a number.
-const factorial = n =>
+const factorial = (n) =>
   n < 0
     ? (() => {
-      throw new TypeError('Negative numbers are not allowed!');
-    })()
+        throw new TypeError("Negative numbers are not allowed!");
+      })()
     : n <= 1
-      ? 1
-      : n * factorial(n - 1);
+    ? 1
+    : n * factorial(n - 1);
 factorial(6); // 720
 ```
 
 ---
 
-## 123. Code Review时，需要针对审查出有问题的代码添加评论。评论可以进行分级, 不同级别的结果可以打不同等Tag.
+## 123. Code Review 时，需要针对审查出有问题的代码添加评论。评论可以进行分级, 不同级别的结果可以打不同等 Tag.
 
 > [blocker]: 在评论前面加上一个[blocker]标记，表示这个代码行的问题必须要修改
-[optional]：在评论前面加上一个[optional]标记，表示这个代码行的问题可改可不改
-[question]：在评论前面加上一个[question]标记，表示对这个代码行不理解，有问题需要问，被审查者需要针对问题进行回复澄清 
-类似这样的分级可以帮助被审查者直观了解Review结果，提高Review效率
+> [optional]：在评论前面加上一个[optional]标记，表示这个代码行的问题可改可不改
+> [question]：在评论前面加上一个[question]标记，表示对这个代码行不理解，有问题需要问，被审查者需要针对问题进行回复澄清
+> 类似这样的分级可以帮助被审查者直观了解 Review 结果，提高 Review 效率
 
 ---
 
 ## 124. new method for validate `Url`
 
 ```js
-const validateUrl = url => {
-    try{
-        new URL(url)
-        return true
-    }
-    catch {
-        return false
-    }
-}
-console.log(validateUrl('aaa'))
-console.log(validateUrl('http://aaa.com'))
+const validateUrl = (url) => {
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+};
+console.log(validateUrl("aaa"));
+console.log(validateUrl("http://aaa.com"));
 ```
 
 ---
@@ -3605,9 +3606,14 @@ console.log(validateUrl('http://aaa.com'))
 ## 125. `binary` <--> `Decimal`
 
 ```js
-parseInt(11101000, 2) // 232
+parseInt(
+  11101000,
+  2
+)(
+  // 232
 
-(232).toString(2) // "11101000"
+  232
+).toString(2); // "11101000"
 ```
 
 ---
@@ -3618,10 +3624,9 @@ parseInt(11101000, 2) // 232
 
 ```js
 // should
-1..toString()
-1 .toString()
-(1).toString()
-1.0.toString()
+(1).toString();
+(1).toString()(1).toString();
+(1.0).toString();
 ```
 
 ---
@@ -3629,14 +3634,14 @@ parseInt(11101000, 2) // 232
 ## 127. Compare nonintegers, take an upper bound. Such an upper bound is called a `machine epsilon`. The standard epsilon value for double precision is 2^-53.
 
 ```js
-let EPSILON = Math.pow(2, -53)
+let EPSILON = Math.pow(2, -53);
 function epsEqu(x, y) {
-  return Math.abs(x - y) < EPSILON
+  return Math.abs(x - y) < EPSILON;
 }
 
 // usage
-0.1 + 0.2 === 0.3 // false
-epsEqu(0.1 + 0.2, 0.3) // true
+0.1 + 0.2 === 0.3; // false
+epsEqu(0.1 + 0.2, 0.3); // true
 ```
 
 ---
@@ -3646,22 +3651,21 @@ epsEqu(0.1 + 0.2, 0.3) // true
 > The result of the remainder operator always has the sign of the first operand (for modulo, it is the sign of the second operand):
 
 ```js
--5 % 2 // -1
+-5 % 2; // -1
 //That means that the following function does not work:
 
 // Wrong!
-function isOdd(n) { 
+function isOdd(n) {
   return n % 2 === 1;
-} 
+}
 console.log(isOdd(-5)); // false
 console.log(isOdd(-4)); // false
 
-
 // The correct version is:
 
-function isOdd(n) { 
+function isOdd(n) {
   return Math.abs(n % 2) === 1;
-} 
+}
 console.log(isOdd(-5)); // true
 console.log(isOdd(-4)); // false
 ```
@@ -3670,7 +3674,7 @@ console.log(isOdd(-4)); // false
 
 ## 129. `__proto__` is pronounced `dunder proto`
 
-> __proto__ is pronounced “dunder proto,” an abbreviation of “double underscore proto.” That pronunciation has been borrowed from the Python programming lan‐ guage (as suggested by Ned Batchelder in 2006). Special variables with double un‐ derscores are quite frequent in Python.
+> **proto** is pronounced “dunder proto,” an abbreviation of “double underscore proto.” That pronunciation has been borrowed from the Python programming lan‐ guage (as suggested by Ned Batchelder in 2006). Special variables with double un‐ derscores are quite frequent in Python.
 
 ## 130. `JSON.stringify()` only considers enumerable own properties.
 
@@ -3704,9 +3708,9 @@ JSON.stringify({ foo: obj, bar: [ obj ]})
 //    "0"
 //    '{"foo":0,"bar":[0]}'
 
-• Boolean.prototype.toJSON() 
-• Number.prototype.toJSON() 
-• String.prototype.toJSON() 
+• Boolean.prototype.toJSON()
+• Number.prototype.toJSON()
+• String.prototype.toJSON()
 • Date.prototype.toJSON()
 
 // JSON.parse(text, reviver?)
@@ -3714,10 +3718,10 @@ function dateReviver(key, value) {
   if (typeof value === 'string') {
     let x = Date.parse(value);
     if (!isNaN(x)) { // valid date string?
-    return new Date(x); 
+    return new Date(x);
   }
 }
-  return value; 
+  return value;
 }
 
 let str = '{ "name": "John", "birth": "2011-07-28T22:00:00.000Z" }';
@@ -3732,12 +3736,12 @@ console.log(JSON.parse(str, dateReviver));
 ## 131. `AudioContext` API
 
 ```js
-const context = new AudioContext()
-const oscillator = context.createOscillator()
-oscillator.frequency.value = 448
-oscillator.connect(context.destination)
-oscillator.start()
-oscillator.stop()
+const context = new AudioContext();
+const oscillator = context.createOscillator();
+oscillator.frequency.value = 448;
+oscillator.connect(context.destination);
+oscillator.start();
+oscillator.stop();
 ```
 
 ---
@@ -3747,7 +3751,7 @@ oscillator.stop()
 ```js
 /**
  * 包含浏览器检测的contains()方法
- * 
+ *
  * compareDocumentPosition() 确定2个节点间关系，返回表示该关系的位掩码(bitmask)
  *  1 无关
  *  2 居前
@@ -3756,10 +3760,12 @@ oscillator.stop()
  *  16 被包含
  */
 function contains(refNode, otherNode) {
-  if (typeof refNode.contains == 'function' && 
-    (!client.engine.webkit || client.engine.webkit >= 522)) {
-      return refNode.contains(otherNode);
-  } else if (typeof refNode.compareDocumentPosition == 'function') {
+  if (
+    typeof refNode.contains == "function" &&
+    (!client.engine.webkit || client.engine.webkit >= 522)
+  ) {
+    return refNode.contains(otherNode);
+  } else if (typeof refNode.compareDocumentPosition == "function") {
     return !!(refNode.compareDocumentPosition(otherNode) & 16);
   } else {
     let node = otherNode.parentNode;
@@ -3780,22 +3786,22 @@ function contains(refNode, otherNode) {
 ## 133. Filter List Data with multiple property
 
 ```js
-let allList = []
+let allList = [];
 const filterBy = {
-  trhFrom: '123',
-  modelId: 'CRH380D',
-  date: '2021-04-26'
-}
+  trhFrom: "123",
+  modelId: "CRH380D",
+  date: "2021-04-26",
+};
 
-let filterByList = allList.filter(o => {
-  return Object.keys(filterBy).every(k => {
+let filterByList = allList.filter((o) => {
+  return Object.keys(filterBy).every((k) => {
     if (filterBy[k]) {
-      return filterBy[k].includes(o[k])
+      return filterBy[k].includes(o[k]);
     }
-    return true
-  })
-})
-console.log(filterByList)
+    return true;
+  });
+});
+console.log(filterByList);
 ```
 
 ---
@@ -3803,14 +3809,14 @@ console.log(filterByList)
 ## 134. calc diff days between two days
 
 ```js
-const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24
-function dayDifference(date1, date2) {  
-   const timeDiff = Math.abs(date2.getTime() - date1.getTime())
-   const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY)
-   return diffDays
+const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+function dayDifference(date1, date2) {
+  const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+  const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+  return diffDays;
 }
-let date1 = new Date() //May 28 2019 
-let date2 = new Date() 
+let date1 = new Date(); //May 28 2019
+let date2 = new Date();
 date2.setDate(22);
 dayDifference(date, date1); // 7
 ```
@@ -3819,10 +3825,9 @@ dayDifference(date, date1); // 7
 
 ## 135. `display: inline-block `或 `overflow: hidden` 引起的元素高度莫名增大
 
+- 引起原因：与`inline-block`的元素的 baseline 定义与实现有关，参考[w3c 关于元素 baseline 的说明](https://www.w3.org/TR/CSS2/visudet.html#leading)
 
-- 引起原因：与`inline-block`的元素的baseline定义与实现有关，参考[w3c关于元素baseline的说明](https://www.w3.org/TR/CSS2/visudet.html#leading)
-
-- 解决方法：加`vertial-align：top`或别的值， 参考[stackoverflow解决方法](https://stackoverflow.com/questions/9273016/why-is-this-inline-block-element-pushed-downward)
+- 解决方法：加`vertial-align：top`或别的值， 参考[stackoverflow 解决方法](https://stackoverflow.com/questions/9273016/why-is-this-inline-block-element-pushed-downward)
 
 ---
 
@@ -3834,9 +3839,9 @@ dayDifference(date, date1); // 7
 
 > NPM version: 6.9.0 or above [发布说明](https://github.com/npm/cli/releases/tag/v6.9.0)
 
->Node version: 10.16.0 or above [发布说明](https://nodejs.org/en/download/releases/)
+> Node version: 10.16.0 or above [发布说明](https://nodejs.org/en/download/releases/)
 
-安装：使用package aliases命令实现
+安装：使用 package aliases 命令实现
 
 ```bash
 npm i <package_name_alias>@npm:<package_name>
@@ -3858,7 +3863,9 @@ import React from react-latest
 # 安装一个确定版本的包
 npm i react-latest@npm:react@16.8.0
 ```
+
 对应的`package.json`文件为
+
 ```json
 {
   "name": "project-name",
@@ -3876,14 +3883,14 @@ npm i react-latest@npm:react@16.8.0
 
 ```js
 const isRequired = () => {
-  throw Error('Argument is missing')
-}
+  throw Error("Argument is missing");
+};
 
 const setUsername = (username = isRequired()) => {
   // Do something with `username`
   // If `username` is not provided,
   // these lines of code will never be reached.
-}
+};
 ```
 
 ---
@@ -3891,8 +3898,28 @@ const setUsername = (username = isRequired()) => {
 ## 138. paint html
 
 ```html
-data:text/html,<canvas id=v><script>d=document,P='onpointer',c=v.getContext('2d'),v.width=innerWidth,v.height=innerHeight,f=0,d[P+'down']=e=>{f=e.pointerId+1;e.preventDefault();c.beginPath();c.moveTo(e.x,e.y)};d[P+'move']=e=>{f==e.pointerId+1&&c.lineTo(e.x,e.y);c.stroke()},c.lineWidth=3,d[P+'up']=_=>f=0</script></canvas>
-
+data:text/html,<canvas id="v"
+  ><script>
+    (d = document),
+      (P = "onpointer"),
+      (c = v.getContext("2d")),
+      (v.width = innerWidth),
+      (v.height = innerHeight),
+      (f = 0),
+      (d[P + "down"] = (e) => {
+        f = e.pointerId + 1;
+        e.preventDefault();
+        c.beginPath();
+        c.moveTo(e.x, e.y);
+      });
+    (d[P + "move"] = (e) => {
+      f == e.pointerId + 1 && c.lineTo(e.x, e.y);
+      c.stroke();
+    }),
+      (c.lineWidth = 3),
+      (d[P + "up"] = (_) => (f = 0));
+  </script></canvas
+>
 ```
 
 ---
@@ -3901,12 +3928,13 @@ data:text/html,<canvas id=v><script>d=document,P='onpointer',c=v.getContext('2d'
 
 ```js
 function findMinMax(arr) {
-  let min = arr[0].y, max = arr[0].y;
+  let min = arr[0].y,
+    max = arr[0].y;
 
-  for (let i = 1, len=arr.length; i < len; i++) {
+  for (let i = 1, len = arr.length; i < len; i++) {
     let v = arr[i].y;
-    min = (v < min) ? v : min;
-    max = (v > max) ? v : max;
+    min = v < min ? v : min;
+    max = v > max ? v : max;
   }
 
   return [min, max];
@@ -3918,49 +3946,71 @@ function findMinMax(arr) {
 ## 140. String Sort using `Intl.Collator`
 
 ```js
-let data = ['CRH390BL-2011', 'CRH390BL-1011', 'CRH380BL-3019', 'CRH390BL-2001', 'CRH380BL-5019', 'CRH380BL-5060', 'CRH390BL-5051', 'CRH2A-2011', 'CRH2B-2221', 'CRH3A-4011']
+let data = [
+  "CRH390BL-2011",
+  "CRH390BL-1011",
+  "CRH380BL-3019",
+  "CRH390BL-2001",
+  "CRH380BL-5019",
+  "CRH380BL-5060",
+  "CRH390BL-5051",
+  "CRH2A-2011",
+  "CRH2B-2221",
+  "CRH3A-4011",
+];
 
-let op = arr => arr.sort(
-  new Intl.Collator('en', {
-    numeric: true,
-    sensitivity: 'accent'
-  }).compare
-)
+let op = (arr) =>
+  arr.sort(
+    new Intl.Collator("en", {
+      numeric: true,
+      sensitivity: "accent",
+    }).compare
+  );
 
-console.log(op(data))
+console.log(op(data));
 ```
 
 ---
 
-## 141. 查看Windows系列号
+## 141. 查看 Windows 系列号
 
 ```cmd
 wmic bios get serialnumber
 ```
 
 ---
+
 ## 142. Tagged Template Destructuring
 
 ```js
-const fail = message => { throw Error(message) }
-const given = f => f()
-const destructure = (strings, ...variables) =>
-    target => ["", ...variables]
-        .reduce((accum, name, index) => given((
+const fail = (message) => {
+  throw Error(message);
+};
+const given = (f) => f();
+const destructure =
+  (strings, ...variables) =>
+  (target) =>
+    ["", ...variables].reduce(
+      (accum, name, index) =>
+        given(
+          (
             needle = strings[index],
-            found = index === variables.length ? 
-                target.length :
-                target.indexOf(needle, accum.index)) =>
-                found === -1 ?
-                    fail(`Target string did not match template.`) :
-                    (index !== 0 && (accum.results[name] = target.slice(accum.index, found)),
-                    accum.index = found + needle.length,
-                    accum)),
-                    { index: 0, results: { } }).results
-      
-const testURL = "https://google.com/pizza/pie"
-const { host, path } = destructure `https://${"host"}/${"path"}` (testURL)
+            found = index === variables.length
+              ? target.length
+              : target.indexOf(needle, accum.index)
+          ) =>
+            found === -1
+              ? fail(`Target string did not match template.`)
+              : (index !== 0 &&
+                  (accum.results[name] = target.slice(accum.index, found)),
+                (accum.index = found + needle.length),
+                accum)
+        ),
+      { index: 0, results: {} }
+    ).results;
 
+const testURL = "https://google.com/pizza/pie";
+const { host, path } = destructure`https://${"host"}/${"path"}`(testURL);
 ```
 
 ---
@@ -3969,17 +4019,20 @@ const { host, path } = destructure `https://${"host"}/${"path"}` (testURL)
 
 ```js
 function toUnicode(str) {
-  return str.split('').map(function (value, index, array) {
-    var temp = value.charCodeAt(0).toString(16).toUpperCase();
-    
-    if (temp.length > 2) {
-      return '\\u' + temp;
+  return str
+    .split("")
+    .map(function (value, index, array) {
+      var temp = value.charCodeAt(0).toString(16).toUpperCase();
+
+      if (temp.length > 2) {
+        return "\\u" + temp;
       }
       return value;
-  }).join('');
+    })
+    .join("");
 }
 
-toUnicode('替代描述') // "\u66FF\u4EE3\u63CF\u8FF0"
+toUnicode("替代描述"); // "\u66FF\u4EE3\u63CF\u8FF0"
 ```
 
 ---
@@ -3990,27 +4043,30 @@ toUnicode('替代描述') // "\u66FF\u4EE3\u63CF\u8FF0"
 function censor(censor) {
   var i = 0;
 
-  return function(key, value) {
-    if(i !== 0 && typeof(censor) === 'object' && typeof(value) == 'object' && censor == value) 
-      return '[Circular]'; 
+  return function (key, value) {
+    if (
+      i !== 0 &&
+      typeof censor === "object" &&
+      typeof value == "object" &&
+      censor == value
+    )
+      return "[Circular]";
 
-    if(i >= 29)
-      return '[Unknown]';
+    if (i >= 29) return "[Unknown]";
 
-    ++i; 
+    ++i;
 
-    return value;  
-  }
+    return value;
+  };
 }
 
+const a = {};
+a.b = 1;
+a.c = 2;
 
-const a = {}
-a.b=1
-a.c=2
+a.d = a;
 
-a.d = a
-
-JSON.stringify(a, censor(a))
+JSON.stringify(a, censor(a));
 ```
 
 ---
@@ -4018,53 +4074,76 @@ JSON.stringify(a, censor(a))
 ## 145. calc DOM content tag count
 
 ```js
-const getNode = (el)=>{
-    const treeWalker = document.createTreeWalker(el || document.body, NodeFilter.SHOW_ELEMENT, {
-        acceptNode: function(node) {
-            return NodeFilter.FILTER_ACCEPT;
-        }
-    }, false);
+const getNode = (el) => {
+  const treeWalker = document.createTreeWalker(
+    el || document.body,
+    NodeFilter.SHOW_ELEMENT,
+    {
+      acceptNode: function (node) {
+        return NodeFilter.FILTER_ACCEPT;
+      },
+    },
+    false
+  );
 
-    let nodeList = [];
-    let currentNode = treeWalker.currentNode;
+  let nodeList = [];
+  let currentNode = treeWalker.currentNode;
 
-    while (currentNode) {
-        nodeList.push(currentNode);
-        currentNode = treeWalker.nextNode();
-    }
+  while (currentNode) {
+    nodeList.push(currentNode);
+    currentNode = treeWalker.nextNode();
+  }
 
-    return nodeList
-}
+  return nodeList;
+};
 
 const nodeNameList = (nodeList) => {
-  return [...nodeList].map(o => o.nodeName)
-}
+  return [...nodeList].map((o) => o.nodeName);
+};
 
 const count = (arr) => {
-  return arr.reduce((prev, curr) => (prev[curr] = ++prev[curr] || 1, prev), {})
-}
+  return arr.reduce(
+    (prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev),
+    {}
+  );
+};
 
-console.log(count(nodeNameList(getNode($0)))) // output: {P: 1, CODE: 8, EM: 2}
+console.log(count(nodeNameList(getNode($0)))); // output: {P: 1, CODE: 8, EM: 2}
 ```
 
 ---
 
-## 146. '2021Q3M9W1' => { Y: '2021', Q: '3', M: '9', W: '1' } 
+## 146. '2021Q3M9W1' => { Y: '2021', Q: '3', M: '9', W: '1' }
 
 ```js
 const extractDate = (rawStr) => {
-  const str = 'Y' + rawStr
-  const arr = str?.match(/[YQMW][0-9]{1,4}/g)
-  
+  const str = "Y" + rawStr;
+  const arr = str?.match(/[YQMW][0-9]{1,4}/g);
+
   return arr?.reduce((acc, cur) => {
     return {
       ...acc,
-      [cur[0]]: cur.slice(1)
-    }
-  }, {})
-}
+      [cur[0]]: cur.slice(1),
+    };
+  }, {});
+};
 
-extractDate('2021Q3M9W1') // { Y: '2021', Q: '3', M: '9', W: '1' } 
+extractDate("2021Q3M9W1"); // { Y: '2021', Q: '3', M: '9', W: '1' }
 ```
 
 ---
+
+## 147. npm registry mirrors
+
+- npm ---------- https://registry.npmjs.org/
+- yarn --------- https://registry.yarnpkg.com/
+- tencent ------ https://mirrors.cloud.tencent.com/npm/
+- cnpm --------- https://r.cnpmjs.org/
+- taobao ------- https://registry.npmmirror.com/
+- npmMirror ---- https://skimdb.npmjs.com/registry/
+
+---
+
+```
+
+```
