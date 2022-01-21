@@ -3455,7 +3455,6 @@ removePassword(user)
 
 ```js
 string.split('')
-
 ;[...string]
 
 Array.from(string)
@@ -4142,6 +4141,40 @@ extractDate('2021Q3M9W1') // { Y: '2021', Q: '3', M: '9', W: '1' }
 
 ---
 
+## 148. Uid 生成器
+
+```js
+export function getUid() {
+  return getUid._uid++
+}
+getUid._uid = 0
+
+getUid() // 0
+getUid() // 1
+getUid() // 2
 ```
 
+---
+
+## 149. 计算文件大小
+
+```ts
+export function humanReadableFileSize(
+  bytes: number,
+  base: 1000 | 1024 = 1000
+): string {
+  if (bytes < base) {
+    return `${bytes} B`
+  }
+
+  const prefix = base === 1024 ? ['Ki', 'Mi', 'Gi'] : ['k', 'M', 'G']
+  let unit = -1
+  while (Math.abs(bytes) >= base && unit < prefix.length - 1) {
+    bytes /= base
+    ++unit
+  }
+  return `${bytes.toFixed(1)} ${prefix[unit]}B`
+}
 ```
+
+---
