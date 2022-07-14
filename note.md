@@ -4179,12 +4179,20 @@ export function humanReadableFileSize(
 
 ---
 
-## 150. 拆分数字为特定区间数组
+## 150. Mac 微信多开
+
+```bash
+alias wechat="nohup /Applications/WeChat.app/Contents/MacOS/WeChat > /dev/null 2>&1"
+```
+
+---
+
+## 151. 拆分数字为特定区间数组
 
 ```js
 // input: 34567 step: 10000
 // output: ['1-10000', '10001-20000', '20001-34567']
-// lusai solution
+// @lusai solution
 const num = 34567
 const step = 10000
 const arr = num.toString().split('').map(Number)
@@ -4200,7 +4208,7 @@ for (let index = 0; index < targetArrayLength; index++) {
 console.table(targetArray)
 
 // ===
-// majinping solution
+// @majinping solution
 const imageNum = 34567
 const step = 10000
 
