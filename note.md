@@ -4178,3 +4178,43 @@ export function humanReadableFileSize(
 ```
 
 ---
+
+## 150. 拆分数字为特定区间数组
+
+```js
+// input: 34567 step: 10000
+// output: ['1-10000', '10001-20000', '20001-34567']
+// lusai solution
+const num = 34567
+const step = 10000
+const arr = num.toString().split('').map(Number)
+const targetArrayLength = arr[0] + 1
+let flag = 0
+let targetArray = []
+
+for (let index = 0; index < targetArrayLength; index++) {
+  targetArray.push(`${flag + 1}-${step * (index + 1) > num ? num : step * (index + 1)}`)
+  flag = step * index > num ? num : step * (index + 1)
+}
+
+console.table(targetArray)
+
+// ===
+// majinping solution
+const imageNum = 34567
+const step = 10000
+
+const arrLength = Math.ceil(imageNum / step)
+
+const result = Array.from({length: arrLength}).map((_, index) => {
+    let endNum = (index + 1) * step
+    if (index === arrLength - 1) {
+        endNum = imageNum
+    }
+    return [index * step + 1, endNum]
+})
+
+console.log('image number: ', imageNum, '\noptions: ', result.map(item => item.join('-')).join('，'), '\noptionsArr: ', result)
+```
+
+---
