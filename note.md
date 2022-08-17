@@ -4226,3 +4226,11 @@ console.log('image number: ', imageNum, '\noptions: ', result.map(item => item.j
 ```
 
 ---
+
+## 152. Get all IDs in the current `document`
+
+```js
+console.table($$('*[id]'), ['tagName','id'])
+```
+
+---
