@@ -4234,3 +4234,25 @@ console.table($$('*[id]'), ['tagName','id'])
 ```
 
 ---
+
+## 153. Override Element UI `$confirm`'s enter event
+
+```js
+Vue.prototype.$confirmWithoutEnter = (message, title, options) => MessageBox.confirm(message, title, {
+  beforeClose: (action, instance, done) => {
+    if (action === 'confirm') {
+      instance.$refs['confirm'].$el.onclick = function (e) {
+        e = e || window.event
+        if (e?.detail !== 0) {
+          done()
+        }
+      }()
+    } else {
+      done()
+    }
+  },
+  ...options || {}
+})
+```
+
+---
