@@ -4256,3 +4256,66 @@ Vue.prototype.$confirmWithoutEnter = (message, title, options) => MessageBox.con
 ```
 
 ---
+
+## 154. Check SPA republish with only client
+
+- 1. fetch index.html as text, add `timestamp` avoiding cache.
+- 2. calc hash, using `SHA256` etc.
+- 3. compare old hash and latest file hash polling.
+- 4. notify user refresh page.
+
+> Ex: Vuejs compositionAPI
+
+```js
+import { ref } from '@vue/composition-api'
+import { useIntervalFn } from '@vueuse/core'
+import sha256 from 'crypto-js/sha256'
+
+let hasNewVersion = ref(false)
+const pageHashSymbol = 'page_hash'
+const pollInterval = 5000 // 5 second
+
+const getPage = async () => {
+  const response = await fetch(`${window.location.origin + process.env.VUE_APP_CI_PROJECT_NAME}/index.html?s=${new Date().getTime()}`).catch(err => {
+    console.log(err)
+    })
+    
+  if (response.status !== 200) {
+    hasNewVersion.value = false
+    throw new Error(`🥲 Error: `, err)
+  }
+  
+  return await response.text()
+}
+
+const checkDiff = async () => {
+  const html = await getPage()
+  
+  if (!html) return
+  
+  if (!window.localStorage.getItem(pageHashSymbol)) {
+    window.localStorage.setItem(pageHashSymbol, sha256(html).toString())
+    hasNewVersion.value = false
+  } else {
+    hasNewVersion.value = sha256(html).toString() !== window.localStorage.getItem(pageHashSymbol)
+  }
+}
+
+useIntervalFn(checkDiff, pollInterval)
+
+const refreshPage = async () => {
+  const html = await getPage()
+  window.localStorage.setItem(pageHashSymbol, sha256(html).toString())
+  window.location.reload()
+}
+
+```
+
+```html
+<template>
+ <div @click="refreshPage">{{ hasNewVersion ? 'Has New Version, please refresh page' : null }}</div>
+</template>
+```
+
+---
+
