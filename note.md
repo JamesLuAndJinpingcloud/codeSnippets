@@ -4321,6 +4321,8 @@ const refreshPage = async () => {
 
 ## 155. Using function `mergeDeepWith` of `Immutable-js` to keep nested object original structure.
 
+> [Run in Runkit](https://runkit.com/ellipse120/64361d946852280008b5e68e)
+
 ```js
 const { mergeDeepWith } = require(’immutable@4.3.0‘)
 
