@@ -4319,3 +4319,78 @@ const refreshPage = async () => {
 
 ---
 
+## 155. Using function `mergeDeepWith` of `Immutable-js` to keep nested object original structure.
+
+```js
+const { mergeDeepWith } = require(’immutable@4.3.0‘)
+
+const original = { 
+	x: {
+	  	y: 123,
+	  	z: {
+	  		a: {
+	  			b: null
+	  		}
+	  	}
+	},
+	user: {
+		menu: {
+			codes: []
+		},
+		info: {
+			name: null,
+			age: null
+		}
+	}
+}
+
+const responseData = {
+	x: {
+	  	y: 123,
+	  	z: null
+	},
+	user: {
+		menu: null,
+		info: {
+			name: ’James‘,
+			age: 37
+		}
+	}
+}
+
+const result = mergeDeepWith(
+  (oldVal, newVal) => {
+  	if ([null, ’‘, undefined].includes(newVal)) {
+  		return oldVal
+  	}
+    
+    return newVal
+  },
+  original,
+  responseData
+)
+
+console.error(result)
+/**
+* x: {
+  	y: 123,
+  	z: {
+  		a: {
+  			b: null
+  		}
+  	}
+},
+user: {
+	menu: {
+		codes: []
+	},
+	info: {
+		name: ’James‘,
+		age: 37
+	}
+}
+*/
+```
+
+—
+
