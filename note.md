@@ -1,4 +1,4 @@
-# work notes
+# Work Notes
 
 ```js
 // TODO replace this code with something better
