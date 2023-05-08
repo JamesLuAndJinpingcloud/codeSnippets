@@ -4396,3 +4396,26 @@ user: {
 
 —
 
+## 156. Set a timeout for a fetch request.
+
+```js
+const abortController = new AbortController();
+const signal = abortController.signal;
+
+const fetch1 = fetch(“https://api.example.com/data-1”, { signal });
+const fetch2 = fetch(“https://api.example.com/data-2”, { signal });
+
+const timeout = new Promise((_, reject) => {
+  const timeoutId = setTimeout(() => {
+    reject(new Error(“Request timed out”));
+    abortController.abort(); // Abort the fetch request
+    clearTimeout(timeoutId); // clear the timeout
+  }, 5000);
+});
+
+Promise.race([fetch1, fetch2, timeout])
+  .then((response) => console.log(response))
+  .catch((error) => console.error(error));
+```
+
+——
