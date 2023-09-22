@@ -4447,3 +4447,28 @@ const request = (url, options = {}, maxRetry = 5) => {
 ```
 
 ---
+
+## 158. lazy copy function
+
+```js
+const createCopyTextContent = () => {
+  if (navigator.clipboard) {
+    return (text) => {
+      navigator.clipboard.writeText(text)
+    }
+  } else {
+    return (text) => {
+      const inputEl = document.createElement('input')
+      inputEl.setAttribute('value', text)
+      document.body.appendChild(inputEl)
+      inputEl.select()
+      document.execCommand('copy')
+      document.body.removeChild(inputEl)
+    }
+  }
+}
+
+const copyTextContent = createCopyTextContent()
+```
+
+---
