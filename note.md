@@ -4491,3 +4491,23 @@ generateOTP()
 ```
 
 ---
+
+## 160. Calculate string with emoji's length
+
+```js
+const emojis = [`🔥`, `🤼‍♂️`, '👨‍👩‍👦‍👦']
+
+emojis.forEach((s) => {
+  console.log(`${s} `, s.length) // 2 5 11
+})
+
+const stringLength = (str) => {
+  return Array.from(new Intl.Segmenter().segment(str)).length
+}
+
+emojis.forEach((s) => {
+  console.log(`${s} `, stringLength(s)) // 1 1 1
+})
+```
+
+---
