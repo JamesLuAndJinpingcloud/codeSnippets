@@ -4201,7 +4201,9 @@ let flag = 0
 let targetArray = []
 
 for (let index = 0; index < targetArrayLength; index++) {
-  targetArray.push(`${flag + 1}-${step * (index + 1) > num ? num : step * (index + 1)}`)
+  targetArray.push(
+    `${flag + 1}-${step * (index + 1) > num ? num : step * (index + 1)}`
+  )
   flag = step * index > num ? num : step * (index + 1)
 }
 
@@ -4214,15 +4216,22 @@ const step = 10000
 
 const arrLength = Math.ceil(imageNum / step)
 
-const result = Array.from({length: arrLength}).map((_, index) => {
-    let endNum = (index + 1) * step
-    if (index === arrLength - 1) {
-        endNum = imageNum
-    }
-    return [index * step + 1, endNum]
+const result = Array.from({ length: arrLength }).map((_, index) => {
+  let endNum = (index + 1) * step
+  if (index === arrLength - 1) {
+    endNum = imageNum
+  }
+  return [index * step + 1, endNum]
 })
 
-console.log('image number: ', imageNum, '\noptions: ', result.map(item => item.join('-')).join('，'), '\noptionsArr: ', result)
+console.log(
+  'image number: ',
+  imageNum,
+  '\noptions: ',
+  result.map((item) => item.join('-')).join('，'),
+  '\noptionsArr: ',
+  result
+)
 ```
 
 ---
@@ -4230,7 +4239,7 @@ console.log('image number: ', imageNum, '\noptions: ', result.map(item => item.j
 ## 152. Get all IDs in the current `document`
 
 ```js
-console.table($$('*[id]'), ['tagName','id'])
+console.table($$('*[id]'), ['tagName', 'id'])
 ```
 
 ---
@@ -4238,21 +4247,22 @@ console.table($$('*[id]'), ['tagName','id'])
 ## 153. Override Element UI `$confirm`'s enter event
 
 ```js
-Vue.prototype.$confirmWithoutEnter = (message, title, options) => MessageBox.confirm(message, title, {
-  beforeClose: (action, instance, done) => {
-    if (action === 'confirm') {
-      instance.$refs['confirm'].$el.onclick = function (e) {
-        e = e || window.event
-        if (e?.detail !== 0) {
-          done()
-        }
-      }()
-    } else {
-      done()
-    }
-  },
-  ...options || {}
-})
+Vue.prototype.$confirmWithoutEnter = (message, title, options) =>
+  MessageBox.confirm(message, title, {
+    beforeClose: (action, instance, done) => {
+      if (action === 'confirm') {
+        instance.$refs['confirm'].$el.onclick = (function (e) {
+          e = e || window.event
+          if (e?.detail !== 0) {
+            done()
+          }
+        })()
+      } else {
+        done()
+      }
+    },
+    ...(options || {}),
+  })
 ```
 
 ---
@@ -4276,28 +4286,33 @@ const pageHashSymbol = 'page_hash'
 const pollInterval = 5000 // 5 second
 
 const getPage = async () => {
-  const response = await fetch(`${window.location.origin + process.env.VUE_APP_CI_PROJECT_NAME}/index.html?s=${new Date().getTime()}`).catch(err => {
+  const response = await fetch(
+    `${
+      window.location.origin + process.env.VUE_APP_CI_PROJECT_NAME
+    }/index.html?s=${new Date().getTime()}`
+  ).catch((err) => {
     console.log(err)
-    })
-    
+  })
+
   if (response.status !== 200) {
     hasNewVersion.value = false
     throw new Error(`🥲 Error: `, err)
   }
-  
+
   return await response.text()
 }
 
 const checkDiff = async () => {
   const html = await getPage()
-  
+
   if (!html) return
-  
+
   if (!window.localStorage.getItem(pageHashSymbol)) {
     window.localStorage.setItem(pageHashSymbol, sha256(html).toString())
     hasNewVersion.value = false
   } else {
-    hasNewVersion.value = sha256(html).toString() !== window.localStorage.getItem(pageHashSymbol)
+    hasNewVersion.value =
+      sha256(html).toString() !== window.localStorage.getItem(pageHashSymbol)
   }
 }
 
@@ -4308,12 +4323,13 @@ const refreshPage = async () => {
   window.localStorage.setItem(pageHashSymbol, sha256(html).toString())
   window.location.reload()
 }
-
 ```
 
 ```html
 <template>
- <div @click="refreshPage">{{ hasNewVersion ? 'Has New Version, please refresh page' : null }}</div>
+  <div @click="refreshPage">
+    {{ hasNewVersion ? 'Has New Version, please refresh page' : null }}
+  </div>
 </template>
 ```
 
@@ -4326,7 +4342,7 @@ const refreshPage = async () => {
 ```js
 const { mergeDeepWith } = require(’immutable@4.3.0‘)
 
-const original = { 
+const original = {
 	x: {
 	  	y: 123,
 	  	z: {
@@ -4365,7 +4381,7 @@ const result = mergeDeepWith(
   	if ([null, ’‘, undefined].includes(newVal)) {
   		return oldVal
   	}
-    
+
     return newVal
   },
   original,
@@ -4419,3 +4435,15 @@ Promise.race([fetch1, fetch2, timeout])
 ```
 
 ——
+
+## 157. Retry fetch
+
+```js
+const request = (url, options = {}, maxRetry = 5) => {
+  return fetch(url, ...options).catch((error) => {
+    maxRetry <= 0 ? Promise.reject(error) : request(url, {}, maxRetry - 1)
+  })
+}
+```
+
+---
