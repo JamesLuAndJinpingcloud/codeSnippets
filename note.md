@@ -4544,3 +4544,25 @@ user.details.age = 25
 ```
 
 ---
+
+## 162. Clear `Vidhub` ads in client only.
+
+```js
+const clearAds = () => {
+  const divz = document.getElementsByTagName('DIVZ')
+  const ads = [...document.querySelectorAll('div')].filter(
+    (s) => s.id.includes('left') || s.id.includes('right')
+  )
+  const ad2 = document.getElementsByClassName('adpcc')
+
+  ;[...divz, ...ad2, ...ads].forEach((el) => {
+    el?.remove()
+  })
+}
+
+setTimeout(() => {
+  clearAds()
+}, 5000)
+```
+
+---
