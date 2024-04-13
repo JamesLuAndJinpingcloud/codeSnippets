@@ -4566,3 +4566,39 @@ setTimeout(() => {
 ```
 
 ---
+
+## 163. Watch slot content changes using [`MutationObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
+
+```vue
+<script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+const slotElement = ref(null)
+const observer = ref(null)
+
+const update = () => {
+  console.log('UPDATE')
+}
+
+onMounted(() => {
+  observer.value = new MutationObserver(update)
+  observer.value.observe(slotElement.value, { childList: true, subtree: true })
+})
+
+onBeforeUnmount(() => {
+  if (observer.value) {
+    observer.value.disconnect()
+  }
+})
+</script>
+
+<template>
+  <div ref="slotElement">
+    <slot />
+  </div>
+</template>
+```
+
+---
+
+## 164.
