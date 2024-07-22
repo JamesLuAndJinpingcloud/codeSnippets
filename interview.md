@@ -154,6 +154,32 @@ for (var i = 0; i < 10; i++) {
 
 ---
 
+### Ask `iterator`
+
+```js
+// Don't change code, let it run
+const [a, b] = {
+	a: 11,
+	b: 22
+}
+console.log(a,b)
+```
+
+> Answer: Using `Symbol.iterator`
+
+```
+Object.prototype[Symbol.iterator] = function () {
+	return Object.values(this)[Symbol.iterator]()
+}
+
+// or using generator
+Object.prototype[Symbol.iterator] = function* () {
+	yield Object.value(this)
+}
+```
+
+---
+
 ### js 对象深浅拷贝
 
 ### Implement a simple data binding using JavaScript Proxy
