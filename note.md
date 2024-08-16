@@ -4629,3 +4629,10 @@ timed(benchmark)(1000000);
 
 ---
 
+## 165. Why `0.1 + 0.2`, the site is really nice.
+
+```js
+window.location = `https://${0.1+0.2}.com`
+```
+
+---
