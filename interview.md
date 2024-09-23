@@ -182,6 +182,31 @@ Object.prototype[Symbol.iterator] = function* () {
 
 ### js 对象深浅拷贝
 
+### Macrotasks and Microtasks diff
+
+```js
+/** What will be the output of this code? 
+ * result: 1 7 3 5 2 6 4 
+ * why?
+*/
+
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.resolve().then(() => console.log(3));
+
+Promise.resolve().then(() => setTimeout(() => console.log(4)));
+
+Promise.resolve().then(() => console.log(5));
+
+setTimeout(() => console.log(6));
+
+console.log(7);
+```
+
+---
+
 ### Implement a simple data binding using JavaScript Proxy
 
 Hint: ES Proxy allows you to intercept a call to any object property or method. To start with, DOM should be updated whenever an underlying bound object is changed.
