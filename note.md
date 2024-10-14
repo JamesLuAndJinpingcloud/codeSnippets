@@ -4606,25 +4606,25 @@ onBeforeUnmount(() => {
 ```js
 function timed(f) {
   return function (...args) {
-    console.log(`Entering function ${f.name}`);
-    let startTime = Date.now();
+    console.log(`Entering function ${f.name}`)
+    let startTime = Date.now()
     try {
-      return f(...args); 
+      return f(...args)
     } finally {
       console.log(`Exiting ${f.name} after
-${Date.now() - startTime}ms`);
+${Date.now() - startTime}ms`)
     }
-  };
+  }
 }
 
 function benchmark(n) {
-  let sum = 0;
-  for(let i = 1; i <= n; i++) sum += i; 
-  
-  return sum;
+  let sum = 0
+  for (let i = 1; i <= n; i++) sum += i
+
+  return sum
 }
 
-timed(benchmark)(1000000);
+timed(benchmark)(1000000)
 ```
 
 ---
@@ -4632,7 +4632,68 @@ timed(benchmark)(1000000);
 ## 165. Why `0.1 + 0.2`, the site is really nice.
 
 ```js
-window.location = `https://${0.1+0.2}.com`
+window.location = `https://${0.1 + 0.2}.com`
 ```
+
+---
+
+## 166. `Symbol.toPrimitive`, a method that converts an object to a corresponding primitive value
+
+```js
+class Bar {
+  constructor() {
+    this[Symbol.toPrimitive] = function (hint) {
+      switch (hint) {
+        case 'number':
+          return 3
+        case 'string':
+          return 'string bar'
+        case 'default':
+        default:
+          return 'default bar'
+      }
+    }
+  }
+}
+
+let bar = new Bar()
+
+console.log(3 + bar) // "3default bar"
+console.log(3 - bar) // 0
+console.log(String(bar)) // "string bar"
+```
+
+> other useful Symbol function, `toStringTag`, `search`, `replace`, `toStringTag`
+
+```js
+let s = new Set()
+
+console.log(s) // Set(0) {}
+console.log(s.toString()) // [object set]
+console.log(s[Symbol.toStringTag]) // Set
+
+class Foo {}
+let foo = new Foo()
+
+console.log(foo) // Foo {}
+console.log(foo.toString()) // [object Object]
+console.log(foo[Symbol.toStringTag]) // undefined
+
+class Bar {
+  constructor() {
+    this[Symbol.toStringTag] = 'Bar'
+  }
+}
+
+let bar = new Bar()
+
+console.log(bar) // Bar {}
+console.log(bar.toString()) // [object Bar]
+console.log(bar[Symbol.toStringTag]) // Bar
+```
+
+---
+
+## 167
 
 ---
