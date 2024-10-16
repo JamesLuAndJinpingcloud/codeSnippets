@@ -76,7 +76,7 @@ npm install --save node-sass --registry=https://registry.npm.taobao.org
 
 ---
 
-## 8 Code Fonts: `Fira Code`, `Monaco`, `Cascadia`, `VictorMono`
+## 8. Coding Fonts: [`monaspace`](https://github.com/githubnext/monaspace?tab=readme-ov-file#monaspace), `JetBrains Mono`, `Fira Code`, `Monaco`, `Cascadia`, `VictorMono`
 
 ---
 
