@@ -5,19 +5,19 @@
 ### js 对象及数组的常用函数
 
 ```js
-const a = [1, 2, 3, 4, 5];
+const a = [1, 2, 3, 4, 5]
 // Implement this
-a.multiply();
-console.log(a); // [1, 2, 3, 4, 5, 1, 4, 9, 16, 25]
+a.multiply()
+console.log(a) // [1, 2, 3, 4, 5, 1, 4, 9, 16, 25]
 ```
 
 > 以下输出结果是:
 
 ```js
 for (var i = 0; i < 10; i++) {
-  setTimeout(function() {
-    console.log(i);
-  }, 100 * i);
+  setTimeout(function () {
+    console.log(i)
+  }, 100 * i)
 }
 ```
 
@@ -43,7 +43,7 @@ array.reduce((unique, item) => unique.includes(item) ? unique : [...unique, item
 
 ```js
 // false
-0.2 + 0.1 === 0.3;
+0.2 + 0.1 === 0.3
 ```
 
 ---
@@ -52,24 +52,24 @@ array.reduce((unique, item) => unique.includes(item) ? unique : [...unique, item
 
 ```js
 function myFunc() {
-  let a = b = 0;
+  let a = (b = 0)
 }
 
-myFunc();
+myFunc()
 
 // because it equals to above code:
 function myFunc() {
-  let a = (b = 0);
+  let a = (b = 0)
 }
 
-myFunc();
+myFunc()
 
 // how to solve this problem
 function myFunc() {
-  let a,b;
-  a = b = 0;
+  let a, b
+  a = b = 0
 }
-myFunc();
+myFunc()
 ```
 
 ---
@@ -157,10 +157,10 @@ for (var i = 0; i < 10; i++) {
 ### Ask `iterator`
 
 ```js
-// Don't change code, let it run
+// Don't change the code, and let it run
 const [a, b] = {
-	a: 11,
-	b: 22
+  a: 11,
+  b: 22
 }
 console.log(a,b)
 ```
@@ -169,12 +169,12 @@ console.log(a,b)
 
 ```
 Object.prototype[Symbol.iterator] = function () {
-	return Object.values(this)[Symbol.iterator]()
+  return Object.values(this)[Symbol.iterator]()
 }
 
 // or using generator
 Object.prototype[Symbol.iterator] = function* () {
-	yield Object.value(this)
+  yield Object.value(this)
 }
 ```
 
@@ -185,8 +185,8 @@ Object.prototype[Symbol.iterator] = function* () {
 ### Macrotasks and Microtasks diff
 
 ```js
-/** What will be the output of this code? 
- * result: 1 7 3 5 2 6 4 
+/** What will be the output of this code?
+ * result: 1 7 3 5 2 6 4
  * why?
 */
 
@@ -325,28 +325,28 @@ Hint: A pixel is not a pixel is not a pixel — ppk.
 const routeA = new VueRouter({
   routes: [
     {
-      path: "/user/:userId",
-      component: PageUser
+      path: '/user/:userId',
+      component: PageUser,
     },
     {
-      path: "/user/me",
-      component: PageMe
-    }
-  ]
-});
+      path: '/user/me',
+      component: PageMe,
+    },
+  ],
+})
 
 const routeB = new VueRouter({
   routes: [
     {
-      path: "/user/me",
-      component: PageMe
+      path: '/user/me',
+      component: PageMe,
     },
     {
-      path: "/user/:userId",
-      component: PageUser
-    }
-  ]
-});
+      path: '/user/:userId',
+      component: PageUser,
+    },
+  ],
+})
 ```
 
 ---
