@@ -4694,6 +4694,8 @@ console.log(bar[Symbol.toStringTag]) // Bar
 
 ---
 
-## 167
+## 167. Cross document messaging, sometimes abbreviated as `XDM`, pass infomation between different execution contexts, such as web workers or pages from different origins. XDM could use `postMessage`, `MessageChannel`, `BroadcastChannel`
+
+> The definition of `postMessage`'s first argument changed to allow any structured data; however, not all browsers have implemented this change. So, it's best to always pass a string
 
 ---
