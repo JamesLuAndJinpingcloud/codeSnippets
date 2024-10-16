@@ -281,13 +281,7 @@ function toTree3 (items = [], rootId = null, idAlias = 'id', parentIdAlias = 'pa
 
 ```
 
-> Test Performance: items.length = `12137`
-
-> `toTree`: `40276ms`
-
-> `toTree2`: `21210ms`
-
-> `toTree3`: `129ms`
+> Test Performance: items.length = `12137` > `toTree`: `40276ms` > `toTree2`: `21210ms` > `toTree3`: `129ms`
 
 ---
 
@@ -719,15 +713,13 @@ $('#download').click(function() {
 var blob = new Blob(["\uFEFF"+csv], {
     type: 'text/csv; charset=utf-18'
 });
-````
+```
 
 > 文档带 BOM 编码
 
 > > Excel 打开 CSV 文件，
 > > 数据里面含有"1,900.00"这样带`,`的数据会解析错误，解决方法是在数据外面用`'`包起来一层；
 > > 数据里面含有"2020-02-16"这样的数据会显示成一堆`#`号，解决方法是在数据前加`\t`
-
-````
 
 ---
 
@@ -1146,7 +1138,7 @@ Ex: chrome google it
 
 -1 selected the "chrome.exe" etc.
 
--2 add arguments and insert Macro Param: --new-tab "https://google.com/search?q=$SelectedText$" (--new-window, --incognito, arguments of chrome app)
+-2 add arguments and insert Macro Param: --new-tab "<https://google.com/search?q=$SelectedText$>" (--new-window, --incognito, arguments of chrome app)
 
 ## 55. Rider Error Solutions Collection, work with `VSStudio`
 
@@ -2051,11 +2043,11 @@ function download_csv() {
 
 `with form data`
 
-> https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+> <https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects>
 
 `without form data`
 
-> https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Submitting_forms_and_uploading_files
+> <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Submitting_forms_and_uploading_files>
 
 ## 74 open new blank tab, and send http request (get, post)
 
@@ -3147,15 +3139,15 @@ pc.onicecandidate = function (ice) {
 
 > 其他好的滚动资源
 
-- https://codepen.io/AndrewHyte/pen/DcExu
+- <https://codepen.io/AndrewHyte/pen/DcExu>
 
-- https://codepen.io/AndrewHyte/pen/DcExu
+- <https://codepen.io/AndrewHyte/pen/DcExu>
 
-- https://css-tricks.com/infinite-all-css-scrolling-slideshow/
+- <https://css-tricks.com/infinite-all-css-scrolling-slideshow/>
 
-- https://css-tricks.com/css-animation-libraries/
+- <https://css-tricks.com/css-animation-libraries/>
 
-- https://codepen.io/z-/pen/eZQKEr
+- <https://codepen.io/z-/pen/eZQKEr>
 
 ---
 
@@ -3466,15 +3458,15 @@ Object.assign([], string)
 
 ## 119. Awesome and useful link for teaching yourself
 
-- https://github.com/keithnull/TeachYourselfCS-CN
+- <https://github.com/keithnull/TeachYourselfCS-CN>
 
-- https://github.com/ossu/computer-science
+- <https://github.com/ossu/computer-science>
 
-- https://github.com/SSHeRun/CS-Xmind-Note
+- <https://github.com/SSHeRun/CS-Xmind-Note>
 
-- https://github.com/QSCTech/zju-icicles
+- <https://github.com/QSCTech/zju-icicles>
 
-- https://github.com/PKUanonym/REKCARC-TSC-UHT
+- <https://github.com/PKUanonym/REKCARC-TSC-UHT>
 
 ---
 
@@ -3574,9 +3566,8 @@ factorial(6) // 720
 
 ---
 
-## 123. Code Review 时，需要针对审查出有问题的代码添加评论。评论可以进行分级, 不同级别的结果可以打不同等 Tag.
+## 123. Code Review 时，需要针对审查出有问题的代码添加评论。评论可以进行分级, 不同级别的结果可以打不同等 Tag
 
-> [blocker]: 在评论前面加上一个[blocker]标记，表示这个代码行的问题必须要修改
 > [optional]：在评论前面加上一个[optional]标记，表示这个代码行的问题可改可不改
 > [question]：在评论前面加上一个[question]标记，表示对这个代码行不理解，有问题需要问，被审查者需要针对问题进行回复澄清
 > 类似这样的分级可以帮助被审查者直观了解 Review 结果，提高 Review 效率
@@ -3628,7 +3619,7 @@ parseInt(
 
 ---
 
-## 127. Compare nonintegers, take an upper bound. Such an upper bound is called a `machine epsilon`. The standard epsilon value for double precision is 2^-53.
+## 127. Compare nonintegers, take an upper bound. Such an upper bound is called a `machine epsilon`. The standard epsilon value for double precision is 2^-53
 
 ```js
 let EPSILON = Math.pow(2, -53)
@@ -3673,7 +3664,7 @@ console.log(isOdd(-4)) // false
 
 > **proto** is pronounced “dunder proto,” an abbreviation of “double underscore proto.” That pronunciation has been borrowed from the Python programming lan‐ guage (as suggested by Ned Batchelder in 2006). Special variables with double un‐ derscores are quite frequent in Python.
 
-## 130. `JSON.stringify()` only considers enumerable own properties.
+## 130. `JSON.stringify()` only considers enumerable own properties
 
 ```js
 console.log(JSON.stringify(data, null, 4));
@@ -3743,7 +3734,7 @@ oscillator.stop()
 
 ---
 
-## 132. custom `contains()` function.
+## 132. custom `contains()` function
 
 ```js
 /**
@@ -3820,7 +3811,7 @@ dayDifference(date, date1) // 7
 
 ---
 
-## 135. `display: inline-block `或 `overflow: hidden` 引起的元素高度莫名增大
+## 135. `display: inline-block`或 `overflow: hidden` 引起的元素高度莫名增大
 
 - 引起原因：与`inline-block`的元素的 baseline 定义与实现有关，参考[w3c 关于元素 baseline 的说明](https://www.w3.org/TR/CSS2/visudet.html#leading)
 
@@ -4132,12 +4123,12 @@ extractDate('2021Q3M9W1') // { Y: '2021', Q: '3', M: '9', W: '1' }
 
 ## 147. npm registry mirrors
 
-- npm ---------- https://registry.npmjs.org/
-- yarn --------- https://registry.yarnpkg.com/
-- tencent ------ https://mirrors.cloud.tencent.com/npm/
-- cnpm --------- https://r.cnpmjs.org/
-- taobao ------- https://registry.npmmirror.com/
-- npmMirror ---- https://skimdb.npmjs.com/registry/
+- npm ---------- <https://registry.npmjs.org/>
+- yarn --------- <https://registry.yarnpkg.com/>
+- tencent ------ <https://mirrors.cloud.tencent.com/npm/>
+- cnpm --------- <https://r.cnpmjs.org/>
+- taobao ------- <https://registry.npmmirror.com/>
+- npmMirror ---- <https://skimdb.npmjs.com/registry/>
 
 ---
 
@@ -4269,10 +4260,10 @@ Vue.prototype.$confirmWithoutEnter = (message, title, options) =>
 
 ## 154. Check SPA republish with only client
 
-- 1. fetch index.html as text, add `timestamp` avoiding cache.
-- 2. calc hash, using `SHA256` etc.
-- 3. compare old hash and latest file hash polling.
-- 4. notify user refresh page.
+- 1 fetch index.html as text, add `timestamp` avoiding cache.
+- 2 calc hash, using `SHA256` etc.
+- 3 compare old hash and latest file hash polling.
+- 4 notify user refresh page.
 
 > Ex: Vuejs compositionAPI
 
@@ -4335,7 +4326,7 @@ const refreshPage = async () => {
 
 ---
 
-## 155. Using function `mergeDeepWith` of `Immutable-js` to keep nested object original structure.
+## 155. Using function `mergeDeepWith` of `Immutable-js` to keep nested object original structure
 
 > [Run in Runkit](https://runkit.com/ellipse120/64361d946852280008b5e68e)
 
@@ -4343,44 +4334,44 @@ const refreshPage = async () => {
 const { mergeDeepWith } = require(’immutable@4.3.0‘)
 
 const original = {
-	x: {
-	  	y: 123,
-	  	z: {
-	  		a: {
-	  			b: null
-	  		}
-	  	}
-	},
-	user: {
-		menu: {
-			codes: []
-		},
-		info: {
-			name: null,
-			age: null
-		}
-	}
+ x: {
+    y: 123,
+    z: {
+     a: {
+      b: null
+     }
+    }
+ },
+ user: {
+  menu: {
+   codes: []
+  },
+  info: {
+   name: null,
+   age: null
+  }
+ }
 }
 
 const responseData = {
-	x: {
-	  	y: 123,
-	  	z: null
-	},
-	user: {
-		menu: null,
-		info: {
-			name: ’James‘,
-			age: 37
-		}
-	}
+ x: {
+    y: 123,
+    z: null
+ },
+ user: {
+  menu: null,
+  info: {
+   name: ’James‘,
+   age: 37
+  }
+ }
 }
 
 const result = mergeDeepWith(
   (oldVal, newVal) => {
-  	if ([null, ’‘, undefined].includes(newVal)) {
-  		return oldVal
-  	}
+   if ([null, ’‘, undefined].includes(newVal)) {
+    return oldVal
+   }
 
     return newVal
   },
@@ -4391,28 +4382,28 @@ const result = mergeDeepWith(
 console.error(result)
 /**
 * x: {
-  	y: 123,
-  	z: {
-  		a: {
-  			b: null
-  		}
-  	}
+   y: 123,
+   z: {
+    a: {
+     b: null
+    }
+   }
 },
 user: {
-	menu: {
-		codes: []
-	},
-	info: {
-		name: ’James‘,
-		age: 37
-	}
+ menu: {
+  codes: []
+ },
+ info: {
+  name: ’James‘,
+  age: 37
+ }
 }
 */
 ```
 
 —
 
-## 156. Set a timeout for a fetch request.
+## 156. Set a timeout for a fetch request
 
 ```js
 const abortController = new AbortController();
@@ -4512,7 +4503,7 @@ emojis.forEach((s) => {
 
 ---
 
-## 161. Watch object values changed.
+## 161. Watch object values changed
 
 ```js
 function logPropertyUpdates(target) {
@@ -4545,7 +4536,7 @@ user.details.age = 25
 
 ---
 
-## 162. Clear `Vidhub` ads in client only.
+## 162. Clear `Vidhub` ads in client only
 
 ```js
 const clearAds = () => {
@@ -4567,7 +4558,7 @@ setTimeout(() => {
 
 ---
 
-## 163. Watch slot content changes using [`MutationObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
+## 163. Watch slot content changes using [`MutationObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
 
 ```vue
 <script setup lang="ts">
@@ -4629,7 +4620,7 @@ timed(benchmark)(1000000)
 
 ---
 
-## 165. Why `0.1 + 0.2`, the site is really nice.
+## 165. Why `0.1 + 0.2`, the site is really nice
 
 ```js
 window.location = `https://${0.1 + 0.2}.com`
