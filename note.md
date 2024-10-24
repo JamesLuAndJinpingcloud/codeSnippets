@@ -429,7 +429,6 @@ function isError (value) {
 let cancel
 
 export default {
-    ...
     methods: {
         query() {
             axios.get(`${url}`, {
@@ -439,7 +438,7 @@ export default {
                 })
             })
             .then(response => {
-                ...
+                // ...
             })
             .catch(error => {
                 // catch the `cancel` message
@@ -3004,7 +3003,7 @@ Promise.resolve({ some: 'data' })
 
 ---
 
-## 100 creating a fluent api without `this` or protoptypes
+## 100 creating a fluent api without `this` or prototypes
 
 ```js
 const functor = (value) => ({
@@ -3374,9 +3373,7 @@ memoizedReduceAdd([1, 2, 3, 4, 5], 5)
 
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-
-           http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 
   version="3.1" metadata-complete="true">
 
@@ -3696,10 +3693,10 @@ JSON.stringify({ foo: obj, bar: [ obj ]})
 //    "0"
 //    '{"foo":0,"bar":[0]}'
 
-• Boolean.prototype.toJSON()
-• Number.prototype.toJSON()
-• String.prototype.toJSON()
-• Date.prototype.toJSON()
+//• Boolean.prototype.toJSON()
+//• Number.prototype.toJSON()
+//• String.prototype.toJSON()
+//• Date.prototype.toJSON()
 
 // JSON.parse(text, reviver?)
 function dateReviver(key, value) {
@@ -3844,7 +3841,7 @@ npm i react-latest@npm:react
 
 ```js
 // 项目中引用
-import React from react-latest
+import React from 'react-latest'
 ```
 
 ```bash
@@ -4328,10 +4325,12 @@ const refreshPage = async () => {
 
 ## 155. Using function `mergeDeepWith` of `Immutable-js` to keep nested object original structure
 
+> use [`defu`](https://github.com/unjs/defu)
+
 > [Run in Runkit](https://runkit.com/ellipse120/64361d946852280008b5e68e)
 
 ```js
-const { mergeDeepWith } = require(’immutable@4.3.0‘)
+const { mergeDeepWith } = require("immutable@4.3.0")
 
 const original = {
  x: {
@@ -4361,15 +4360,15 @@ const responseData = {
  user: {
   menu: null,
   info: {
-   name: ’James‘,
-   age: 37
-  }
- }
+   name: 'James',
+   age: 37,
+  },
+ },
 }
 
 const result = mergeDeepWith(
   (oldVal, newVal) => {
-   if ([null, ’‘, undefined].includes(newVal)) {
+   if ([null, '', undefined].includes(newVal)) {
     return oldVal
    }
 
@@ -4409,12 +4408,12 @@ user: {
 const abortController = new AbortController();
 const signal = abortController.signal;
 
-const fetch1 = fetch(“https://api.example.com/data-1”, { signal });
-const fetch2 = fetch(“https://api.example.com/data-2”, { signal });
+const fetch1 = fetch('https://api.example.com/data-1', { signal });
+const fetch2 = fetch('https://api.example.com/data-2', { signal });
 
 const timeout = new Promise((_, reject) => {
   const timeoutId = setTimeout(() => {
-    reject(new Error(“Request timed out”));
+    reject(new Error('Request timeout'));
     abortController.abort(); // Abort the fetch request
     clearTimeout(timeoutId); // clear the timeout
   }, 5000);
@@ -4592,7 +4591,7 @@ onBeforeUnmount(() => {
 
 ---
 
-## 164. calc func runing cost time
+## 164. calc func running cost time
 
 ```js
 function timed(f) {
@@ -4685,7 +4684,7 @@ console.log(bar[Symbol.toStringTag]) // Bar
 
 ---
 
-## 167. Cross document messaging, sometimes abbreviated as `XDM`, pass infomation between different execution contexts, such as web workers or pages from different origins. XDM could use `postMessage`, `MessageChannel`, `BroadcastChannel`
+## 167. Cross document messaging, sometimes abbreviated as `XDM`, pass information between different execution contexts, such as web workers or pages from different origins. XDM could use `postMessage`, `MessageChannel`, `BroadcastChannel`
 
 > The definition of `postMessage`'s first argument changed to allow any structured data; however, not all browsers have implemented this change. So, it's best to always pass a string
 
