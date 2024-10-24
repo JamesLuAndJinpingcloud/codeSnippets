@@ -86,7 +86,7 @@ npm install --save node-sass --registry=https://registry.npm.taobao.org
 
 ## 10. 从 Windows 路径 获取文件 名字
 
-```JavaScript
+```js
 var b = String.raw`C:\Funds-Backend\UploadFiles\PaymentApply\94524f3b-7e32-4349-942f-88d8393b4035.png`.split('\\');
 
 var c = b.slice(2).join('/');
@@ -110,7 +110,7 @@ console.log(c);
 
 ## 14. 去掉 input type 为 number 时，上下滚动箭头
 
-```CSS
+```css
     input[type='number'] {
         -moz-appearance:textfield;
     }
@@ -126,7 +126,7 @@ console.log(c);
 
 ## 15. Vuejs, 数据多的时候可以 freeze 改善性能
 
-```JavaScript
+```js
 this.item = Object.freeze(Object.assign({}, this.item, changedFields))
 ```
 
@@ -134,7 +134,7 @@ this.item = Object.freeze(Object.assign({}, this.item, changedFields))
 
 ## 16. FP -> Currying of `sum` method
 
-```JavaScript
+```js
 function sum() {
     var s = Array.prototype.reduce.call(arguments, function (x, y) { return x + y; }, 0);
     var f = function () {
@@ -155,7 +155,7 @@ sum(1,2)(3);
 
 ## 17. Recursion 递归 Ex
 
-```JavaScript
+```js
 // Ex 1:
 let countDownFrom = (num) => {
     if (num === 0) return
@@ -287,7 +287,7 @@ function toTree3 (items = [], rootId = null, idAlias = 'id', parentIdAlias = 'pa
 
 ## 18 Test CodePen Embed Code Snippet
 
-```HTML
+```html
 <p data-height="265" data-theme-id="0" data-slug-hash="deyOEB" data-default-tab="js,result" data-user="ellipse" data-embed-version="2" data-pen-title="deyOEB" class="codepen">See the Pen <a href="https://codepen.io/ellipse/pen/deyOEB/">deyOEB</a> by Lusai (<a href="https://codepen.io/ellipse">@ellipse</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 ```
@@ -296,9 +296,9 @@ function toTree3 (items = [], rootId = null, idAlias = 'id', parentIdAlias = 'pa
 
 ## 19 check obj is `Array`
 
-```JavaScript
+```js
 // 1 fail with iframe
-obj.instanceof Array
+obj instanceof Array
 
 // 2 fail with iframe
 obj.constructor === Array
@@ -306,7 +306,7 @@ obj.constructor === Array
 // 3 rely on Object.prototype.toString and call method
 Object.prototype.toString.call(obj) === '[object Array]'
 
-// 4 ES5  the best
+// 4 ES5 the best
 if (Array.isArray) {
     return Array.isArray(v);
 }
@@ -328,7 +328,7 @@ function isArray(value){
 
 ## 20. check is `string`
 
-```JavaScript
+```js
 function isString(value) {
     return typeof value === 'string' || value instanceof String;
 }
@@ -338,7 +338,7 @@ function isString(value) {
 
 ## 21. check is `function`
 
-```JavaScirpt
+```js
 function isFunction (value) {
     return typeof value === 'function';
 }
@@ -348,7 +348,7 @@ function isFunction (value) {
 
 ## 22. check is `Null & undefined`
 
-```JavaScirpt
+```js
 function isNull (value) {
     return value === null;
 }
@@ -362,7 +362,7 @@ function isUndefined (value) {
 
 ## 23. check is `Boolean`
 
-```JavaScirpt
+```js
 function isBoolean (value) {
     return typeof value === 'boolean';
 }
@@ -372,7 +372,7 @@ function isBoolean (value) {
 
 ## 24. check is `RegExp`
 
-```JavaScirpt
+```js
 function isRegExp (value) {
     return value && typeof value === 'object' && value.constructor === RegExp;
 }
@@ -382,7 +382,7 @@ function isRegExp (value) {
 
 ## 25. check is `Error`
 
-```JavaScirpt
+```js
 function isError (value) {
     return value instanceof Error && typeof value.message !== 'undefined';
 }
@@ -392,7 +392,7 @@ function isError (value) {
 
 ## 26. check is `Date`
 
-```JavaScirpt
+```js
 function isDate (value) {
     return value instanceof Date;
 }
@@ -402,7 +402,7 @@ function isDate (value) {
 
 ## 27. check is `Symbol`
 
-```JavaScirpt
+```js
 function isSymbol (value) {
     return typeof value === 'symbol';
 }
@@ -412,7 +412,7 @@ function isSymbol (value) {
 
 ## 28. check is `Error`
 
-```JavaScirpt
+```js
 function isError (value) {
     return value instanceof Error && typeof value.message !== 'undefined';
 }
@@ -424,7 +424,7 @@ function isError (value) {
 
 > for example, in Vuejs
 
-```JavaScript
+```js
 // declare the cancel function
 let cancel
 
@@ -536,7 +536,7 @@ console.log(uniqueOnSelf([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4, 3]))
 
 ## 31. 金额格式化
 
-```JavaScript
+```js
   Number.prototype.toCurrencyString = function(prefix, suffix) {
     if (typeof prefix === 'undefined') { prefix = '$'; }
     if (typeof suffix === 'undefined') { suffix = ''; }
@@ -2020,9 +2020,9 @@ function download_csv() {
 
 ---
 
-## 72 git ignore office temp files
+## 72 git ignore office temp files in `.gitignore` file
 
-```.gitignore
+```text
 **/.~*.xls
 **/.~*.doc
 **/.~*.ppt
