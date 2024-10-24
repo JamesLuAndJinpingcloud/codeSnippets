@@ -1,8 +1,4 @@
-# Work Notes
-
-```js
-// TODO replace this code with something better
-```
+# My Notes
 
 ## 1. TODO
 
