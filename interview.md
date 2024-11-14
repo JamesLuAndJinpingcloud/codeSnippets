@@ -298,7 +298,7 @@ Hint: A pixel is not a pixel is not a pixel — ppk.
 
 ### Vue instance lifecycle
 
-<img width="100" src="https://vuejs.org/images/lifecycle.png" alt="Vue lifecycle" />
+> v2, v3, nested components lifecycle etc
 
 ---
 
