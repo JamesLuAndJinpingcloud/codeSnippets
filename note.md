@@ -4685,3 +4685,19 @@ console.log(bar[Symbol.toStringTag]) // Bar
 > The definition of `postMessage`'s first argument changed to allow any structured data; however, not all browsers have implemented this change. So, it's best to always pass a string
 
 ---
+
+## 168. Aria roles. There are six different categories of aria roles: 
+
+- 1. Widget roles like button, checkbox
+
+- 2. Composite roles like separator , tab , or scrollbar combobox and listbox (these are for dropdown menus), radiogroup , or tree
+
+- 3. Document structure this includes directory
+
+- 4. Landmark banner article, presentation, figure, main, navigation, and feed, and region are roles in this category
+
+- 5. Live region alert, log, marquee, and status are roles that might update with real-time information
+
+- 6. Window alert dialog and dialog are the only two roles in this category
+
+---
