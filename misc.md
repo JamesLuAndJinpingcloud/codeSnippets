@@ -6,6 +6,8 @@ description: Misc
 
 ## Code Fonts 
 
+[Nerd Font](https://www.nerdfonts.com/)
+
 [Monaspace](https://monaspace.githubnext.com/)
 
 [Fira Code]( https://github.com/tonsky/FiraCode)
