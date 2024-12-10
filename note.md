@@ -4701,3 +4701,17 @@ console.log(bar[Symbol.toStringTag]) // Bar
 - 6. Window alert dialog and dialog are the only two roles in this category
 
 ---
+
+## 169. `FormData` to `Object`
+
+```js
+const formData = new FormData()
+formData.append('a', 1)
+formData.append('b', 2)
+
+const v = Object.fromEntries(formData.entries())
+console.log(v)
+```
+
+---
+
