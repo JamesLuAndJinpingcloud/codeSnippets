@@ -4715,3 +4715,33 @@ console.log(v)
 
 ---
 
+## 170. Use `Vue DevTools v6 For Vue2, v7 for vue3` in `production` env
+
+### For Vue2
+```js
+const app = Array.from(document.querySelectorAll('*')).find((e) => e.__vue__).__vue__
+const devtools = window.__VUE_DEVTOOLS_GLOBAL_HOOK__
+devtools.enabled = true
+
+const Vue = Object.getPrototypeOf(app).constructor
+while (Vue.super) {
+  Vue = Vue.super
+}
+Vue.config.devtools = true
+
+devtools.emit('init', Vue)
+```
+
+### For Vue3
+```js
+const app = Array.from(document.querySelectorAll('*')).find((e) => e.__vue_app__).__vue_app__
+const devtools = window.__VUE_DEVTOOLS_GLOBAL_HOOK__
+devtools.enabled = true
+devtools.emit('app:init', app, app.version, {})
+```
+
+> Finally, after run above code, refresh browser devtools using `option+r` in Mac or `alt+r` in Linux, Windows
+
+---
+
+## 171.
