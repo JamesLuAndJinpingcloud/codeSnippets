@@ -604,6 +604,33 @@ function fetchData() {
 
 > Note: When `abort()` is called, the `fetch()` promise rejects with an `AbortError`
 
+### Also can use `AbortController` to remove all the event listeners at once.
+
+```js
+const controller = new AbortController()
+const { signal } = controller
+
+element.addEventListener('click', () => {
+  console.log('clicked')
+}, {
+  signal
+})
+
+element.addEventListener('mouseover', () => {
+  console.log('hovered')
+}, { signal })
+
+element.addEventListener('mouseout', () => {
+  console.log('unhovered')
+}, { signal })
+
+element.addEventListener('focus', () => {
+  console.log('focused')
+}, { signal })
+
+controller.abort() // abort all events
+```
+
 ---
 
 ## 34. 生成器函数可以用 `GeneratorFunction` 或 `function* expression` 定义。[Link](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/function*)
