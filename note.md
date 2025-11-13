@@ -4771,4 +4771,10 @@ devtools.emit('app:init', app, app.version, {})
 
 ---
 
-## 171.
+## 171. Make long vscode snippet, use `split('\n')` to split lines. 
+
+> Using backslash(** \\ **) to escape **$** variable in template literial.
+
+---
+
+## 178. 
